@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
-
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -22,17 +20,6 @@
   --muted: #f4f4f5;
   --muted-foreground: #52525b;
   --card: #ffffff;
-}
-
-:root[data-theme="dark"] {
-  --background: #030303;
-  --foreground: #e5e7eb;
-  --primary: #6ea3d8;
-  --accent: #45c4b0;
-  --border: #262626;
-  --muted: #171717;
-  --muted-foreground: #a1a1aa;
-  --card: #0a0a0a;
 }
 
 /* Base styles using variables */

@@ -70,36 +70,6 @@ const finalIgnoreTitleTemplate = metadata?.ignoreTitleTemplate || false;
     </script>
 
     <slot name="head" />
-    <script is:inline>
-      const getTheme = () => {
-        if (
-          typeof localStorage !== "undefined" &&
-          localStorage.getItem("theme")
-        ) {
-          return localStorage.getItem("theme");
-        }
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          return "dark";
-        }
-        return "light";
-      };
-
-      const setTheme = () => {
-        const theme = getTheme();
-        if (theme === "light") {
-          document.documentElement.setAttribute("data-theme", "light");
-        } else {
-          document.documentElement.setAttribute("data-theme", "dark");
-        }
-        window.localStorage.setItem("theme", theme);
-      };
-
-      // Run immediately on first hard load
-      setTheme();
-
-      // Run before the new page renders during View Transitions
-      document.addEventListener("astro:after-swap", setTheme);
-    </script>
   </head>
   <body class="bg-background text-foreground antialiased">
     <a
