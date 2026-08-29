@@ -14,7 +14,7 @@ export const siteConfig = {
   socialLinks: {
     telegram: "https://t.me/unballoon",
     discord: "https://discord.com/invite/9AETUBmJJd",
-    instagram: "https://www.instagram.com/unballooon/",
+    instagram: "https://www.instagram.com/maratona.unb/",
     youtube: "https://www.youtube.com/playlist?list=PLHOnuxlEMZkqKSbMn4UIFEl3O8vyo9lCV",
     github: "https://github.com/UnBalloon/",
     codeforcesGroup: "https://codeforces.com/group/btcK4I5D5f/blog",
@@ -23,7 +23,7 @@ export const siteConfig = {
   },
   // Ícones exibidos no header/footer (subconjunto de socialLinks acima).
   headerSocialLinks: [
-    { text: "Instagram", href: "https://www.instagram.com/unballooon/", icon: "lucide:instagram" },
+    { text: "Instagram", href: "https://www.instagram.com/maratona.unb/", icon: "lucide:instagram" },
     { text: "Telegram", href: "https://t.me/unballoon", icon: "lucide:send" },
   ],
   supporters: [

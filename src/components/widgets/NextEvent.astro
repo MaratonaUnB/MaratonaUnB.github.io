@@ -1,34 +1,60 @@
 ---
 // Mostra sempre o próximo evento (ou o último realizado, se nenhum estiver
-// agendado). Data calculada automaticamente a partir de src/content/eventos/ —
-// não precisa editar este componente para trocar o evento em destaque.
+// agendado). O HTML já sai correto no build (SSR/SSG normal); o script no
+// final desta página recalcula no navegador do visitante e corrige o
+// conteúdo na hora, caso a data do evento em destaque já tenha passado
+// desde o último build (o GitHub Pages não tem rebuild agendado — sem
+// isso, a home ficaria "presa" no evento errado até o próximo commit).
 import { getEventosOrdenados, getProximoEvento } from "@/lib/eventos";
 
 const eventos = await getEventosOrdenados();
 const { evento, isFuturo } = getProximoEvento(eventos);
+
+// Payload leve para o recálculo no cliente — só os campos usados na UI.
+const eventosParaCliente = eventos.map((e) => ({
+  id: e.id,
+  title: e.data.title,
+  date: e.data.date.toISOString(),
+  local: e.data.local ?? null,
+  cover: e.data.cover ?? null,
+  coverAlt: e.data.coverAlt ?? null,
+  inscricoesUrl: e.data.inscricoesUrl ?? null,
+}));
 ---
 
 {
   evento && (
-    <section class="reveal border-y border-border bg-card">
+    <section
+      class="reveal border-y border-border bg-card"
+      id="next-event"
+      data-rendered-id={evento.id}
+    >
       <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
         <div class="flex flex-col gap-8 md:flex-row md:items-center">
-          {evento.data.cover && (
-            <img
-              src={evento.data.cover}
-              alt={evento.data.coverAlt || evento.data.title}
-              class="h-48 w-full rounded-2xl object-cover md:h-40 md:w-64 md:shrink-0"
-              loading="eager"
-            />
-          )}
+          <img
+            id="next-event-cover"
+            src={evento.data.cover || undefined}
+            alt={evento.data.coverAlt || evento.data.title}
+            class:list={[
+              "h-48 w-full rounded-2xl object-cover md:h-40 md:w-64 md:shrink-0",
+              { hidden: !evento.data.cover },
+            ]}
+            loading="eager"
+          />
           <div>
-            <p class="text-sm font-semibold uppercase tracking-wide text-primary">
+            <p
+              id="next-event-badge"
+              class="text-sm font-semibold uppercase tracking-wide text-primary"
+            >
               {isFuturo ? "🏆 Próximo Evento" : "Último Evento"}
             </p>
-            <h2 class="mt-2 text-2xl font-bold text-foreground sm:text-3xl">
+            <h2
+              id="next-event-title"
+              class="mt-2 text-2xl font-bold text-foreground sm:text-3xl"
+            >
               {evento.data.title}
             </h2>
-            <p class="mt-2 text-sm text-muted-foreground">
+            <p id="next-event-meta" class="mt-2 text-sm text-muted-foreground">
               {evento.data.date.toLocaleDateString("pt-BR", {
                 year: "numeric",
                 month: "long",
@@ -39,22 +65,25 @@ const { evento, isFuturo } = getProximoEvento(eventos);
             </p>
             <div class="mt-4 flex flex-wrap gap-4">
               <a
+                id="next-event-link"
                 href={`/eventos/${evento.id}`}
                 class="font-semibold text-primary hover:underline"
               >
                 Ver detalhes →
               </a>
-              {isFuturo && evento.data.inscricoesUrl && (
-                <a
-                  href={evento.data.inscricoesUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="font-semibold text-primary hover:underline"
-                  onclick="if (typeof gtag === 'function') gtag('event', 'cta_click', { cta: 'inscreva-se' });"
-                >
-                  Inscreva-se →
-                </a>
-              )}
+              <a
+                id="next-event-signup"
+                href={evento.data.inscricoesUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class:list={[
+                  "font-semibold text-primary hover:underline",
+                  { hidden: !(isFuturo && evento.data.inscricoesUrl) },
+                ]}
+                onclick="if (typeof gtag === 'function') gtag('event', 'cta_click', { cta: 'inscreva-se' });"
+              >
+                Inscreva-se →
+              </a>
             </div>
           </div>
         </div>
@@ -62,3 +91,88 @@ const { evento, isFuturo } = getProximoEvento(eventos);
     </section>
   )
 }
+
+<script type="application/json" id="next-event-data" set:html={JSON.stringify(eventosParaCliente)} />
+
+<script>
+  interface EventoCliente {
+    id: string;
+    title: string;
+    date: string;
+    local: string | null;
+    cover: string | null;
+    coverAlt: string | null;
+    inscricoesUrl: string | null;
+  }
+
+  function getProximoEventoCliente(eventos: EventoCliente[]) {
+    const agora = Date.now();
+    const futuros = eventos
+      .filter((e) => new Date(e.date).valueOf() >= agora)
+      .sort((a, b) => new Date(a.date).valueOf() - new Date(b.date).valueOf());
+
+    if (futuros.length > 0) return { evento: futuros[0], isFuturo: true };
+
+    const passados = [...eventos].sort(
+      (a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf(),
+    );
+    return { evento: passados[0], isFuturo: false };
+  }
+
+  function atualizarProximoEvento() {
+    const section = document.getElementById("next-event");
+    const dataEl = document.getElementById("next-event-data");
+    if (!section || !dataEl?.textContent) return;
+
+    const eventos: EventoCliente[] = JSON.parse(dataEl.textContent);
+    if (eventos.length === 0) return;
+
+    const { evento, isFuturo } = getProximoEventoCliente(eventos);
+
+    // Não só o evento em destaque pode mudar — o mesmo evento pode "virar"
+    // de futuro para passado sem trocar de id (ex.: hoje passou da data do
+    // único evento cadastrado). Por isso sempre reconcilia tudo, mesmo
+    // quando o id é igual ao renderizado no build.
+    section.dataset.renderedId = evento.id;
+
+    const badge = document.getElementById("next-event-badge");
+    if (badge) badge.textContent = isFuturo ? "🏆 Próximo Evento" : "Último Evento";
+
+    const title = document.getElementById("next-event-title");
+    if (title) title.textContent = evento.title;
+
+    const meta = document.getElementById("next-event-meta");
+    if (meta) {
+      const dataFormatada = new Date(evento.date).toLocaleDateString("pt-BR", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        timeZone: "UTC",
+      });
+      meta.textContent = evento.local ? `${dataFormatada} · ${evento.local}` : dataFormatada;
+    }
+
+    const link = document.getElementById("next-event-link") as HTMLAnchorElement | null;
+    if (link) link.href = `/eventos/${evento.id}`;
+
+    const signup = document.getElementById("next-event-signup") as HTMLAnchorElement | null;
+    if (signup) {
+      const mostrar = isFuturo && !!evento.inscricoesUrl;
+      signup.classList.toggle("hidden", !mostrar);
+      if (evento.inscricoesUrl) signup.href = evento.inscricoesUrl;
+    }
+
+    const cover = document.getElementById("next-event-cover") as HTMLImageElement | null;
+    if (cover) {
+      if (evento.cover) {
+        cover.src = evento.cover;
+        cover.alt = evento.coverAlt || evento.title;
+        cover.classList.remove("hidden");
+      } else {
+        cover.classList.add("hidden");
+      }
+    }
+  }
+
+  document.addEventListener("astro:page-load", atualizarProximoEvento);
+</script>
