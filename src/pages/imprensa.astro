@@ -1,0 +1,46 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHeader from "@/components/widgets/PageHeader.astro";
+import { materiasImprensa } from "@/data/imprensa";
+
+const metadata = {
+  title: "Imprensa",
+  description: "Cobertura de imprensa sobre a Maratona de Programação da UnB.",
+};
+---
+
+<BaseLayout {metadata}>
+  <PageHeader title="Imprensa" subtitle="Cobertura sobre a Maratona e o UnBalloon" />
+  <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+    <p class="text-muted-foreground">
+      Resultados e conquistas dos times da UnB já foram destaque em veículos
+      de imprensa e nos canais oficiais da universidade. Abaixo, uma seleção
+      de links para saber mais.
+    </p>
+    <ul class="mt-8 space-y-4">
+      {
+        materiasImprensa.map((materia) => (
+          <li>
+            <a
+              href={materia.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block rounded-2xl border border-border bg-card p-5 transition-colors hover:border-primary"
+            >
+              <p class="font-semibold text-foreground">{materia.titulo}</p>
+              <p class="mt-1 text-sm text-muted-foreground">
+                {materia.veiculo}
+                {materia.data && ` · ${materia.data}`}
+              </p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="mt-8 text-sm text-muted-foreground">
+      Tem um link de uma matéria específica sobre a Maratona ou o UnBalloon?
+      Edite <code class="rounded bg-muted px-1.5 py-0.5">src/data/imprensa.ts</code>
+      e envie um Pull Request.
+    </p>
+  </div>
+</BaseLayout>

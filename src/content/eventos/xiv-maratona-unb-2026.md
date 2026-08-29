@@ -1,13 +1,13 @@
 ---
 title: "XIV Maratona UnB de Programação"
-description: "A XIV Maratona UnB de Programação está confirmada para o dia 25 de setembro de 2026, às 8h, no LINF (Laboratório de Informática)."
-pubDate: 2026-08-28
-author: "Daniel de Paula Porto"
-category: "evento-atual"
-tags: ["evento", "maratona-unb"]
+date: 2026-09-25
+local: "LINF — Laboratório de Informática, Campus Darcy Ribeiro"
+cover: "/eventos/xi-maratona-unb.png"
+coverAlt: "Cartaz da Maratona UnB de Programação"
+confirmado: true
 ---
 
-A **XIV Maratona UnB de Programação** está confirmada para o dia **25 de setembro de 2026, às 8h**, no LINF (Laboratório de Informática). Mais informações sobre inscrições e regulamento serão divulgadas em breve.
+A XIV Maratona UnB de Programação está confirmada para o dia **25 de setembro de 2026, às 8h**, no LINF (Laboratório de Informática). Mais informações sobre inscrições e regulamento serão divulgadas em breve.
 
 ## Resumo
 

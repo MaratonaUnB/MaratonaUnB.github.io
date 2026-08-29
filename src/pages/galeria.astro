@@ -1,17 +1,28 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import PageHeader from "@/components/widgets/PageHeader.astro";
+import InstagramFeed from "@/components/widgets/InstagramFeed.astro";
 
 const metadata = {
   title: "Galeria",
   description: "Melhores momentos das edições da Maratona de Programação da UnB.",
 };
 
-// Álbuns identificados no site anterior. Adicione novas imagens em
-// public/galeria/ e um novo item aqui para cada edição/evento.
-const albuns = [
+// Fotos reais recuperadas do site anterior. Para adicionar novas, coloque o
+// arquivo em public/galeria/ e um novo item aqui.
+const fotos = [
+  { src: "/eventos/xi-maratona-unb.png", legenda: "Maratona UnB de Programação 2024" },
+  { src: "/eventos/maratona-feminina-2024.jpeg", legenda: "Maratona Feminina de Programação 2024" },
+  { src: "/eventos/iv-competicao-feminina.jpeg", legenda: "IV Competição Feminina de Programação da UnB" },
+  { src: "/eventos/olimpiada-unballoon-2024.jpg", legenda: "Olimpíada UnBalloon de Informática" },
+  { src: "/eventos/unb-final-brasileira-2024.jpeg", legenda: "UnB na Final Brasileira 2024" },
+  { src: "/eventos/ieeextreme.webp", legenda: "IEEExtreme" },
+];
+
+// Álbuns identificados no site anterior cujas fotos ainda não foram
+// recuperadas (adicione o arquivo em public/galeria/ para completar).
+const albunsPendentes = [
   "[2024-07] Escola e Maratona de Inverno CSBC",
-  "[2024-06] Olimpíada UnBalloon",
   "[2023] XI Maratona UnB",
   "[2023] Fraldinha",
   "[2022] Maratona IFB",
@@ -22,23 +33,48 @@ const albuns = [
 <BaseLayout {metadata}>
   <PageHeader title="Galeria" subtitle="Melhores Momentos" />
   <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
-    <p class="text-muted-foreground">
-      As fotos das edições anteriores estão sendo reorganizadas para o novo
-      site. Enquanto isso, seguem os álbuns já catalogados:
-    </p>
-    <ul class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {
-        albuns.map((album) => (
-          <li class="rounded-2xl border border-border bg-card p-6 text-sm font-medium text-foreground">
+        fotos.map((foto) => (
+          <figure class="overflow-hidden rounded-2xl border border-border bg-card">
+            <img
+              src={foto.src}
+              alt={foto.legenda}
+              class="h-48 w-full object-cover"
+              loading="lazy"
+            />
+            <figcaption class="p-3 text-sm font-medium text-foreground">
+              {foto.legenda}
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+
+    <h2 class="mt-14 text-xl font-bold text-foreground">Álbuns pendentes</h2>
+    <p class="mt-2 text-sm text-muted-foreground">
+      Estes álbuns existiam no site anterior, mas as fotos ainda não foram
+      recuperadas:
+    </p>
+    <ul class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        albunsPendentes.map((album) => (
+          <li class="rounded-xl border border-dashed border-border p-4 text-sm text-muted-foreground">
             {album}
           </li>
         ))
       }
     </ul>
-    <p class="mt-8 text-sm text-muted-foreground">
+    <p class="mt-4 text-sm text-muted-foreground">
       Tem fotos de alguma edição? Envie um Pull Request adicionando os
       arquivos em <code class="rounded bg-muted px-1.5 py-0.5">public/galeria/</code>
       e atualizando <code class="rounded bg-muted px-1.5 py-0.5">src/pages/galeria.astro</code>.
     </p>
+
+    <h2 class="mt-14 text-xl font-bold text-foreground">No Instagram</h2>
+    <p class="mt-2 mb-6 text-sm text-muted-foreground">
+      Últimos posts de @unballooon.
+    </p>
+    <InstagramFeed />
   </div>
 </BaseLayout>

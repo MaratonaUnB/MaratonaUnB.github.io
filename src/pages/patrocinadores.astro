@@ -1,0 +1,91 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHeader from "@/components/widgets/PageHeader.astro";
+import { siteConfig } from "@/config/site";
+
+const metadata = {
+  title: "Patrocinadores",
+  description:
+    "Apoie a Maratona de Programação da UnB e conecte sua marca aos melhores talentos em tecnologia do Distrito Federal.",
+};
+
+const numeros = [
+  { valor: "desde 2013", label: "Realizando a Maratona UnB de Programação" },
+  { valor: "3 times", label: "Únicos do Brasil na fase LatAm da SBC 2025" },
+  { valor: "5 vagas", label: "Na Final Brasileira 2024 — melhor resultado histórico da UnB" },
+  { valor: "4 campi", label: "Alunos de FGA, CIC, IFB e IESB competindo juntos" },
+];
+---
+
+<BaseLayout {metadata}>
+  <PageHeader
+    title="Patrocinadores"
+    subtitle="Conecte sua marca aos melhores talentos em tecnologia do Distrito Federal"
+  />
+
+  <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+    <p class="text-lg leading-relaxed text-foreground">
+      A Maratona de Programação da UnB forma, todos os anos, os times que
+      representam o Distrito Federal nas maiores competições de programação
+      competitiva do país — o ICPC (etapa brasileira da Maratona SBC) e a
+      OBI. Patrocinar o projeto é investir diretamente nos estudantes mais
+      preparados em algoritmos, resolução de problemas e trabalho sob pressão
+      do mercado de tecnologia.
+    </p>
+
+    <div class="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
+      {
+        numeros.map((n) => (
+          <div class="rounded-2xl border border-border bg-card p-4 text-center">
+            <p class="text-xl font-bold text-primary">{n.valor}</p>
+            <p class="mt-1 text-xs text-muted-foreground">{n.label}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <h2 class="mt-14 text-2xl font-bold text-foreground">
+      O que o patrocínio viabiliza
+    </h2>
+    <ul class="mt-4 list-disc space-y-2 pl-6 text-muted-foreground">
+      <li>Inscrições gratuitas para todos os times participantes;</li>
+      <li>Material de estudo e cursos preparatórios (OBI e ICPC);</li>
+      <li>
+        Deslocamento e hospedagem de times classificados para fases
+        regionais, nacionais e a final mundial;
+      </li>
+      <li>Premiação e materiais no dia do evento.</li>
+    </ul>
+
+    <h2 class="mt-14 text-2xl font-bold text-foreground">
+      O que sua marca ganha
+    </h2>
+    <ul class="mt-4 list-disc space-y-2 pl-6 text-muted-foreground">
+      <li>
+        Exposição direta ao público de estudantes de Computação, Engenharia e
+        áreas afins da UnB, IFB e IESB;
+      </li>
+      <li>Logo em materiais de divulgação, site e redes sociais do evento;</li>
+      <li>
+        Acesso privilegiado para recrutamento entre os melhores competidores
+        da região Centro-Oeste;
+      </li>
+      <li>Associação de marca a um projeto de extensão com mais de 10 anos de história.</li>
+    </ul>
+
+    <div class="mt-14 rounded-3xl border border-border bg-card p-8 text-center">
+      <h2 class="text-xl font-bold text-foreground">Vamos conversar?</h2>
+      <p class="mt-2 text-muted-foreground">
+        Envie um e-mail contando um pouco sobre sua empresa e como podemos
+        construir uma parceria.
+      </p>
+      <a
+        href={`mailto:${siteConfig.email}?subject=Quero patrocinar a Maratona UnB de Programação`}
+        class="mt-6 inline-flex items-center rounded-xl bg-foreground px-6 py-3 text-base font-bold text-background transition-all hover:bg-foreground/90"
+        onclick="if (typeof gtag === 'function') gtag('event', 'cta_click', { cta: 'quero-patrocinar' });"
+      >
+        Quero patrocinar →
+      </a>
+    </div>
+  </div>
+</BaseLayout>

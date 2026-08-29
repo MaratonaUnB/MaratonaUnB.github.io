@@ -79,7 +79,20 @@ import { Icon } from "astro-icon/components";
       </div>
     </div>
 
-    <div class="hidden md:flex items-center gap-3">
+    <div class="hidden md:flex items-center gap-1">
+      {
+        siteConfig.headerSocialLinks.map((social) => (
+          <a
+            href={social.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={social.text}
+            class="rounded-full p-2 text-foreground transition-colors hover:bg-muted hover:text-primary"
+          >
+            <Icon name={social.icon} class="h-5 w-5" />
+          </a>
+        ))
+      }
       <a
         href={`mailto:${siteConfig.email}`}
         aria-label={`Enviar e-mail para ${siteConfig.email}`}

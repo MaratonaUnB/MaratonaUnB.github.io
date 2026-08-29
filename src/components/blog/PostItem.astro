@@ -46,12 +46,7 @@ const readingTime = remarkPluginFrontmatter?.minutesRead
       </a>
     </div>
     <div class="mt-6 flex items-center">
-      <div class="shrink-0">
-        <span class="sr-only">
-          {post.data.author}
-        </span>
-      </div>
-      <div class="">
+      <div>
         <div class="flex space-x-1 text-sm text-muted-foreground">
           <time datetime={post.data.pubDate.toISOString()}>
             {

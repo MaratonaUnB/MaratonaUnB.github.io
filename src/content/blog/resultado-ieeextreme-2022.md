@@ -4,6 +4,7 @@ description: "Cinco equipes da UnB terminaram entre as posições 18, 46, 577, 5
 pubDate: 2022-11-09
 author: "Maratona de Programação — UnB"
 category: "noticias"
+image: "/eventos/ieeextreme.webp"
 tags: ["ieeextreme", "resultado"]
 ---
 

@@ -21,8 +21,17 @@ export const siteConfig = {
     codeforcesContests: "https://codeforces.com/group/nituVTsHQX/contests",
     unballoonSite: "https://unballoon.github.io/",
   },
+  // Ícones exibidos no header/footer (subconjunto de socialLinks acima).
+  headerSocialLinks: [
+    { text: "Instagram", href: "https://www.instagram.com/unballooon/", icon: "lucide:instagram" },
+    { text: "Telegram", href: "https://t.me/unballoon", icon: "lucide:send" },
+  ],
   supporters: [
-    { name: "Giga Candanga", url: "https://gigacandanga.net.br/" },
+    {
+      name: "Giga Candanga",
+      url: "https://gigacandanga.net.br/",
+      logo: "/site/giga-candanga.png",
+    },
   ],
   navLinks: [
     {
@@ -31,6 +40,8 @@ export const siteConfig = {
       links: [
         { text: "Organização", href: "/organizacao" },
         { text: "Por que competir?", href: "/por-que-competir" },
+        { text: "Depoimentos", href: "/depoimentos" },
+        { text: "Perguntas frequentes", href: "/faq" },
       ],
     },
     {
@@ -47,13 +58,15 @@ export const siteConfig = {
     },
     {
       text: "Eventos",
-      href: "/xiv-maratona-unb-de-programacao",
+      href: "/eventos",
       links: [
-        { text: "Próximo evento", href: "/xiv-maratona-unb-de-programacao" },
-        { text: "Histórico", href: "/blog/category/eventos-anteriores" },
+        { text: "Todos os eventos", href: "/eventos" },
         { text: "Calendário de Eventos", href: "/calendario-de-eventos" },
+        { text: "Notícias", href: "/blog" },
+        { text: "Imprensa", href: "/imprensa" },
       ],
     },
     { text: "UnBalloon", href: "/unballoon" },
+    { text: "Patrocinadores", href: "/patrocinadores" },
   ],
 };

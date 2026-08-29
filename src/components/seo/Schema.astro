@@ -2,7 +2,7 @@
 import { siteConfig } from "@/config/site";
 
 interface Props {
-  type: "WebSite" | "BlogPosting" | "BreadcrumbList";
+  type: "WebSite" | "BlogPosting" | "BreadcrumbList" | "Event" | "Organization";
   data: {
     title?: string;
     description?: string;
@@ -10,6 +10,8 @@ interface Props {
     pubDate?: Date;
     author?: string;
     url?: string;
+    startDate?: Date;
+    location?: string;
   };
 }
 
@@ -58,6 +60,47 @@ if (type === "WebSite") {
         // Placeholder, ideally should be a real logo URL
         url: new URL("/favicon.svg", siteConfig.url).toString(),
       },
+    },
+  };
+} else if (type === "Organization") {
+  schema = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    email: siteConfig.email,
+    logo: new URL("/favicon.svg", siteConfig.url).toString(),
+    parentOrganization: {
+      "@type": "CollegeOrUniversity",
+      name: "Universidade de Brasília",
+      url: "https://unb.br/",
+    },
+    sameAs: [
+      siteConfig.socialLinks.instagram,
+      siteConfig.socialLinks.youtube,
+      siteConfig.socialLinks.telegram,
+      siteConfig.socialLinks.github,
+    ],
+  };
+} else if (type === "Event") {
+  schema = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: data.title,
+    description: data.description,
+    image: data.image,
+    startDate: data.startDate,
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    eventStatus: "https://schema.org/EventScheduled",
+    location: {
+      "@type": "Place",
+      name: data.location || "Universidade de Brasília",
+      address: "Universidade de Brasília, Brasília, DF",
+    },
+    organizer: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
     },
   };
 }

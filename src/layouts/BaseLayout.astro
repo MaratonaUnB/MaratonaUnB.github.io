@@ -44,6 +44,31 @@ const finalIgnoreTitleTemplate = metadata?.ignoreTitleTemplate || false;
     />
     <ClientRouter />
     <Schema type="WebSite" data={{}} />
+    <Schema type="Organization" data={{}} />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CMCKYNL0P0"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      // send_page_view desativado: disparamos manualmente em cada
+      // astro:page-load (abaixo), porque as View Transitions do Astro
+      // trocam de página sem recarregar — sem isso, o GA4 só registraria a
+      // primeira página de cada visita (ou contaria a primeira em dobro).
+      gtag("config", "G-CMCKYNL0P0", { send_page_view: false });
+      document.addEventListener("astro:page-load", () => {
+        gtag("event", "page_view", {
+          page_path: window.location.pathname,
+          page_location: window.location.href,
+          page_title: document.title,
+        });
+      });
+    </script>
+
     <slot name="head" />
     <script is:inline>
       const getTheme = () => {

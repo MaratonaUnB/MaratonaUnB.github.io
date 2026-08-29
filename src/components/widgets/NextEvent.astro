@@ -1,0 +1,64 @@
+---
+// Mostra sempre o próximo evento (ou o último realizado, se nenhum estiver
+// agendado). Data calculada automaticamente a partir de src/content/eventos/ —
+// não precisa editar este componente para trocar o evento em destaque.
+import { getEventosOrdenados, getProximoEvento } from "@/lib/eventos";
+
+const eventos = await getEventosOrdenados();
+const { evento, isFuturo } = getProximoEvento(eventos);
+---
+
+{
+  evento && (
+    <section class="reveal border-y border-border bg-card">
+      <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+        <div class="flex flex-col gap-8 md:flex-row md:items-center">
+          {evento.data.cover && (
+            <img
+              src={evento.data.cover}
+              alt={evento.data.coverAlt || evento.data.title}
+              class="h-48 w-full rounded-2xl object-cover md:h-40 md:w-64 md:shrink-0"
+              loading="eager"
+            />
+          )}
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-wide text-primary">
+              {isFuturo ? "🏆 Próximo Evento" : "Último Evento"}
+            </p>
+            <h2 class="mt-2 text-2xl font-bold text-foreground sm:text-3xl">
+              {evento.data.title}
+            </h2>
+            <p class="mt-2 text-sm text-muted-foreground">
+              {evento.data.date.toLocaleDateString("pt-BR", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                timeZone: "UTC",
+              })}
+              {evento.data.local && ` · ${evento.data.local}`}
+            </p>
+            <div class="mt-4 flex flex-wrap gap-4">
+              <a
+                href={`/eventos/${evento.id}`}
+                class="font-semibold text-primary hover:underline"
+              >
+                Ver detalhes →
+              </a>
+              {isFuturo && evento.data.inscricoesUrl && (
+                <a
+                  href={evento.data.inscricoesUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="font-semibold text-primary hover:underline"
+                  onclick="if (typeof gtag === 'function') gtag('event', 'cta_click', { cta: 'inscreva-se' });"
+                >
+                  Inscreva-se →
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

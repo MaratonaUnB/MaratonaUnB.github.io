@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import PageHeader from "@/components/widgets/PageHeader.astro";
+import { siteConfig } from "@/config/site";
 
 const metadata = {
   title: "OBI — Olimpíada Brasileira de Informática",
@@ -21,15 +22,12 @@ const metadata = {
       estudantes.
     </p>
 
-    <p class="mt-6">
-      <a
-        href="https://sigaa.unb.br/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-primary hover:underline"
-      >
-        Formulário de inscrições: Campus Darcy Ribeiro (clique aqui)
-      </a>
+    <p class="mt-6 rounded-xl border border-border bg-card p-4 text-sm text-muted-foreground">
+      As inscrições do Campus Darcy Ribeiro são feitas via SIGAA, em período
+      divulgado antes de cada fase.
+      <a href={`mailto:${siteConfig.email}`} class="text-primary hover:underline">
+        Fale com a gente
+      </a> para saber o link e o prazo em aberto.
     </p>
 
     <div class="mt-10 space-y-8">

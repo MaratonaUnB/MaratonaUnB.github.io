@@ -2,6 +2,7 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { siteConfig } from "@/config/site";
 import Hero from "@/components/widgets/Hero.astro";
+import NextEvent from "@/components/widgets/NextEvent.astro";
 import PostItem from "@/components/blog/PostItem.astro";
 import { getCollection } from "astro:content";
 
@@ -12,10 +13,6 @@ const metadata = {
 };
 
 const allPosts = await getCollection("blog");
-const proximoEvento = allPosts
-  .filter((p) => p.data.category === "evento-atual")
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0];
-
 const ultimasNoticias = allPosts
   .filter((p) => p.data.category === "noticias")
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -27,46 +24,19 @@ const ultimasNoticias = allPosts
     title="Maratona de Programação"
     description={`Juntos, nos preparamos para "simplesmente, o maior, mais antigo e mais prestigiado concurso de programação do mundo".`}
     actions={[
-      {
-        text: "Saiba mais",
-        href: "/organizacao",
-        variant: "primary",
-      },
+      { text: "Saiba mais", href: "/organizacao", variant: "primary" },
+      { text: "Quero patrocinar", href: "/patrocinadores", variant: "secondary" },
     ]}
-  />
+  >
+    <img
+      src="/site/hero-laboratorio.jpg"
+      alt="Estudantes competindo em laboratório de informática durante a Maratona UnB de Programação"
+      class="mx-auto mt-12 w-full max-w-4xl rounded-3xl border border-border/50 object-cover shadow-2xl"
+      loading="eager"
+    />
+  </Hero>
 
-  {
-    proximoEvento && (
-      <section class="reveal border-y border-border bg-card">
-        <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
-          <p class="text-sm font-semibold uppercase tracking-wide text-primary">
-            🏆 Próximo Evento
-          </p>
-          <h2 class="mt-2 text-2xl font-bold text-foreground sm:text-3xl">
-            {proximoEvento.data.title}
-          </h2>
-          <p class="mt-3 max-w-2xl text-muted-foreground">
-            {proximoEvento.data.description}
-          </p>
-          <p class="mt-2 text-sm text-muted-foreground">
-            {proximoEvento.data.author} ·{" "}
-            {proximoEvento.data.pubDate.toLocaleDateString("pt-BR", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-              timeZone: "UTC",
-            })}
-          </p>
-          <a
-            href={`/blog/${proximoEvento.id}`}
-            class="mt-4 inline-block font-semibold text-primary hover:underline"
-          >
-            Leia mais →
-          </a>
-        </div>
-      </section>
-    )
-  }
+  <NextEvent />
 
   <section class="reveal mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8">
     <h2 class="text-sm font-semibold uppercase tracking-wide text-primary">

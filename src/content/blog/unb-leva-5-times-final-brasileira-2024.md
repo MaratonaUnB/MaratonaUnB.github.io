@@ -4,6 +4,7 @@ description: "Melhor resultado histórico da UnB: cinco vagas para a Final Brasi
 pubDate: 2024-09-07
 author: "Maratona de Programação — UnB"
 category: "noticias"
+image: "/eventos/unb-final-brasileira-2024.jpeg"
 tags: ["icpc", "resultado"]
 ---
 

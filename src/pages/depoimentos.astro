@@ -1,0 +1,56 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHeader from "@/components/widgets/PageHeader.astro";
+import { depoimentos } from "@/data/depoimentos";
+
+const metadata = {
+  title: "Depoimentos",
+  description: "O que dizem os ex-competidores da Maratona de Programação da UnB.",
+};
+---
+
+<BaseLayout {metadata}>
+  <PageHeader title="Depoimentos" subtitle="A voz de quem já competiu" />
+  <div class="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+    {
+      depoimentos.length > 0 ? (
+        <div class="grid gap-6 sm:grid-cols-2">
+          {depoimentos.map((d) => (
+            <blockquote class="rounded-2xl border border-border bg-card p-6">
+              <p class="text-foreground">“{d.texto}”</p>
+              <footer class="mt-4 flex items-center gap-3">
+                {d.foto && (
+                  <img
+                    src={d.foto}
+                    alt={d.nome}
+                    class="h-10 w-10 rounded-full object-cover"
+                  />
+                )}
+                <div>
+                  <p class="text-sm font-semibold text-foreground">{d.nome}</p>
+                  <p class="text-xs text-muted-foreground">{d.papel}</p>
+                </div>
+              </footer>
+            </blockquote>
+          ))}
+        </div>
+      ) : (
+        <div class="rounded-2xl border border-dashed border-border p-10 text-center">
+          <p class="text-muted-foreground">
+            Ainda não temos depoimentos publicados aqui. Já ouvimos falas
+            marcantes de ex-maratonistas em matérias externas — se você
+            competiu e quer compartilhar sua experiência (ou tem autorização
+            de alguém para publicar a fala dela), edite{" "}
+            <code class="rounded bg-muted px-1.5 py-0.5">
+              src/data/depoimentos.ts
+            </code>{" "}
+            e envie um Pull Request.
+          </p>
+        </div>
+      )
+    }
+    <p class="mt-2 text-xs text-muted-foreground">
+      Publicamos apenas depoimentos reais, com autorização de quem os deu.
+    </p>
+  </div>
+</BaseLayout>

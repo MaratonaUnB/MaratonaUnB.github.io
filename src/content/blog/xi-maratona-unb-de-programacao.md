@@ -4,6 +4,7 @@ description: "Nova edição da Maratona UnB de Programação, realizada em outub
 pubDate: 2024-10-16
 author: "Maratona de Programação — UnB"
 category: "extensao"
+image: "/eventos/xi-maratona-unb.png"
 tags: ["maratona-unb", "extensao"]
 ---
 

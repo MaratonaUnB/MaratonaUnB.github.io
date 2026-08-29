@@ -1,0 +1,43 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHeader from "@/components/widgets/PageHeader.astro";
+import NextEvent from "@/components/widgets/NextEvent.astro";
+import EventCard from "@/components/widgets/EventCard.astro";
+import { getEventosOrdenados, getProximoEvento, agruparPorAno } from "@/lib/eventos";
+
+const metadata = {
+  title: "Eventos",
+  description:
+    "Edições da Maratona UnB de Programação, organizadas por ano, com o próximo evento sempre em destaque.",
+};
+
+const eventos = await getEventosOrdenados();
+const { evento: proximo } = getProximoEvento(eventos);
+const porAno = agruparPorAno(eventos);
+const anos = Array.from(porAno.keys()).sort((a, b) => b - a);
+---
+
+<BaseLayout {metadata}>
+  <PageHeader
+    title="Eventos"
+    subtitle="Todas as edições da Maratona UnB de Programação"
+  />
+  <NextEvent />
+
+  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+    {
+      anos.map((ano) => (
+        <div class="mb-14">
+          <h2 class="mb-6 text-2xl font-bold text-foreground">{ano}</h2>
+          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {porAno
+              .get(ano)!
+              .map((evento) => (
+                <EventCard evento={evento} destaque={evento.id === proximo?.id} />
+              ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</BaseLayout>

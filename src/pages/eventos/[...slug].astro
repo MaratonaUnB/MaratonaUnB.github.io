@@ -1,0 +1,91 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Schema from "@/components/seo/Schema.astro";
+import { getCollection, render } from "astro:content";
+import { getEventosOrdenados, getProximoEvento } from "@/lib/eventos";
+
+export async function getStaticPaths() {
+  const eventos = await getCollection("eventos");
+  return eventos.map((evento) => ({
+    params: { slug: evento.id },
+    props: { evento },
+  }));
+}
+
+const { evento } = Astro.props;
+const { Content } = await render(evento);
+const { title, date, local, cover, coverAlt } = evento.data;
+
+const eventosOrdenados = await getEventosOrdenados();
+const { evento: proximo } = getProximoEvento(eventosOrdenados);
+const isProximo = proximo?.id === evento.id;
+
+const formattedDate = date.toLocaleDateString("pt-BR", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  timeZone: "UTC",
+});
+
+const metadata = {
+  title,
+  description: `${title} — ${formattedDate}${local ? `, ${local}` : ""}.`,
+  ogImage: cover,
+};
+---
+
+<BaseLayout metadata={metadata}>
+  <Schema
+    type="Event"
+    data={{
+      title,
+      description: metadata.description,
+      image: cover,
+      startDate: date,
+      location: local,
+      url: Astro.url.href,
+    }}
+  />
+  <section class="relative px-4 py-8 sm:px-6 lg:px-8 md:py-12">
+    <div class="relative mx-auto max-w-3xl">
+      <div class="reveal mb-8 text-center">
+        {
+          isProximo && (
+            <span class="mb-3 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
+              🏆 Próximo evento
+            </span>
+          )
+        }
+        <h1 class="font-heading mt-2 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl">
+          {title}
+        </h1>
+        <p class="mt-3 text-sm font-medium text-muted-foreground">
+          {formattedDate}
+          {local && ` · ${local}`}
+        </p>
+      </div>
+
+      {
+        cover && (
+          <div class="reveal relative mb-8 h-80 w-full overflow-hidden rounded-2xl shadow-lg">
+            <img
+              src={cover}
+              alt={coverAlt || title}
+              class="h-full w-full object-cover"
+            />
+          </div>
+        )
+      }
+
+      <div class="reveal prose prose-lg dark:prose-invert mx-auto prose-headings:text-foreground prose-a:text-primary hover:prose-a:underline prose-p:text-muted-foreground prose-strong:text-foreground prose-li:text-muted-foreground">
+        <Content />
+      </div>
+
+      <div class="reveal mt-10 text-center">
+        <a href="/eventos" class="font-semibold text-primary hover:underline">
+          ← Ver todos os eventos
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
