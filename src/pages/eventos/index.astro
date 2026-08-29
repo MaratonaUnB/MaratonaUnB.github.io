@@ -12,6 +12,7 @@ const metadata = {
 };
 
 const grupos = agruparCalendarioPorAno(calendarioEventos);
+const anoAtual = new Date().getUTCFullYear();
 
 const statusLabel: Record<string, string> = {
   realizado: "✅ Realizado",
@@ -38,9 +39,17 @@ const statusLabel: Record<string, string> = {
 
     {
       grupos.map((grupo) => (
-        <div class="mt-12">
-          <h2 class="mb-4 text-2xl font-bold text-foreground">{grupo.ano}</h2>
-          <div class="overflow-x-auto rounded-2xl border border-border">
+        <details class="group mt-6" open={grupo.ano === anoAtual}>
+          <summary class="flex cursor-pointer list-none items-center gap-2 py-2 text-2xl font-bold text-foreground">
+            <span class="text-muted-foreground transition-transform group-open:rotate-90">
+              ▶
+            </span>
+            {grupo.ano}
+            <span class="text-sm font-normal text-muted-foreground">
+              ({grupo.naoRealizados.length + grupo.realizados.length} eventos)
+            </span>
+          </summary>
+          <div class="mt-2 overflow-x-auto rounded-2xl border border-border">
             <table class="w-full text-left text-sm">
               <thead class="bg-muted text-xs uppercase tracking-wider text-muted-foreground">
                 <tr>
@@ -64,7 +73,7 @@ const statusLabel: Record<string, string> = {
               </tbody>
             </table>
           </div>
-        </div>
+        </details>
       ))
     }
 
