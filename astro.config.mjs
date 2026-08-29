@@ -8,6 +8,12 @@ import remarkReadingTime from "remark-reading-time";
 export default defineConfig({
   site: "https://maratona.unb.br/",
   integrations: [sitemap(), icon(), mdx()],
+  redirects: {
+    // A página "Todos os eventos" e o "Calendário de Eventos" foram unidos
+    // em /eventos — mantém o link antigo funcionando (gera uma página HTML
+    // com meta refresh, já que o GitHub Pages não faz redirect 301 real).
+    "/calendario-de-eventos": "/eventos",
+  },
   markdown: {
     remarkPlugins: [
       remarkReadingTime,

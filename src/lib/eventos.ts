@@ -25,13 +25,3 @@ export function getProximoEvento(eventosOrdenadosDesc: Evento[]): {
   }
   return { evento: eventosOrdenadosDesc[0], isFuturo: false };
 }
-
-export function agruparPorAno(eventos: Evento[]): Map<number, Evento[]> {
-  const porAno = new Map<number, Evento[]>();
-  for (const evento of eventos) {
-    const ano = evento.data.date.getUTCFullYear();
-    if (!porAno.has(ano)) porAno.set(ano, []);
-    porAno.get(ano)!.push(evento);
-  }
-  return porAno;
-}

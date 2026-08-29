@@ -20,19 +20,9 @@ const faqs = [
       "Sim, pela OBI (Olimpíada Brasileira de Informática), voltada a estudantes do ensino fundamental, médio e início do ensino superior. Veja os detalhes na página da OBI.",
   },
   {
-    pergunta: "Preciso pagar para me inscrever?",
-    resposta:
-      "Não. As inscrições na Maratona UnB de Programação e na OBI são gratuitas.",
-  },
-  {
     pergunta: "Qual o formato da prova?",
     resposta:
       "Times de três pessoas resolvem, em conjunto, uma lista de problemas de programação em até cinco horas, usando um único computador por time. Vence quem resolver mais problemas, com menor tempo em caso de empate.",
-  },
-  {
-    pergunta: "Existe um limite de participações no ICPC?",
-    resposta:
-      "Sim. Cada competidor pode participar de até 5 fases regionais (incluindo a 1ª Fase) ou até 2 finais mundiais, além de uma regra que combina o ano de início da graduação com o ano de nascimento. Veja os detalhes completos na página do ICPC.",
   },
   {
     pergunta: "Não sei programar o suficiente. Posso participar mesmo assim?",
@@ -41,8 +31,7 @@ const faqs = [
   },
   {
     pergunta: "Como faço parte da comunidade entre uma edição e outra?",
-    resposta:
-      "Entrando no UnBalloon, o grupo de programação competitiva da UnB — é lá que saem os convites para grupos de estudo, formação de times e novidades sobre competições.",
+    resposta: `Entrando no UnBalloon, o grupo de programação competitiva da UnB — é lá que saem os convites para grupos de estudo, formação de times e novidades sobre competições. Entre direto pelo <a href="${siteConfig.socialLinks.telegram}" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">grupo do Telegram</a>.`,
   },
 ];
 ---
@@ -60,7 +49,7 @@ const faqs = [
                 +
               </span>
             </summary>
-            <p class="mt-3 text-muted-foreground">{item.resposta}</p>
+            <p class="mt-3 text-muted-foreground" set:html={item.resposta} />
           </details>
         ))
       }

@@ -1,0 +1,68 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHeader from "@/components/widgets/PageHeader.astro";
+
+const metadata = {
+  title: "Extensão",
+  description:
+    "Conheça as frentes do projeto de extensão Maratona de Programação no Distrito Federal: eventos, cursos preparatórios e grupos de estudo.",
+};
+
+const frentes = [
+  {
+    titulo: "Eventos de programação competitiva",
+    descricao:
+      "Organizamos a Maratona UnB de Programação, edições internas do UnBalloon e apoiamos competições femininas — sempre abertos e gratuitos para os estudantes do Distrito Federal.",
+  },
+  {
+    titulo: "Cursos preparatórios",
+    descricao:
+      "Oferecemos cursos preparatórios para a OBI (incluindo uma turma online pela UnB do Gama) e grupos de estudo em programação competitiva nos níveis intermediário e avançado, preparando estudantes para o ICPC.",
+  },
+  {
+    titulo: "Grupos de estudo e mentoria",
+    descricao:
+      "Através do UnBalloon, alunos mais experientes ajudam iniciantes com material de estudo, treinos e formação de times para as competições.",
+  },
+];
+---
+
+<BaseLayout {metadata}>
+  <PageHeader
+    title="Extensão"
+    subtitle="Projeto de Extensão Maratona de Programação no Distrito Federal"
+  />
+  <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+    <p class="text-lg leading-relaxed text-foreground">
+      Além de organizar a Maratona UnB de Programação, o projeto de extensão
+      atua em outras frentes ao longo do ano, sempre com o objetivo de
+      capacitar estudantes de Ensino Médio e Superior em programação
+      competitiva.
+    </p>
+
+    <div class="mt-10 space-y-8">
+      {
+        frentes.map((f) => (
+          <div>
+            <h2 class="text-xl font-bold text-foreground">{f.titulo}</h2>
+            <p class="mt-2 text-muted-foreground">{f.descricao}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-14 rounded-2xl border border-border bg-card p-6">
+      <h2 class="text-lg font-bold text-foreground">Editais e seleção de bolsistas</h2>
+      <p class="mt-2 text-muted-foreground">
+        O projeto conta com bolsistas selecionados via editais do PIBEX
+        (Programa Institucional de Bolsas de Extensão) da UnB.
+      </p>
+      <a
+        href="/blog/category/extensao"
+        class="mt-4 inline-block font-semibold text-primary hover:underline"
+      >
+        Ver editais e notícias de extensão →
+      </a>
+    </div>
+  </div>
+</BaseLayout>

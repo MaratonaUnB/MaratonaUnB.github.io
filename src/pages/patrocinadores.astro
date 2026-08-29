@@ -13,7 +13,7 @@ const numeros = [
   { valor: "desde 2013", label: "Realizando a Maratona UnB de Programação" },
   { valor: "3 times", label: "Únicos do Brasil na fase LatAm da SBC 2025" },
   { valor: "5 vagas", label: "Na Final Brasileira 2024 — melhor resultado histórico da UnB" },
-  { valor: "4 campi", label: "Alunos de FGA, CIC, IFB e IESB competindo juntos" },
+  { valor: "2 campi", label: "Alunos do Darcy Ribeiro (CIC) e do Gama (FGA) sob a marca UnB" },
 ];
 ---
 
@@ -24,7 +24,39 @@ const numeros = [
   />
 
   <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-    <p class="text-lg leading-relaxed text-foreground">
+    {
+      siteConfig.supporters.length > 0 && (
+        <div class="rounded-2xl border border-border bg-card p-6 text-center">
+          <p class="text-sm font-medium text-muted-foreground">
+            Já apoiam a Maratona de Programação:
+          </p>
+          <div class="mt-4 flex flex-wrap items-center justify-center gap-8">
+            {siteConfig.supporters.map((supporter) => (
+              <a
+                href={supporter.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={supporter.name}
+              >
+                {supporter.logo ? (
+                  <img
+                    src={supporter.logo}
+                    alt={supporter.name}
+                    class="h-9 w-auto object-contain"
+                  />
+                ) : (
+                  <span class="text-lg font-semibold text-foreground">
+                    {supporter.name}
+                  </span>
+                )}
+              </a>
+            ))}
+          </div>
+        </div>
+      )
+    }
+
+    <p class="mt-10 text-lg leading-relaxed text-foreground">
       A Maratona de Programação da UnB forma, todos os anos, os times que
       representam o Distrito Federal nas maiores competições de programação
       competitiva do país — o ICPC (etapa brasileira da Maratona SBC) e a
@@ -63,7 +95,9 @@ const numeros = [
     <ul class="mt-4 list-disc space-y-2 pl-6 text-muted-foreground">
       <li>
         Exposição direta ao público de estudantes de Computação, Engenharia e
-        áreas afins da UnB, IFB e IESB;
+        áreas afins — o IFB e o IESB não competem sob a marca UnB, mas estão
+        sempre presentes nos nossos eventos, o que também leva sua marca a
+        outras instituições do Distrito Federal;
       </li>
       <li>Logo em materiais de divulgação, site e redes sociais do evento;</li>
       <li>

@@ -2,42 +2,79 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import PageHeader from "@/components/widgets/PageHeader.astro";
 import NextEvent from "@/components/widgets/NextEvent.astro";
-import EventCard from "@/components/widgets/EventCard.astro";
-import { getEventosOrdenados, getProximoEvento, agruparPorAno } from "@/lib/eventos";
+import { calendarioEventos } from "@/data/calendarioEventos";
+import { agruparCalendarioPorAno, formatarDataEvento } from "@/lib/calendario";
 
 const metadata = {
   title: "Eventos",
   description:
-    "Edições da Maratona UnB de Programação, organizadas por ano, com o próximo evento sempre em destaque.",
+    "Calendário consolidado dos eventos de programação competitiva ligados à UnB, com o próximo evento sempre em destaque.",
 };
 
-const eventos = await getEventosOrdenados();
-const { evento: proximo } = getProximoEvento(eventos);
-const porAno = agruparPorAno(eventos);
-const anos = Array.from(porAno.keys()).sort((a, b) => b - a);
+const grupos = agruparCalendarioPorAno(calendarioEventos);
+
+const statusLabel: Record<string, string> = {
+  realizado: "✅ Realizado",
+  confirmado: "🔵 Confirmado",
+  "a-confirmar": "⚪ A confirmar",
+  adiado: "🟠 Adiado",
+};
 ---
 
 <BaseLayout {metadata}>
-  <PageHeader
-    title="Eventos"
-    subtitle="Todas as edições da Maratona UnB de Programação"
-  />
+  <PageHeader title="Eventos" subtitle="Calendário consolidado da Maratona e competições ligadas à UnB" />
   <NextEvent />
 
-  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+    <p class="text-muted-foreground">
+      Calendário consolidado dos principais eventos de programação
+      competitiva ligados à UnB: fases da Maratona SBC/ICPC, OBI, competições
+      internas (Maratona UnB, UnBalloon) e parceiras.
+    </p>
+    <p class="mt-2 text-sm text-muted-foreground">
+      Legenda: ✅ Realizado · 🔵 Confirmado (ainda não realizado) · ⚪ A
+      confirmar · 🟠 Adiado.
+    </p>
+
     {
-      anos.map((ano) => (
-        <div class="mb-14">
-          <h2 class="mb-6 text-2xl font-bold text-foreground">{ano}</h2>
-          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {porAno
-              .get(ano)!
-              .map((evento) => (
-                <EventCard evento={evento} destaque={evento.id === proximo?.id} />
-              ))}
+      grupos.map((grupo) => (
+        <div class="mt-12">
+          <h2 class="mb-4 text-2xl font-bold text-foreground">{grupo.ano}</h2>
+          <div class="overflow-x-auto rounded-2xl border border-border">
+            <table class="w-full text-left text-sm">
+              <thead class="bg-muted text-xs uppercase tracking-wider text-muted-foreground">
+                <tr>
+                  <th class="px-4 py-3">Data</th>
+                  <th class="px-4 py-3">Evento</th>
+                  <th class="px-4 py-3">Status</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-border">
+                {[...grupo.naoRealizados, ...grupo.realizados].map((row) => (
+                  <tr class:list={["hover:bg-muted/50", { "opacity-60": row.status === "realizado" }]}>
+                    <td class="px-4 py-3 whitespace-nowrap font-medium text-foreground">
+                      {formatarDataEvento(row)}
+                    </td>
+                    <td class="px-4 py-3 text-foreground">{row.evento}</td>
+                    <td class="px-4 py-3 whitespace-nowrap text-muted-foreground">
+                      {statusLabel[row.status]}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       ))
     }
+
+    <p class="mt-8 text-xs text-muted-foreground">
+      Fontes: Maratona SBC de Programação (maratona.sbc.org.br/hist), dados
+      processados por gnramos.github.io/maratona-site, e registros internos da
+      organização (última atualização dos dados originais: 28/08/2026). Para
+      atualizar, edite
+      <code class="rounded bg-muted px-1.5 py-0.5">src/data/calendarioEventos.ts</code>
+      no repositório do site.
+    </p>
   </div>
 </BaseLayout>

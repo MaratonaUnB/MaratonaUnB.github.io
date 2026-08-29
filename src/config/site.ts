@@ -52,7 +52,7 @@ export const siteConfig = {
         { text: "Quadro de Medalhas (OBI)", href: "/quadro-de-medalhas" },
         { text: "ICPC", href: "/icpc" },
         { text: "Hall da Fama (ICPC)", href: "/hall-da-fama" },
-        { text: "Extensão", href: "/blog/category/extensao" },
+        { text: "Extensão", href: "/extensao" },
         { text: "Galeria", href: "/galeria" },
       ],
     },
@@ -60,8 +60,7 @@ export const siteConfig = {
       text: "Eventos",
       href: "/eventos",
       links: [
-        { text: "Todos os eventos", href: "/eventos" },
-        { text: "Calendário de Eventos", href: "/calendario-de-eventos" },
+        { text: "Calendário de Eventos", href: "/eventos" },
         { text: "Notícias", href: "/blog" },
         { text: "Imprensa", href: "/imprensa" },
       ],

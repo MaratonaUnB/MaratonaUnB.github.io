@@ -23,10 +23,7 @@ const ultimasNoticias = allPosts
   <Hero
     title="Maratona de Programação"
     description={`Juntos, nos preparamos para "simplesmente, o maior, mais antigo e mais prestigiado concurso de programação do mundo".`}
-    actions={[
-      { text: "Saiba mais", href: "/organizacao", variant: "primary" },
-      { text: "Quero patrocinar", href: "/patrocinadores", variant: "secondary" },
-    ]}
+    actions={[{ text: "Saiba mais", href: "/organizacao", variant: "primary" }]}
   >
     <img
       src="/site/hero-laboratorio.jpg"
@@ -64,6 +61,25 @@ const ultimasNoticias = allPosts
     </div>
     <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {ultimasNoticias.map((post) => <PostItem post={post} />)}
+    </div>
+  </section>
+
+  <section class="reveal mx-auto max-w-3xl px-4 pb-20 text-center sm:px-6 lg:px-8">
+    <div class="rounded-3xl border border-border bg-card p-10">
+      <h2 class="text-2xl font-bold text-foreground sm:text-3xl">
+        Quer patrocinar a Maratona de Programação?
+      </h2>
+      <p class="mx-auto mt-3 max-w-xl text-muted-foreground">
+        Conecte sua marca aos melhores talentos em programação competitiva do
+        Distrito Federal.
+      </p>
+      <a
+        href="/patrocinadores"
+        class="mt-6 inline-flex items-center rounded-xl bg-foreground px-6 py-3 text-base font-bold text-background transition-all hover:bg-foreground/90"
+        onclick="if (typeof gtag === 'function') gtag('event', 'cta_click', { cta: 'quero-patrocinar-home' });"
+      >
+        Quero patrocinar →
+      </a>
     </div>
   </section>
 </BaseLayout>
