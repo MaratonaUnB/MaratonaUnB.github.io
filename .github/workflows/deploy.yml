@@ -1,0 +1,55 @@
+name: Deploy site para o GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  # Permite rodar manualmente pela aba "Actions" do GitHub, sem precisar de commit
+  workflow_dispatch:
+
+# Evita dois deploys rodando ao mesmo tempo; deixa o mais recente terminar
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Build do site (Astro)
+        run: npm run build
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Enviar artefato de build
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./dist"
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
