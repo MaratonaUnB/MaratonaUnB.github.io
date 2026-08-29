@@ -10,7 +10,7 @@ export interface MateriaImprensa {
 
 export const materiasImprensa: MateriaImprensa[] = [
   {
-    titulo: "Notícias da UnB sobre a Maratona de Programação",
+    titulo: "Notícias da UnB sobre a Maratona UnB de Programação",
     veiculo: "UnB Notícias",
     url: "https://noticias.unb.br/?s=maratona+de+programa%C3%A7%C3%A3o",
   },

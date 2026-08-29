@@ -2,7 +2,7 @@
 title: "Maratona Feminina de Programação 2024"
 description: "Evento da SBC em Campinas/SP reuniu equipes femininas de todo o país; a UnB foi representada por sete alunas."
 pubDate: 2024-06-18
-author: "Maratona de Programação — UnB"
+author: "Maratona UnB de Programação"
 category: "noticias"
 image: "/eventos/maratona-feminina-2024.jpeg"
 tags: ["maratona-feminina"]

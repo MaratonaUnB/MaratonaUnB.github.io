@@ -2,6 +2,7 @@
 import { siteConfig } from "@/config/site";
 import ThemeToggle from "@/components/ui/ThemeToggle.astro";
 import { Icon } from "astro-icon/components";
+import Logo from "@/components/ui/Logo.astro";
 ---
 
 <nav
@@ -15,12 +16,8 @@ import { Icon } from "astro-icon/components";
         href="/"
         class="flex items-center gap-2 text-lg font-bold tracking-tight text-primary transition-colors hover:text-accent"
       >
-        <span
-          class="flex h-9 w-9 items-center justify-center rounded-full bg-accent/10 text-accent"
-        >
-          <Icon name="lucide:medal" class="h-5 w-5" />
-        </span>
-        Maratona de Programação
+        <Logo class="h-9 w-auto" />
+        Maratona UnB de Programação
       </a>
     </div>
 

@@ -2,7 +2,7 @@
 title: "Resultado excepcional na competição internacional de programação IEEExtreme"
 description: "Cinco equipes da UnB terminaram entre as posições 18, 46, 577, 588 e 718 de 3522 equipes no ranking global."
 pubDate: 2022-11-09
-author: "Maratona de Programação — UnB"
+author: "Maratona UnB de Programação"
 category: "noticias"
 image: "/eventos/ieeextreme.webp"
 tags: ["ieeextreme", "resultado"]

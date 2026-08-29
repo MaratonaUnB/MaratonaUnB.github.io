@@ -7,7 +7,7 @@ import PostItem from "@/components/blog/PostItem.astro";
 import { getCollection } from "astro:content";
 
 const metadata = {
-  title: `${siteConfig.shortName} — UnB`,
+  title: siteConfig.shortName,
   description: siteConfig.description,
   ignoreTitleTemplate: true,
 };
@@ -21,7 +21,7 @@ const ultimasNoticias = allPosts
 
 <BaseLayout {metadata}>
   <Hero
-    title="Maratona de Programação"
+    title="Maratona UnB de Programação"
     description={`Juntos, nos preparamos para "simplesmente, o maior, mais antigo e mais prestigiado concurso de programação do mundo".`}
     actions={[{ text: "Saiba mais", href: "/organizacao", variant: "primary" }]}
   >
@@ -37,7 +37,7 @@ const ultimasNoticias = allPosts
 
   <section class="reveal mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8">
     <h2 class="text-sm font-semibold uppercase tracking-wide text-primary">
-      Maratona de Programação
+      Maratona UnB de Programação
     </h2>
     <p class="mt-4 text-lg leading-relaxed text-foreground">
       {siteConfig.description}
@@ -67,7 +67,7 @@ const ultimasNoticias = allPosts
   <section class="reveal mx-auto max-w-3xl px-4 pb-20 text-center sm:px-6 lg:px-8">
     <div class="rounded-3xl border border-border bg-card p-10">
       <h2 class="text-2xl font-bold text-foreground sm:text-3xl">
-        Quer patrocinar a Maratona de Programação?
+        Quer patrocinar a Maratona UnB de Programação?
       </h2>
       <p class="mx-auto mt-3 max-w-xl text-muted-foreground">
         Conecte sua marca aos melhores talentos em programação competitiva do

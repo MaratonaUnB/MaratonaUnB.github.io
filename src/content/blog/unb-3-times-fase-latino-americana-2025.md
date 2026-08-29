@@ -2,7 +2,7 @@
 title: "UnB classifica 3 times para a fase latino-americana da Maratona SBC 2025"
 description: "A UnB foi a única universidade brasileira a classificar três times para a fase LatAm, disputada no Chile em março de 2026."
 pubDate: 2025-12-01
-author: "Maratona de Programação — UnB"
+author: "Maratona UnB de Programação"
 category: "noticias"
 tags: ["icpc", "resultado"]
 ---

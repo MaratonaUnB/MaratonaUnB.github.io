@@ -2,7 +2,7 @@
 title: "IV Competição Feminina de Programação da UnB"
 description: "Realizada em 8 de junho de 2024, no Campus Darcy Ribeiro, com 71 meninas inscritas."
 pubDate: 2024-06-18
-author: "Maratona de Programação — UnB"
+author: "Maratona UnB de Programação"
 category: "noticias"
 image: "/eventos/iv-competicao-feminina.jpeg"
 tags: ["maratona-feminina"]

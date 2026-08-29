@@ -1,16 +1,17 @@
 import ogImage from "@/assets/og-image.png";
 
 export const siteConfig = {
-  name: "Maratona de Programação — UnB",
-  shortName: "Maratona de Programação",
+  name: "Maratona UnB de Programação",
+  shortName: "Maratona UnB de Programação",
   description:
-    "As atividades da Maratona de Programação na UnB capacitam estudantes de Ensino Médio e Superior em programação, utilizando uma abordagem competitiva.",
+    "As atividades da Maratona UnB de Programação capacitam estudantes de Ensino Médio e Superior em programação, utilizando uma abordagem competitiva.",
   url: "https://maratona.unb.br",
   lang: "pt-BR",
   locale: "pt_BR",
-  author: "Maratona de Programação — UnB",
+  author: "Maratona UnB de Programação",
   email: "maratona@unb.br",
   ogImage: ogImage,
+  logo: "/site/logoMaratona.svg",
   socialLinks: {
     telegram: "https://t.me/unballoon",
     discord: "https://discord.com/invite/9AETUBmJJd",

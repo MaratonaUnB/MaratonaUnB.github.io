@@ -2,7 +2,7 @@
 title: "As inscrições para a 12ª Maratona UnB de Programação estão abertas!"
 description: "Inscrições gratuitas para times de até três pessoas."
 pubDate: 2024-08-04
-author: "Maratona de Programação — UnB"
+author: "Maratona UnB de Programação"
 category: "extensao"
 tags: ["maratona-unb", "extensao"]
 ---

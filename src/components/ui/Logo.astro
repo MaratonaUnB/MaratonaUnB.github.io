@@ -1,0 +1,11 @@
+---
+import { siteConfig } from "@/config/site";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = "h-9 w-auto" } = Astro.props;
+---
+
+<img src={siteConfig.logo} alt={siteConfig.shortName} class={className} />

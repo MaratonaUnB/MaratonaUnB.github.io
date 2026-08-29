@@ -2,7 +2,7 @@
 title: "UnB leva 5 times para a Final Brasileira da Maratona de Programação 2024"
 description: "Melhor resultado histórico da UnB: cinco vagas para a Final Brasileira, que acontece em novembro em João Pessoa."
 pubDate: 2024-09-07
-author: "Maratona de Programação — UnB"
+author: "Maratona UnB de Programação"
 category: "noticias"
 image: "/eventos/unb-final-brasileira-2024.jpeg"
 tags: ["icpc", "resultado"]

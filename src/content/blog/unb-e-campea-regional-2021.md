@@ -2,7 +2,7 @@
 title: "UnB é Campeã Regional de 2021!"
 description: "Time \"UnB – Posso mandar um WA?\" é campeão Centro-Oeste, ficando em 20º na LatAm e 13º no Brasil."
 pubDate: 2022-06-04
-author: "Maratona de Programação — UnB"
+author: "Maratona UnB de Programação"
 category: "noticias"
 tags: ["icpc", "resultado"]
 ---

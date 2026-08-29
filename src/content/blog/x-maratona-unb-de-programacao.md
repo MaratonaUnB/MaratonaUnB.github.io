@@ -2,7 +2,7 @@
 title: "X Maratona UnB de Programação"
 description: "Edição de 2022 da Maratona UnB de Programação."
 pubDate: 2022-10-16
-author: "Maratona de Programação — UnB"
+author: "Maratona UnB de Programação"
 category: "eventos-anteriores"
 tags: ["maratona-unb"]
 ---

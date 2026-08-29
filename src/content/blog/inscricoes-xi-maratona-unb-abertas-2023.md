@@ -2,7 +2,7 @@
 title: "Inscrições para a XI Maratona UnB de Programação abertas"
 description: "Evento em 27 de setembro de 2023, no LINF (ICC - Módulo 19), a partir das 13h."
 pubDate: 2023-08-15
-author: "Maratona de Programação — UnB"
+author: "Maratona UnB de Programação"
 category: "eventos-anteriores"
 tags: ["maratona-unb"]
 ---

@@ -2,7 +2,7 @@
 title: "Olimpíada UnBalloon de Informática"
 description: "Realizada em 1º de junho de 2024, a olimpíada teve três categorias: Geral, Ensino Médio/Fundamental e Ensino Superior (1º ano)."
 pubDate: 2024-07-13
-author: "Maratona de Programação — UnB"
+author: "Maratona UnB de Programação"
 category: "noticias"
 image: "/eventos/olimpiada-unballoon-2024.jpg"
 tags: ["unballoon", "olimpiada"]

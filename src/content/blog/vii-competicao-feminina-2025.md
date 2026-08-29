@@ -2,7 +2,7 @@
 title: "VII Competição Feminina de Programação da UnB"
 description: "Nova edição da competição feminina de programação, realizada em dezembro de 2025."
 pubDate: 2025-12-10
-author: "Maratona de Programação — UnB"
+author: "Maratona UnB de Programação"
 category: "noticias"
 tags: ["maratona-feminina"]
 ---
