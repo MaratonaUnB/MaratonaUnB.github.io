@@ -7,6 +7,21 @@ const metadata = {
   description:
     "O projeto de extensão Maratona de Programação no Distrito Federal visa capacitar alunos do Ensino Médio e Superior em programação competitiva.",
 };
+
+const professoresUnb = [
+  "Daniel Porto",
+  "Guilherme Ramos",
+  "Vinicius Borges",
+  "Edson Alves",
+  "Bruno Ribas",
+];
+
+const maratonaDf = [
+  { nome: "Daniel Saad", instituicao: "IFB" },
+  { nome: "Patrícia Moscariello", instituicao: "IESB" },
+  { nome: "Jeremias Gomes", instituicao: "IDP" },
+  { nome: "Lucas Matiolli", instituicao: null },
+];
 ---
 
 <BaseLayout {metadata}>
@@ -26,5 +41,36 @@ const metadata = {
       programação, como a <strong>Olimpíada Brasileira de Informática</strong> e
       a <strong>Maratona SBC de Programação</strong>.
     </p>
+
+    <h2 class="mt-14 text-2xl font-bold text-foreground">Professores da UnB</h2>
+    <ul class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+      {
+        professoresUnb.map((nome) => (
+          <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium text-foreground">
+            {nome}
+          </li>
+        ))
+      }
+    </ul>
+
+    <h2 class="mt-14 text-2xl font-bold text-foreground">Grupo Maratona DF</h2>
+    <p class="mt-2 text-muted-foreground">
+      Além do time da UnB, contamos com o apoio de professores de outras
+      instituições do Distrito Federal — o <strong>Grupo Maratona DF</strong> —
+      que colaboram na organização e na preparação dos estudantes para as
+      competições.
+    </p>
+    <ul class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+      {
+        maratonaDf.map((pessoa) => (
+          <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium text-foreground">
+            {pessoa.nome}
+            {pessoa.instituicao && (
+              <span class="text-muted-foreground"> — {pessoa.instituicao}</span>
+            )}
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </BaseLayout>
