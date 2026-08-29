@@ -1,20 +1,26 @@
 ---
 import { siteConfig } from "@/config/site";
 import ThemeToggle from "@/components/ui/ThemeToggle.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <nav
-  class="fixed top-0 z-50 w-full border-b border-border bg-background md:bg-background/50 md:backdrop-blur"
+  class="fixed top-0 z-50 w-full border-b border-border bg-background md:bg-background/80 md:backdrop-blur"
 >
   <div
-    class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8"
+    class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8"
   >
     <div class="flex items-center gap-2">
       <a
         href="/"
-        class="text-xl font-bold tracking-tight text-foreground transition-colors hover:text-primary"
+        class="flex items-center gap-2 text-lg font-bold tracking-tight text-primary transition-colors hover:text-accent"
       >
-        {siteConfig.name}
+        <span
+          class="flex h-9 w-9 items-center justify-center rounded-full bg-accent/10 text-accent"
+        >
+          <Icon name="lucide:medal" class="h-5 w-5" />
+        </span>
+        Maratona de Programação
       </a>
     </div>
 
@@ -26,7 +32,10 @@ import ThemeToggle from "@/components/ui/ThemeToggle.astro";
             if ("links" in link && Array.isArray(link.links)) {
               return (
                 <div class="relative group">
-                  <button class="flex items-center gap-1 text-sm font-medium text-foreground transition-colors hover:text-primary focus:outline-none cursor-pointer">
+                  <a
+                    href={link.href}
+                    class="flex items-center gap-1 text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:text-primary"
+                  >
                     {link.text}
                     <svg
                       class="h-4 w-4 transition-transform group-hover:rotate-180"
@@ -41,8 +50,8 @@ import ThemeToggle from "@/components/ui/ThemeToggle.astro";
                         d="M19 9l-7 7-7-7"
                       />
                     </svg>
-                  </button>
-                  <div class="absolute left-0 mt-2 w-48 rounded-md border border-border bg-background shadow-lg opacity-0 invisible translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 z-50">
+                  </a>
+                  <div class="absolute left-0 mt-2 w-56 rounded-md border border-border bg-background shadow-lg opacity-0 invisible translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 z-50">
                     <div class="py-1">
                       {link.links.map((sublink) => (
                         <a
@@ -60,7 +69,7 @@ import ThemeToggle from "@/components/ui/ThemeToggle.astro";
             return (
               <a
                 href={link.href}
-                class="text-sm font-medium text-foreground transition-colors hover:text-primary"
+                class="text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:text-primary"
               >
                 {link.text}
               </a>
@@ -70,29 +79,34 @@ import ThemeToggle from "@/components/ui/ThemeToggle.astro";
       </div>
     </div>
 
-    <div class="hidden md:flex items-center gap-4">
+    <div class="hidden md:flex items-center gap-3">
       <a
-        href={siteConfig.socialLinks.github}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="rounded-full bg-foreground/10 px-4 py-2 text-sm font-semibold text-foreground transition-all hover:bg-foreground/20"
+        href={`mailto:${siteConfig.email}`}
+        aria-label={`Enviar e-mail para ${siteConfig.email}`}
+        class="rounded-full p-2 text-foreground transition-colors hover:bg-muted hover:text-primary"
       >
-        GitHub
+        <Icon name="lucide:mail" class="h-5 w-5" />
       </a>
       <ThemeToggle />
     </div>
 
     <!-- Mobile Menu Button -->
     <div class="md:hidden flex items-center">
+      <a
+        href={`mailto:${siteConfig.email}`}
+        aria-label={`Enviar e-mail para ${siteConfig.email}`}
+        class="rounded-full p-2 text-foreground transition-colors hover:bg-muted hover:text-primary"
+      >
+        <Icon name="lucide:mail" class="h-5 w-5" />
+      </a>
       <button
         id="mobile-menu-button"
         type="button"
-        class="inline-flex items-center justify-center p-2 rounded-md text-foreground hover:text-white hover:bg-white/10 focus:outline-none transition-colors"
+        class="inline-flex items-center justify-center p-2 rounded-md text-foreground hover:text-primary hover:bg-muted focus:outline-none transition-colors"
         aria-controls="mobile-menu"
         aria-expanded="false"
       >
-        <span class="sr-only">Open main menu</span>
-        <!-- Icon when menu is closed -->
+        <span class="sr-only">Abrir menu principal</span>
         <svg
           id="menu-icon-closed"
           class="block h-6 w-6"
@@ -107,7 +121,6 @@ import ThemeToggle from "@/components/ui/ThemeToggle.astro";
             stroke-width="2"
             d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
-        <!-- Icon when menu is open -->
         <svg
           id="menu-icon-open"
           class="hidden h-6 w-6"
@@ -131,21 +144,24 @@ import ThemeToggle from "@/components/ui/ThemeToggle.astro";
 
   <div class="hidden md:hidden" id="mobile-menu">
     <div
-      class="space-y-1 border-b border-border bg-background/90 px-2 pb-3 pt-2 sm:px-3"
+      class="space-y-1 border-b border-border bg-background/95 px-2 pb-3 pt-2 sm:px-3"
     >
       {
         siteConfig.navLinks.map((link) => {
           if ("links" in link && Array.isArray(link.links)) {
             return (
               <div class="py-1">
-                <span class="block rounded-md px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                <a
+                  href={link.href}
+                  class="block rounded-md px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                >
                   {link.text}
-                </span>
+                </a>
                 <div class="mt-1 pl-4 space-y-1">
                   {link.links.map((sublink) => (
                     <a
                       href={sublink.href}
-                      class="block rounded-md px-3 py-2 text-base font-medium text-foreground transition-colors hover:bg-white/10 hover:text-primary"
+                      class="block rounded-md px-3 py-2 text-base font-medium text-foreground transition-colors hover:bg-muted hover:text-primary"
                     >
                       {sublink.text}
                     </a>
@@ -157,19 +173,13 @@ import ThemeToggle from "@/components/ui/ThemeToggle.astro";
           return (
             <a
               href={link.href}
-              class="block rounded-md px-3 py-2 text-base font-medium text-foreground transition-colors hover:bg-white/10 hover:text-primary"
+              class="block rounded-md px-3 py-2 text-base font-medium text-foreground transition-colors hover:bg-muted hover:text-primary"
             >
               {link.text}
             </a>
           );
         })
       }
-      <a
-        href={siteConfig.socialLinks.github}
-        target="_blank"
-        class="block rounded-md px-3 py-2 text-base font-medium text-blue-400 transition-colors hover:cursor-pointer hover:bg-blue-500/10 hover:text-blue-300"
-        >GitHub</a
-      >
     </div>
   </div>
 </nav>
@@ -181,7 +191,6 @@ import ThemeToggle from "@/components/ui/ThemeToggle.astro";
     const iconClosed = document.getElementById("menu-icon-closed");
     const iconOpen = document.getElementById("menu-icon-open");
 
-    // Remove old event listener if it exists to prevent multiple triggers
     const newButton = button?.cloneNode(true);
     if (newButton && button && button.parentNode) {
       button.parentNode.replaceChild(newButton, button);

@@ -2,166 +2,98 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { siteConfig } from "@/config/site";
 import Hero from "@/components/widgets/Hero.astro";
-import Features from "@/components/widgets/Features.astro";
-import devImg from "@/assets/images/dev_balanced.png";
-import openSourceImg from "@/assets/images/open-source.png";
-import Content2 from "@/components/widgets/Content2.astro";
-import Github from "@/components/widgets/Github.astro";
-import Integrations from "@/components/widgets/Integrations.astro";
+import PostItem from "@/components/blog/PostItem.astro";
+import { getCollection } from "astro:content";
+
 const metadata = {
-  title: `${siteConfig.name} — The next step for your project`,
-  description:
-    "A modern and professional template for your web projects with Astro and Tailwind CSS. Boost your development with a solid foundation.",
+  title: `${siteConfig.shortName} — UnB`,
+  description: siteConfig.description,
   ignoreTitleTemplate: true,
 };
+
+const allPosts = await getCollection("blog");
+const proximoEvento = allPosts
+  .filter((p) => p.data.category === "evento-atual")
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0];
+
+const ultimasNoticias = allPosts
+  .filter((p) => p.data.category === "noticias")
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 6);
 ---
 
 <BaseLayout {metadata}>
   <Hero
-    title={`Starter Template for <br class="hidden md:block" /> <span class="bg-linear-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Web Developers</span>`}
-    tagline="Astro v5 + Tailwind v4"
-    description={`${siteConfig.description}`}
+    title="Maratona de Programação"
+    description={`Juntos, nos preparamos para "simplesmente, o maior, mais antigo e mais prestigiado concurso de programação do mundo".`}
     actions={[
       {
-        text: "Get Started",
-        href: "https://github.com/devgelo-labs/astro-starter-pro",
+        text: "Saiba mais",
+        href: "/organizacao",
         variant: "primary",
-        icon: "lucide:github",
-      },
-      {
-        text: "Our Services",
-        href: "/services",
-        variant: "secondary",
-        icon: "lucide:arrow-right",
-        ariaLabel: "Learn more about our services",
       },
     ]}
   />
-  <Features
-    tagline="Features"
-    title="What's Included"
-    subtitle="A selection of tools and configurations to streamline your workflow."
-    features={[
-      {
-        title: "Optimized SEO",
-        description:
-          "Base configuration for Meta tags, Open Graph, and Sitemap generation.",
-        icon: "lucide:scan-search",
-        iconClass: "bg-blue-500/10 text-blue-400",
-      },
-      {
-        title: "High Performance",
-        description: "Lightweight structure for fast load times.",
-        icon: "lucide:zap",
-        iconClass: "bg-purple-500/10 text-purple-400",
-      },
-      {
-        title: "Tailwind v4",
-        description:
-          "Integrated configuration with the latest version of Tailwind CSS.",
-        icon: "lucide:palette",
-        iconClass: "bg-pink-500/10 text-pink-400",
-      },
-    ]}
-  />
-  <Content2
-    items={[
-      {
-        title: "Responsive Design",
-        description:
-          "Base configuration for Meta tags, Open Graph, and Sitemap generation.",
-        icon: "lucide:scan-search",
-        iconClass: "bg-blue-500/10 text-blue-400",
-      },
-      {
-        title: "High Performance",
-        description: "Lightweight structure for fast load times.",
-        icon: "lucide:zap",
-        iconClass: "bg-purple-500/10 text-purple-400",
-      },
-      {
-        title: "Tailwind v4",
-        description:
-          "Integrated configuration with the latest version of Tailwind CSS.",
-        icon: "lucide:palette",
-        iconClass: "bg-pink-500/10 text-pink-400",
-      },
-    ]}
-    image={devImg}
-    imageAlt="Development"
-  >
-    <Fragment>
-      <h3 class="text-2xl font-bold tracking-tight sm:text-3xl mb-2">
-        Development
-      </h3>
-      We provide a solid foundation to start your projects with best practices.
-    </Fragment>
-  </Content2>
-  <Content2
-    items={[
-      {
-        title: "Open Source",
-        description:
-          "Developed under the MIT license, free for personal and commercial use.",
-        icon: "lucide:github",
-        iconClass: "bg-indigo-500/10 text-indigo-400",
-      },
-      {
-        title: "Community Driven",
-        description:
-          "Built with the feedback and contributions of the developer community.",
-        icon: "lucide:users",
-        iconClass: "bg-orange-500/10 text-orange-400",
-      },
-      {
-        title: "Regular Updates",
-        description:
-          "Continuously improved with the latest technologies and best practices.",
-        icon: "lucide:refresh-cw",
-        iconClass: "bg-teal-500/10 text-teal-400",
-      },
-    ]}
-    image={openSourceImg}
-    imageAlt="Community and Open Source"
-    isReversed={true}
-  >
-    <Fragment>
-      <h3 class="text-2xl font-bold tracking-tight sm:text-3xl mb-2">
-        Open Source & Community
-      </h3>
-      Join the revolution of modern web development. This project is open for everyone
-      to use, learn from, and contribute to.
-    </Fragment>
-  </Content2>
-  <Integrations
-    title="Trusted by top companies"
-    subtitle="Our platform integrates seamlessly with your favorite tools."
-    tagline="Integrations"
-    integrations={[
-      { name: "Astro", icon: "tabler:brand-astro", url: "#" },
-      { name: "Tailwind CSS", icon: "tabler:brand-tailwind", url: "#" },
-      { name: "Vercel", icon: "tabler:brand-vercel", url: "#" },
-      { name: "GitHub", icon: "tabler:brand-github", url: "#" },
-    ]}
-  />
-  <Github
-    title="Don't forget to star us!"
-    subtitle="Support this template and keep the project alive. Your stars help us continue improving and adding new features."
-    tagline="Open Source"
-    icon="lucide:github"
-    actions={[
-      {
-        text: "Star on GitHub",
-        href: "https://github.com/devgelo-labs/astro-starter-pro",
-        variant: "primary",
-        icon: "lucide:star",
-      },
-      {
-        text: "Fork Repository",
-        href: "https://github.com/devgelo-labs/astro-starter-pro/fork",
-        variant: "secondary",
-        icon: "lucide:git-fork",
-      },
-    ]}
-  />
+
+  {
+    proximoEvento && (
+      <section class="reveal border-y border-border bg-card">
+        <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+          <p class="text-sm font-semibold uppercase tracking-wide text-primary">
+            🏆 Próximo Evento
+          </p>
+          <h2 class="mt-2 text-2xl font-bold text-foreground sm:text-3xl">
+            {proximoEvento.data.title}
+          </h2>
+          <p class="mt-3 max-w-2xl text-muted-foreground">
+            {proximoEvento.data.description}
+          </p>
+          <p class="mt-2 text-sm text-muted-foreground">
+            {proximoEvento.data.author} ·{" "}
+            {proximoEvento.data.pubDate.toLocaleDateString("pt-BR", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+              timeZone: "UTC",
+            })}
+          </p>
+          <a
+            href={`/blog/${proximoEvento.id}`}
+            class="mt-4 inline-block font-semibold text-primary hover:underline"
+          >
+            Leia mais →
+          </a>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="reveal mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8">
+    <h2 class="text-sm font-semibold uppercase tracking-wide text-primary">
+      Maratona de Programação
+    </h2>
+    <p class="mt-4 text-lg leading-relaxed text-foreground">
+      {siteConfig.description}
+      Professores e alunos da UnB organizam disciplinas, palestras, eventos e
+      grupos de estudo para prepararem os participantes para competições como
+      a Olimpíada Brasileira de Informática e a Maratona SBC de Programação.
+    </p>
+  </section>
+
+  <section class="reveal mx-auto max-w-6xl px-4 pb-20 sm:px-6 lg:px-8">
+    <div class="mb-10 flex items-center justify-between">
+      <h2 class="text-2xl font-bold text-foreground sm:text-3xl">
+        Últimas Notícias
+      </h2>
+      <a
+        href="/blog/category/noticias"
+        class="text-sm font-semibold text-primary hover:underline"
+      >
+        Ver todas as notícias →
+      </a>
+    </div>
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {ultimasNoticias.map((post) => <PostItem post={post} />)}
+    </div>
+  </section>
 </BaseLayout>

@@ -1,0 +1,30 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHeader from "@/components/widgets/PageHeader.astro";
+
+const metadata = {
+  title: "Organização",
+  description:
+    "O projeto de extensão Maratona de Programação no Distrito Federal visa capacitar alunos do Ensino Médio e Superior em programação competitiva.",
+};
+---
+
+<BaseLayout {metadata}>
+  <PageHeader title="Organização" />
+  <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+    <p class="text-lg leading-relaxed text-foreground">
+      O projeto de extensão <strong>Maratona de Programação no Distrito Federal</strong>
+      visa capacitar alunos do Ensino Médio interessados em computação e alunos
+      do Ensino Superior, por meio do ensino de programação de computadores em
+      uma abordagem baseada em programação competitiva.
+    </p>
+    <p class="mt-6 text-lg leading-relaxed text-foreground">
+      O time de professores e alunos da Universidade de Brasília (UnB) organiza
+      grupos de estudo em programação competitiva para o público-alvo, nos
+      níveis intermediário e avançado, com o objetivo de aprimorar suas
+      habilidades em programação, bem como na preparação para competições de
+      programação, como a <strong>Olimpíada Brasileira de Informática</strong> e
+      a <strong>Maratona SBC de Programação</strong>.
+    </p>
+  </div>
+</BaseLayout>

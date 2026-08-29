@@ -16,14 +16,15 @@ const { post } = Astro.props;
 const { Content, remarkPluginFrontmatter } = await render(post);
 const { title, description, pubDate, author, image } = post.data;
 
-const formattedDate = pubDate.toLocaleDateString("en", {
+const formattedDate = pubDate.toLocaleDateString("pt-BR", {
   year: "numeric",
   month: "long",
   day: "numeric",
+  timeZone: "UTC",
 });
 
 const readingTime = remarkPluginFrontmatter?.minutesRead
-  ? `${Math.ceil(remarkPluginFrontmatter.minutesRead)} min reading time`
+  ? `${Math.ceil(remarkPluginFrontmatter.minutesRead)} min de leitura`
   : "";
 
 const metadata = {

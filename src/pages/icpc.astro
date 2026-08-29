@@ -1,0 +1,83 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHeader from "@/components/widgets/PageHeader.astro";
+
+const metadata = {
+  title: "ICPC — International Collegiate Programming Contest",
+  description:
+    "O ICPC é a mais tradicional competição de programação para estudantes universitários do mundo, organizada pela ACM.",
+};
+---
+
+<BaseLayout {metadata}>
+  <PageHeader
+    title="ICPC"
+    subtitle="International Collegiate Programming Contest"
+  />
+  <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+    <p class="text-lg leading-relaxed text-foreground">
+      O ICPC (International Collegiate Programming Contest) é a mais
+      tradicional e prestigiada competição de programação para estudantes
+      universitários do mundo, organizada pela ACM (Association for Computing
+      Machinery).
+    </p>
+
+    <div class="mt-10 space-y-8">
+      <div>
+        <h2 class="text-xl font-bold text-foreground">Quem pode participar?</h2>
+        <p class="mt-2 text-muted-foreground">
+          Cada time é formado por um técnico e três alunos, além de um membro
+          reserva. Há um limite de 5 participações em fases regionais
+          (incluindo a 1ª Fase) ou 2 participações em finais mundiais por
+          competidor. Também existe uma regra combinando o ano de início dos
+          estudos superiores com o ano de nascimento — por exemplo, um(a)
+          estudante que iniciou a graduação em 2021 ou antes <em>e</em> nasceu
+          em 2002 ou antes é considerado(a) inelegível.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-xl font-bold text-foreground">
+          Onde ocorrem as provas?
+        </h2>
+        <p class="mt-2 text-muted-foreground">
+          As etapas são itinerantes, com fases regionais realizadas em
+          diferentes capitais. A inscrição é feita na sede mais próxima da
+          instituição do time.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-xl font-bold text-foreground">
+          Quando são as provas?
+        </h2>
+        <p class="mt-2 text-muted-foreground">
+          O calendário é flutuante, com as provas tradicionalmente ocorrendo
+          aos sábados: Regional (2º sábado de setembro), Nacional (2º sábado
+          de novembro) e Final Mundial (maio do ano seguinte). Consulte as
+          datas atualizadas no
+          <a href="/calendario-de-eventos" class="text-primary hover:underline">
+            Calendário de Eventos
+          </a>.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-xl font-bold text-foreground">
+          Por que você deveria participar?
+        </h2>
+        <p class="mt-2 text-muted-foreground">
+          O ICPC promove criatividade, trabalho em equipe e inovação,
+          testando a capacidade dos competidores de desenvolver programas
+          novos sob pressão de tempo.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-10">
+      <a
+        href="/hall-da-fama"
+        class="inline-flex items-center rounded-xl bg-foreground px-6 py-3 text-base font-bold text-background transition-all hover:bg-foreground/90"
+      >
+        Ver Hall da Fama →
+      </a>
+    </div>
+  </div>
+</BaseLayout>

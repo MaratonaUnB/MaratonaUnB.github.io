@@ -1,0 +1,82 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHeader from "@/components/widgets/PageHeader.astro";
+import { siteConfig } from "@/config/site";
+
+const metadata = {
+  title: "Por que competir?",
+  description:
+    "Desenvolvimento de habilidades profissionais, visibilidade no mercado de trabalho e valorização do currículo.",
+};
+
+const exCompetidores = [
+  "Arthur Komatsu", "Belphy Starling", "Bruna Moreira", "Caio Brandão",
+  "Carolina Estrella", "Clara Caldeira", "Claudio Segala", "Diego Aranha",
+  "Felipe Chaves", "Felipe Duerno", "Gabriel Taumaturgo", "Guilherme de Lima",
+  "Gustavo Marques", "Itallo Lucas", "José Marcos Leite", "Lucas Mattioli",
+  "Marlon Mendes", "Matheus Pimenta", "Parley Martins", "Renata dos Santos",
+  "Rodrigo Siqueira", "Rommel Carvalho", "Sabryna Moura", "Simião Carvalho",
+  "Thiago Machado", "Tiago Fernandes",
+];
+---
+
+<BaseLayout {metadata}>
+  <PageHeader title="Por que competir?" />
+  <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+    <p class="text-lg leading-relaxed text-foreground">
+      Se participar do "simplesmente, o maior, mais antigo e mais prestigiado
+      concurso de programação do mundo" ainda não parece suficiente, você pode
+      considerar os seguintes pontos:
+    </p>
+
+    <div class="mt-8 space-y-6">
+      <div>
+        <h2 class="text-xl font-bold text-foreground">
+          1. Desenvolvimento de Habilidades Profissionais
+        </h2>
+        <p class="mt-2 text-muted-foreground">
+          Resolução de problemas, implementação, programação e trabalho em
+          equipe são competências diretamente exercitadas durante a competição.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-xl font-bold text-foreground">
+          2. Visibilidade no Mercado de Trabalho
+        </h2>
+        <p class="mt-2 text-muted-foreground">
+          Grandes empresas patrocinam o evento e recrutam talentos diretamente
+          entre os participantes.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-xl font-bold text-foreground">
+          3. Valorização do Currículo
+        </h2>
+        <p class="mt-2 text-muted-foreground">
+          A competição tem alcance mundial, permitindo a comparação direta
+          entre equipes de diferentes países e instituições.
+        </p>
+      </div>
+    </div>
+
+    <p class="mt-8 text-lg font-medium text-foreground">
+      Quer saber mais?
+      <a href={`mailto:${siteConfig.email}`} class="text-primary hover:underline">
+        Entre em contato!
+      </a>
+    </p>
+
+    <h2 class="mt-16 text-2xl font-bold text-foreground">Ex-competidores</h2>
+    <p class="mt-2 text-muted-foreground">
+      Os maratonistas são referência de excelência entre os alunos da UnB, e
+      muitos deles foram rapidamente incorporados pelo mercado de trabalho.
+    </p>
+    <ul class="mt-6 grid grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-3">
+      {
+        exCompetidores.map((nome) => (
+          <li class="text-sm text-foreground">{nome}</li>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>

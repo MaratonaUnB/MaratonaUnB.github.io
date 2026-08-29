@@ -10,7 +10,7 @@ const { post } = Astro.props;
 const { remarkPluginFrontmatter } = await render(post);
 
 const readingTime = remarkPluginFrontmatter?.minutesRead
-  ? `${Math.ceil(remarkPluginFrontmatter.minutesRead)} min read`
+  ? `${Math.ceil(remarkPluginFrontmatter.minutesRead)} min de leitura`
   : "";
 ---
 
@@ -55,7 +55,7 @@ const readingTime = remarkPluginFrontmatter?.minutesRead
         <div class="flex space-x-1 text-sm text-muted-foreground">
           <time datetime={post.data.pubDate.toISOString()}>
             {
-              post.data.pubDate.toLocaleDateString("en-US", {
+              post.data.pubDate.toLocaleDateString("pt-BR", {
                 year: "numeric",
                 month: "long",
                 day: "numeric",

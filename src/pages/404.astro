@@ -3,8 +3,8 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Hero from "@/components/widgets/Hero.astro";
 
 const metadata = {
-  title: "404 - Page Not Found",
-  description: "The page you're looking for doesn't exist.",
+  title: "404 - Página não encontrada",
+  description: "A página que você procura não existe.",
   ignoreTitleTemplate: true,
 };
 ---
@@ -12,19 +12,19 @@ const metadata = {
 <BaseLayout {metadata}>
   <Hero
     title={`<h1 class="bg-linear-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent text-[12rem] font-extrabold tracking-tighter mb-4">404</h1>`}
-    description="We're sorry, we can't find the page you're looking for. It may have been moved or deleted."
+    description="Não conseguimos encontrar a página que você procura. Ela pode ter sido movida ou removida."
     actions={[
       {
         variant: "primary",
-        text: "Back to Home",
+        text: "Voltar para a Home",
         href: "/",
         icon: "lucide:home",
       },
       {
         variant: "secondary",
-        text: "Contact",
+        text: "Contato",
         href: "/contact",
-        icon: "lucide:phone",
+        icon: "lucide:mail",
       },
     ]}
   />

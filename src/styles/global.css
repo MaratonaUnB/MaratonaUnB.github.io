@@ -15,8 +15,9 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0a0a0a;
-  --primary: #0254d8;
+  --foreground: #0d1f33;
+  --primary: #0d3b66;
+  --accent: #1b998b;
   --border: #e5e7eb;
   --muted: #f4f4f5;
   --muted-foreground: #52525b;
@@ -26,7 +27,8 @@
 :root[data-theme="dark"] {
   --background: #030303;
   --foreground: #e5e7eb;
-  --primary: #8bbcff;
+  --primary: #6ea3d8;
+  --accent: #45c4b0;
   --border: #262626;
   --muted: #171717;
   --muted-foreground: #a1a1aa;

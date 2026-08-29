@@ -28,7 +28,11 @@ if (type === "WebSite") {
       "@type": "Person",
       name: siteConfig.author,
     },
-    sameAs: [siteConfig.socialLinks.twitter, siteConfig.socialLinks.github],
+    sameAs: [
+      siteConfig.socialLinks.instagram,
+      siteConfig.socialLinks.youtube,
+      siteConfig.socialLinks.github,
+    ],
   };
 } else if (type === "BlogPosting") {
   schema = {

@@ -1,0 +1,74 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHeader from "@/components/widgets/PageHeader.astro";
+import { siteConfig } from "@/config/site";
+
+const metadata = {
+  title: "UnBalloon",
+  description:
+    "UnBalloon é o grupo de programação competitiva da Universidade de Brasília.",
+};
+
+const recursos = [
+  { text: "Telegram", href: siteConfig.socialLinks.telegram },
+  { text: "Discord", href: siteConfig.socialLinks.discord },
+  { text: "CodeForces (Grupo Maratonas DF)", href: siteConfig.socialLinks.codeforcesGroup },
+  { text: "CodeForces (Contests)", href: siteConfig.socialLinks.codeforcesContests },
+  { text: "Repositório de Bruxarias", href: siteConfig.socialLinks.github },
+  { text: "YouTube do Mestre dos Magos", href: "https://www.youtube.com/watch?v=srM35lUn7w4&list=PLbkzuS_3Evj_bgzKIiJ3RyvVkabTNl9-y" },
+  { text: "Playlist de Programação Competitiva do CIC", href: siteConfig.socialLinks.youtube },
+  { text: "Instagram", href: siteConfig.socialLinks.instagram },
+];
+---
+
+<BaseLayout {metadata}>
+  <PageHeader
+    title="UnBalloon"
+    subtitle="O grupo de programação competitiva da Universidade de Brasília"
+  />
+  <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+    <p class="text-lg leading-relaxed text-foreground">
+      Você quer participar de competições de programação e adora desafios?
+      Junte-se ao <strong>UnBalloon</strong>, o grupo de programação
+      competitiva da Universidade de Brasília! Aqui, você encontrará:
+    </p>
+    <ul class="mt-4 list-disc space-y-2 pl-6 text-muted-foreground">
+      <li>Outros maratonistas para trocar experiências e formar equipes;</li>
+      <li>Informações valiosas sobre competições;</li>
+      <li>Material de estudo para aprimorar suas habilidades;</li>
+      <li>E muito mais!</li>
+    </ul>
+    <p class="mt-6 text-lg leading-relaxed text-foreground">
+      Acesse
+      <a
+        href={siteConfig.socialLinks.unballoonSite}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-primary hover:underline"
+      >
+        nosso site
+      </a>
+      para mais detalhes e comece sua jornada na programação competitiva!
+    </p>
+
+    <h2 class="mt-12 text-2xl font-bold text-foreground">
+      Recursos e Comunidades
+    </h2>
+    <ul class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+      {
+        recursos.map((r) => (
+          <li>
+            <a
+              href={r.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
+            >
+              {r.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>

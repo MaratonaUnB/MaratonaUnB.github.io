@@ -1,0 +1,67 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHeader from "@/components/widgets/PageHeader.astro";
+import { hallDaFamaIcpc } from "@/data/hallDaFamaIcpc";
+
+const metadata = {
+  title: "Hall da Fama — ICPC",
+  description:
+    "Participações e medalhas de alunos da UnB nas fases do ICPC: Final Mundial, LatAm e Final Brasileira.",
+};
+---
+
+<BaseLayout {metadata}>
+  <PageHeader title="Hall da Fama" subtitle="ICPC" />
+  <div class="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+    <p class="text-muted-foreground">
+      Reconhecimento aos alunos com participações nas fases <strong>Mundial
+      (World Finals)</strong>, <strong>LatAm</strong> e <strong>Final
+      Brasileira</strong> do ICPC.
+    </p>
+    <div class="mt-6 overflow-x-auto rounded-2xl border border-border">
+      <table class="w-full text-left text-sm">
+        <thead class="bg-muted text-xs uppercase tracking-wider text-muted-foreground">
+          <tr>
+            <th class="px-4 py-3">Nome</th>
+            <th class="px-4 py-3">Mundial</th>
+            <th class="px-4 py-3">LatAm</th>
+            <th class="px-4 py-3">Ouro</th>
+            <th class="px-4 py-3">Prata</th>
+            <th class="px-4 py-3">Bronze</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-border">
+          {
+            hallDaFamaIcpc.map((row) => (
+              <tr class="hover:bg-muted/50">
+                <td class="px-4 py-3 font-semibold text-foreground">
+                  {row.nome}
+                </td>
+                <td class="px-4 py-3 text-muted-foreground">
+                  {row.mundialParticipacoes}
+                </td>
+                <td class="px-4 py-3 text-muted-foreground">
+                  {row.latamParticipacoes}
+                </td>
+                <td class="px-4 py-3 text-muted-foreground">
+                  {row.finalBrasileiraOuro}
+                </td>
+                <td class="px-4 py-3 text-muted-foreground">
+                  {row.finalBrasileiraPrata}
+                </td>
+                <td class="px-4 py-3 text-muted-foreground">
+                  {row.finalBrasileiraBronze}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-6 text-sm text-muted-foreground">
+      Tabela em atualização. Para completar o histórico, edite
+      <code class="rounded bg-muted px-1.5 py-0.5">src/data/hallDaFamaIcpc.ts</code>
+      no repositório do site.
+    </p>
+  </div>
+</BaseLayout>

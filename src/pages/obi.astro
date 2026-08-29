@@ -1,0 +1,85 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHeader from "@/components/widgets/PageHeader.astro";
+
+const metadata = {
+  title: "OBI — Olimpíada Brasileira de Informática",
+  description:
+    "A OBI é uma competição de programação e informática destinada a estudantes brasileiros, organizada pela Sociedade Brasileira de Computação (SBC).",
+};
+---
+
+<BaseLayout {metadata}>
+  <PageHeader title="OBI" subtitle="Olimpíada Brasileira de Informática" />
+  <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+    <p class="text-lg leading-relaxed text-foreground">
+      A OBI (Olimpíada Brasileira de Informática) é uma competição de
+      programação e informática destinada a estudantes brasileiros do ensino
+      fundamental, médio e início do ensino superior. Organizada pela
+      Sociedade Brasileira de Computação (SBC), a OBI visa incentivar o
+      interesse pela ciência da computação e pela programação entre jovens
+      estudantes.
+    </p>
+
+    <p class="mt-6">
+      <a
+        href="https://sigaa.unb.br/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-primary hover:underline"
+      >
+        Formulário de inscrições: Campus Darcy Ribeiro (clique aqui)
+      </a>
+    </p>
+
+    <div class="mt-10 space-y-8">
+      <div>
+        <h2 class="text-xl font-bold text-foreground">Quem pode participar?</h2>
+        <p class="mt-2 text-muted-foreground">
+          Podem participar da modalidade Programação alunos que estejam
+          cursando pela primeira vez o 1º ano de graduação no momento da Fase
+          1 da competição.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-xl font-bold text-foreground">
+          Onde ocorrem as provas?
+        </h2>
+        <p class="mt-2 text-muted-foreground">
+          A fase Local/Estadual ocorre na escola em que o(a) estudante está
+          inscrito(a). A fase Nacional ocorre em sedes designadas pela
+          organização.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-xl font-bold text-foreground">
+          Quando são as provas?
+        </h2>
+        <p class="mt-2 text-muted-foreground">
+          Consulte as datas atualizadas no
+          <a href="/calendario-de-eventos" class="text-primary hover:underline">
+            Calendário de Eventos
+          </a>.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-xl font-bold text-foreground">Como se preparar?</h2>
+        <p class="mt-2 text-muted-foreground">
+          O projeto oferece um curso preparatório aos sábados, das 9h às 12h,
+          no Laboratório de Informática (subsolo do ICC, Campus Darcy
+          Ribeiro), com certificado emitido pelo Decanato de Extensão da UnB.
+          Inscrições realizadas via SIGAA.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-10">
+      <a
+        href="/quadro-de-medalhas"
+        class="inline-flex items-center rounded-xl bg-foreground px-6 py-3 text-base font-bold text-background transition-all hover:bg-foreground/90"
+      >
+        Ver Quadro de Medalhas →
+      </a>
+    </div>
+  </div>
+</BaseLayout>

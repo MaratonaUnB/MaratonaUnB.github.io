@@ -6,7 +6,7 @@ import icon from "astro-icon";
 import remarkReadingTime from "remark-reading-time";
 
 export default defineConfig({
-  site: "https://astrostarterpro.com/",
+  site: "https://maratona.unb.br/",
   integrations: [sitemap(), icon(), mdx()],
   markdown: {
     remarkPlugins: [
@@ -18,13 +18,6 @@ export default defineConfig({
         };
       },
     ],
-  },
-  i18n: {
-    defaultLocale: "en",
-    locales: ["en", "es"],
-    routing: {
-      prefixDefaultLocale: false,
-    },
   },
   prefetch: {
     prefetchAll: true,

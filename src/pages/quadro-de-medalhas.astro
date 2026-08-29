@@ -1,0 +1,51 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHeader from "@/components/widgets/PageHeader.astro";
+import { quadroMedalhasObi } from "@/data/quadroMedalhasObi";
+
+const metadata = {
+  title: "Quadro de Medalhas — OBI",
+  description:
+    "Classificação de alunos da UnB na Olimpíada Brasileira de Informática, modalidade Programação, nível Sênior.",
+};
+---
+
+<BaseLayout {metadata}>
+  <PageHeader
+    title="Quadro de Medalhas"
+    subtitle="Modalidade Programação, Nível Sênior"
+  />
+  <div class="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+    <div class="overflow-x-auto rounded-2xl border border-border">
+      <table class="w-full text-left text-sm">
+        <thead class="bg-muted text-xs uppercase tracking-wider text-muted-foreground">
+          <tr>
+            <th class="px-4 py-3">Classificação</th>
+            <th class="px-4 py-3">Nome</th>
+            <th class="px-4 py-3">Nota</th>
+            <th class="px-4 py-3">Ano</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-border">
+          {
+            quadroMedalhasObi.map((row) => (
+              <tr class="hover:bg-muted/50">
+                <td class="px-4 py-3 font-semibold text-foreground">
+                  {row.classificacao}º
+                </td>
+                <td class="px-4 py-3 text-foreground">{row.nome}</td>
+                <td class="px-4 py-3 text-muted-foreground">{row.nota} pts</td>
+                <td class="px-4 py-3 text-muted-foreground">{row.ano}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-6 text-sm text-muted-foreground">
+      Tabela em atualização. Para completar o histórico, edite
+      <code class="rounded bg-muted px-1.5 py-0.5">src/data/quadroMedalhasObi.ts</code>
+      no repositório do site.
+    </p>
+  </div>
+</BaseLayout>

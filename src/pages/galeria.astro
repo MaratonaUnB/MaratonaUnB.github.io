@@ -1,0 +1,44 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHeader from "@/components/widgets/PageHeader.astro";
+
+const metadata = {
+  title: "Galeria",
+  description: "Melhores momentos das edições da Maratona de Programação da UnB.",
+};
+
+// Álbuns identificados no site anterior. Adicione novas imagens em
+// public/galeria/ e um novo item aqui para cada edição/evento.
+const albuns = [
+  "[2024-07] Escola e Maratona de Inverno CSBC",
+  "[2024-06] Olimpíada UnBalloon",
+  "[2023] XI Maratona UnB",
+  "[2023] Fraldinha",
+  "[2022] Maratona IFB",
+  "[2019] Maratona IESB",
+];
+---
+
+<BaseLayout {metadata}>
+  <PageHeader title="Galeria" subtitle="Melhores Momentos" />
+  <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+    <p class="text-muted-foreground">
+      As fotos das edições anteriores estão sendo reorganizadas para o novo
+      site. Enquanto isso, seguem os álbuns já catalogados:
+    </p>
+    <ul class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        albuns.map((album) => (
+          <li class="rounded-2xl border border-border bg-card p-6 text-sm font-medium text-foreground">
+            {album}
+          </li>
+        ))
+      }
+    </ul>
+    <p class="mt-8 text-sm text-muted-foreground">
+      Tem fotos de alguma edição? Envie um Pull Request adicionando os
+      arquivos em <code class="rounded bg-muted px-1.5 py-0.5">public/galeria/</code>
+      e atualizando <code class="rounded bg-muted px-1.5 py-0.5">src/pages/galeria.astro</code>.
+    </p>
+  </div>
+</BaseLayout>
