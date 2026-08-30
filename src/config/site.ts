@@ -11,7 +11,7 @@ export const siteConfig = {
   author: "Maratona UnB de Programação",
   email: "maratona@unb.br",
   ogImage: ogImage,
-  logo: "/site/logoMaratona.svg",
+  logo: "/site/marcas/MaratonaUnB.svg",
   socialLinks: {
     telegram: "https://t.me/unballoon",
     discord: "https://discord.com/invite/9AETUBmJJd",
@@ -31,7 +31,7 @@ export const siteConfig = {
     {
       name: "Giga Candanga",
       url: "https://gigacandanga.net.br/",
-      logo: "/site/giga-candanga.png",
+      logo: "/site/marcas/GigaCandanga.png",
     },
   ],
   navLinks: [
