@@ -2,8 +2,8 @@
 title: "XIV Maratona UnB de Programação"
 date: 2026-09-25
 local: "LINF — Laboratório de Informática, Campus Darcy Ribeiro"
-cover: "/eventos/xi-maratona-unb.png"
-coverAlt: "Cartaz da Maratona UnB de Programação"
+cover: "/eventos/2026/14mup.png"
+coverAlt: "Logo da XIV Maratona UnB de Programação"
 confirmado: true
 ---
 
