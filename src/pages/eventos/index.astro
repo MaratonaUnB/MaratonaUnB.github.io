@@ -2,8 +2,12 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import PageHeader from "@/components/widgets/PageHeader.astro";
 import NextEvent from "@/components/widgets/NextEvent.astro";
-import { calendarioEventos } from "@/data/calendarioEventos";
-import { agruparCalendarioPorAno, formatarDataEvento } from "@/lib/calendario";
+import {
+  getEventosOrdenados,
+  agruparEventosPorAno,
+  formatarDataEvento,
+  slugDoEvento,
+} from "@/lib/eventos";
 
 const metadata = {
   title: "Eventos",
@@ -11,7 +15,8 @@ const metadata = {
     "Calendário consolidado dos eventos de programação competitiva ligados à UnB, com o próximo evento sempre em destaque.",
 };
 
-const grupos = agruparCalendarioPorAno(calendarioEventos);
+const eventosOrdenados = await getEventosOrdenados();
+const grupos = agruparEventosPorAno(eventosOrdenados);
 const anoAtual = new Date().getUTCFullYear();
 
 const statusLabel: Record<string, string> = {
@@ -23,14 +28,17 @@ const statusLabel: Record<string, string> = {
 ---
 
 <BaseLayout {metadata}>
-  <PageHeader title="Eventos" subtitle="Calendário consolidado da Maratona e competições ligadas à UnB" />
+  <PageHeader
+    title="Eventos"
+    subtitle="Calendário consolidado da Maratona e competições ligadas à UnB"
+  />
   <NextEvent />
 
   <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
     <p class="text-muted-foreground">
-      Calendário consolidado dos principais eventos de programação
-      competitiva ligados à UnB: fases da Maratona SBC/ICPC, OBI, competições
-      internas (Maratona UnB, UnBalloon) e parceiras.
+      Calendário consolidado dos principais eventos de programação competitiva
+      ligados à UnB: fases da Maratona SBC/ICPC, OBI, competições internas
+      (Maratona UnB, UnBalloon) e parceiras.
     </p>
     <p class="mt-2 text-sm text-muted-foreground">
       Legenda: ✅ Realizado · 🔵 Confirmado (ainda não realizado) · ⚪ A
@@ -60,13 +68,29 @@ const statusLabel: Record<string, string> = {
               </thead>
               <tbody class="divide-y divide-border">
                 {[...grupo.naoRealizados, ...grupo.realizados].map((row) => (
-                  <tr class:list={["hover:bg-muted/50", { "opacity-60": row.status === "realizado" }]}>
+                  <tr
+                    class:list={[
+                      "hover:bg-muted/50",
+                      { "opacity-60": row.data.status === "realizado" },
+                    ]}
+                  >
                     <td class="px-4 py-3 whitespace-nowrap font-medium text-foreground">
                       {formatarDataEvento(row)}
                     </td>
-                    <td class="px-4 py-3 text-foreground">{row.evento}</td>
+                    <td class="px-4 py-3 text-foreground">
+                      {row.data.temPagina ? (
+                        <a
+                          href={`/eventos/${slugDoEvento(row)}`}
+                          class="hover:text-primary hover:underline"
+                        >
+                          {row.data.title}
+                        </a>
+                      ) : (
+                        row.data.title
+                      )}
+                    </td>
                     <td class="px-4 py-3 whitespace-nowrap text-muted-foreground">
-                      {statusLabel[row.status]}
+                      {statusLabel[row.data.status]}
                     </td>
                   </tr>
                 ))}
@@ -81,8 +105,10 @@ const statusLabel: Record<string, string> = {
       Fontes: Maratona SBC de Programação (maratona.sbc.org.br/hist), dados
       processados por gnramos.github.io/maratona-site, e registros internos da
       organização (última atualização dos dados originais: 28/08/2026). Para
-      atualizar, edite
-      <code class="rounded bg-muted px-1.5 py-0.5">src/data/calendarioEventos.ts</code>
+      atualizar, adicione ou edite um arquivo em
+      <code class="rounded bg-muted px-1.5 py-0.5"
+        >src/content/eventos/&lt;ano&gt;/</code
+      >
       no repositório do site.
     </p>
   </div>

@@ -11,12 +11,12 @@ const metadata = {
 
 <BaseLayout {metadata}>
   <PageHeader title="Depoimentos" subtitle="A voz de quem já competiu" />
-  <div class="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
     {
       depoimentos.length > 0 ? (
-        <div class="grid gap-6 sm:grid-cols-2">
+        <div class="flex flex-col gap-6">
           {depoimentos.map((d) => (
-            <blockquote class="rounded-2xl border border-border bg-card p-6">
+            <blockquote class="w-full rounded-2xl border border-border bg-card p-6">
               <p class="text-foreground">“{d.texto}”</p>
               <footer class="mt-4 flex items-center gap-3">
                 {d.foto && (
@@ -27,7 +27,11 @@ const metadata = {
                   />
                 )}
                 <div>
-                  <p class="text-sm font-semibold text-foreground"><a href="{d.link}">{d.nome}</a></p>
+                  <p class="text-sm font-semibold text-foreground">
+                    <a href={d.link} target="_blank" rel="noopener noreferrer">
+                      {d.nome}
+                    </a>
+                  </p>
                   <p class="text-xs text-muted-foreground">{d.papel}</p>
                 </div>
               </footer>
@@ -37,12 +41,20 @@ const metadata = {
       ) : (
         <div class="rounded-2xl border border-dashed border-border p-10 text-center">
           <p class="text-muted-foreground">
-            Se você competiu e quer compartilhar sua experiência, entre em <a href="mailto:maratona@unb.br" aria-label="Enviar e-mail para maratona@unb.br" class="rounded-full p-2 text-foreground transition-colors hover:bg-muted hover:text-primary">contato conosco</a>.
+            Se você competiu e quer compartilhar sua experiência, entre em{" "}
+            <a
+              href="mailto:maratona@unb.br"
+              aria-label="Enviar e-mail para maratona@unb.br"
+              class="rounded-full p-2 text-foreground transition-colors hover:bg-muted hover:text-primary"
+            >
+              contato conosco
+            </a>
+            .
           </p>
         </div>
       )
     }
-    <p class="mt-2 text-xs text-muted-foreground">
+    <p class="pt-10 pl-5 mt-2 text-xs text-muted-foreground">
       Publicamos apenas depoimentos reais, com autorização de quem os deu.
     </p>
   </div>

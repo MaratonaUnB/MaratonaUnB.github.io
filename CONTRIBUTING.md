@@ -33,9 +33,12 @@ siga o fluxo que preferir.
    ```
 
    - `category` aceita: `noticias`, `extensao`, `eventos-anteriores`.
-   - `image` é opcional — se tiver uma foto, coloque o arquivo em
-     `public/eventos/` (ou outra subpasta de `public/`) e referencie o
-     caminho, ex.: `image: "/eventos/minha-foto.jpg"`.
+   - `image` é opcional — se tiver uma foto **específica dessa notícia**,
+     suba o arquivo em `public/blog/` e referencie o caminho, ex.:
+     `image: "/blog/minha-foto.jpg"`. Não reaproveite fotos de
+     `public/eventos/` ou `public/galeria/` aqui — veja "Onde colocar cada
+     imagem" abaixo.
+
 5. Role até o final da página, escreva uma mensagem de commit curta (ex.:
    "Adiciona notícia sobre X") e escolha **"Create a new branch for this
    commit and start a pull request"**.
@@ -44,46 +47,125 @@ siga o fluxo que preferir.
 Alguém com acesso de aprovação revisa e faz o merge. Depois disso o site
 publica sozinho em alguns minutos.
 
-## Adicionar/editar um evento (edição da Maratona UnB)
+## Adicionar/editar um evento (calendário e edições da Maratona UnB)
 
-1. Abra [`src/content/eventos`](src/content/eventos).
-2. Crie um arquivo novo (mesmo processo acima), ex. `xv-maratona-unb-2027.md`:
+Todo o calendário de eventos — fases de OBI/ICPC, competições parceiras e as
+edições da própria Maratona UnB — vem de arquivos em
+[`src/content/eventos`](src/content/eventos), **um arquivo por evento**. A
+tabela em `/eventos` (agrupada por ano) e o destaque "🏆 Próximo Evento" da
+home são montados **automaticamente** a partir desses arquivos — não existe
+mais nenhuma lista para editar à parte.
+
+1. Abra `src/content/eventos/<ano>/` (crie a pasta do ano se ainda não
+   existir — é só uma forma de organizar os arquivos, não afeta nada no
+   site: o agrupamento por ano na tabela vem da data, não da pasta).
+2. Clique em **Add file → Create new file** e nomeie o arquivo em minúsculas
+   e com hífen, ex. `xv-maratona-unb-2027.md` ou `obi-fase-1-2027-06-10.md`.
+3. Cole o conteúdo mínimo (só um evento de calendário, sem página própria):
+
+   ```md
+   ---
+   title: "Nome do evento"
+   date: 2027-06-10
+   status: "confirmado" # "realizado" | "confirmado" | "a-confirmar" | "adiado"
+   ---
+   ```
+
+   - `status` é opcional (padrão `"confirmado"`) — atualize conforme o
+     evento evolui (`a-confirmar` → `confirmado` → `realizado`, ou `adiado`
+     se for o caso).
+   - `endDate` é opcional, só para eventos de múltiplos dias
+     (ex. `endDate: 2027-06-12`).
+
+4. Se o evento também merece uma **página própria** (como as edições da
+   Maratona UnB), acrescente `temPagina: true` e escreva o conteúdo em
+   Markdown depois do segundo `---`:
 
    ```md
    ---
    title: "XV Maratona UnB de Programação"
    date: 2027-09-20
    local: "LINF — Laboratório de Informática, Campus Darcy Ribeiro"
-   cover: "/eventos/xv-maratona-unb.jpg"   # opcional
-   coverAlt: "Descrição da imagem"          # opcional
-   inscricoesUrl: "https://..."             # opcional, vira botão "Inscreva-se"
+   status: "confirmado"
+   temPagina: true
+   destaque: true # disputa o "🏆 Próximo Evento" da home
+   cover: "/eventos/2027/xv-maratona-unb.jpg" # opcional
+   coverAlt: "Descrição da imagem" # opcional
+   inscricoesUrl: "https://..." # opcional, vira botão "Inscreva-se"
    ---
 
    Detalhes do evento em Markdown.
    ```
 
-3. Se tiver uma imagem de capa, suba o arquivo em `public/eventos/` (Add
-   file → Upload files) **antes** de referenciá-lo no `cover:`.
+   Sem `temPagina: true`, o evento aparece só como linha na tabela (é o caso
+   da maioria — fases de OBI, ICPC, competições externas). `destaque: true`
+   é reservado para as edições da própria Maratona UnB: é o que decide o que
+   aparece no bloco da home, então normalmente **não marque** eventos de
+   calendário comuns com `destaque: true`.
+
+5. Se tiver uma imagem de capa, suba o arquivo em `public/eventos/<ano>/`
+   (Add file → Upload files) **antes** de referenciá-lo no `cover:`. Uma
+   imagem que se repete em vários eventos (ex.: o logo genérico da Maratona
+   SBC, usado em várias fases nacionais) pode ficar direto em
+   `public/eventos/` (sem subpasta de ano), já que não é exclusiva de uma
+   edição.
 
 O bloco "🏆 Próximo Evento" da home se atualiza sozinho: ele sempre mostra o
-evento cadastrado com a data mais próxima que ainda não passou. Não existe
-mais um link fixo para trocar todo ano — só é preciso manter os eventos
-futuros cadastrados com a data certa.
+evento com `destaque: true` cuja data mais próxima ainda não passou. Não
+existe mais um link fixo para trocar todo ano — só é preciso manter as
+edições futuras cadastradas com a data certa.
+
+## Onde colocar cada imagem
+
+O site tem três pastas de imagens em `public/` com propósitos diferentes —
+usar a errada é o motivo mais comum de imagem "estranha" aparecendo no lugar
+errado:
+
+| Pasta                   | Serve para                                                                                                                                                            | Referenciada por                                  |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| `public/blog/`          | Foto **exclusiva de uma notícia**                                                                                                                                     | `image:` em `src/content/blog/*.md`               |
+| `public/eventos/<ano>/` | Capa/cartaz **de um evento específico** (ou a raiz `public/eventos/`, sem ano, para uma imagem genérica reaproveitada em vários eventos, como o logo da Maratona SBC) | `cover:` em `src/content/eventos/<ano>/*.md`      |
+| `public/galeria/`       | Fotos **soltas** da página `/galeria` (não pertencem a nenhum arquivo de conteúdo específico)                                                                         | array `fotos` direto em `src/pages/galeria.astro` |
+
+Regra prática: **cada imagem tem um dono só**. Não aponte o `image:` de uma
+notícia para uma foto que já é a `cover:` de um evento (nem vice-versa) —
+mesmo que pareçam relacionadas, são coisas editadas em momentos diferentes e
+um PR que troca a capa do evento acaba mudando a foto da notícia sem querer.
+Se a mesma imagem faz sentido em dois lugares, duplique o arquivo.
 
 ## Outros conteúdos editáveis sem tocar em código
 
-| O que editar | Onde |
-|---|---|
-| Quadro de Medalhas (OBI) | `src/data/quadroMedalhasObi.ts` |
-| Hall da Fama (ICPC) | `src/data/hallDaFamaIcpc.ts` |
-| Calendário de Eventos (tabela) | `src/data/calendarioEventos.ts` |
-| Posts do Instagram na Galeria | `src/data/instagramPosts.ts` (cole a URL do post) |
-| Depoimentos | `src/data/depoimentos.ts` — só publicar falas reais e autorizadas por quem as deu |
-| Links de imprensa | `src/data/imprensa.ts` |
-| Menu, e-mail, redes sociais, apoiadores | `src/config/site.ts` |
+| O que editar                            | Onde                                                                              |
+| --------------------------------------- | --------------------------------------------------------------------------------- |
+| Quadro de Medalhas (OBI)                | `src/data/quadroMedalhasObi.ts`                                                   |
+| Hall da Fama (ICPC)                     | `src/data/hallDaFamaIcpc.ts`                                                      |
+| Posts do Instagram na Galeria           | `src/data/instagramPosts.ts` (cole a URL do post)                                 |
+| Depoimentos                             | `src/data/depoimentos.ts` — só publicar falas reais e autorizadas por quem as deu |
+| Links de imprensa                       | `src/data/imprensa.ts`                                                            |
+| Menu, e-mail, redes sociais, apoiadores | `src/config/site.ts`                                                              |
 
 Esses arquivos são arrays/objetos TypeScript simples — dá para editar
-seguindo o padrão dos itens já existentes, mesmo sem saber programar.
+seguindo o padrão dos itens já existentes, mesmo sem saber programar. Preste
+atenção especial à vírgula entre um item e outro do array e às aspas ao
+redor de cada texto — um JSON/TypeScript mal formatado quebra o build (veja
+a seção abaixo).
+
+### Formato de um depoimento
+
+Cada item de `depoimentos.ts` segue esta forma:
+
+```ts
+{
+  nome: "Nome da pessoa",
+  papel: "Ex-aluno, edição 2023",   // ou similar
+  texto: "O depoimento em si, entre aspas.",
+  link: "https://...",              // link para contato/perfil da pessoa
+  foto: "/depoimentos/nome.jpg",    // opcional — coloque o arquivo em public/depoimentos/
+},
+```
+
+`foto` é opcional: sem ela, o card aparece só com nome, papel e texto (sem
+avatar).
 
 ## O que acontece se eu errar alguma coisa?
 

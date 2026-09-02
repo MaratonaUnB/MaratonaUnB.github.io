@@ -11,12 +11,27 @@ const metadata = {
 // Fotos reais recuperadas do site anterior. Para adicionar novas, coloque o
 // arquivo em public/galeria/ e um novo item aqui.
 const fotos = [
-  { src: "/eventos/xi-maratona-unb.png", legenda: "Maratona UnB de Programação 2024" },
-  { src: "/eventos/2024/maratona-feminina.jpeg", legenda: "Maratona Feminina de Programação 2024" },
-  { src: "/eventos/iv-competicao-feminina.jpeg", legenda: "IV Competição Feminina de Programação da UnB" },
-  { src: "/eventos/2024/olimpiada-unballoon.jpg", legenda: "Olimpíada UnBalloon de Informática 2024" },
-  { src: "/eventos/2022/ICPC_Nacional.jpeg", legenda: "UnB na Final Brasileira 2022" },
-  { src: "/eventos/ieeextreme.webp", legenda: "IEEExtreme" },
+  {
+    src: "/eventos/xi-maratona-unb.png",
+    legenda: "Maratona UnB de Programação 2024",
+  },
+  {
+    src: "/galeria/maratona-feminina.jpeg",
+    legenda: "Maratona Feminina de Programação 2024",
+  },
+  {
+    src: "/galeria/iv-competicao-feminina.jpeg",
+    legenda: "IV Competição Feminina de Programação da UnB",
+  },
+  {
+    src: "/galeria/olimpiada-unballoon.jpg",
+    legenda: "Olimpíada UnBalloon de Informática 2024",
+  },
+  {
+    src: "/galeria/ICPC_Nacional.jpeg",
+    legenda: "UnB na Final Brasileira 2022",
+  },
+  { src: "/galeria/ieeextreme.webp", legenda: "IEEExtreme" },
 ];
 
 // Álbuns identificados no site anterior cujas fotos ainda não foram
@@ -66,14 +81,23 @@ const albunsPendentes = [
       }
     </ul>
     <p class="mt-4 text-sm text-muted-foreground">
-      Tem fotos de alguma edição? Envie um Pull Request adicionando os
-      arquivos em <code class="rounded bg-muted px-1.5 py-0.5">public/galeria/</code>
-      e atualizando <code class="rounded bg-muted px-1.5 py-0.5">src/pages/galeria.astro</code>.
+      Tem fotos de alguma edição? Envie um Pull Request adicionando os arquivos
+      em <code class="rounded bg-muted px-1.5 py-0.5">public/galeria/</code>
+      e atualizando <code class="rounded bg-muted px-1.5 py-0.5"
+        >src/pages/galeria.astro</code
+      >.
     </p>
 
     <h2 class="mt-14 text-xl font-bold text-foreground">No Instagram</h2>
     <p class="mt-2 mb-6 text-sm text-muted-foreground">
-      Últimos posts de <a href="https://www.instagram.com/maratona.unb/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="rounded-full p-2 text-foreground transition-colors hover:bg-muted hover:text-primary">@unballooon</a>.
+      Últimos posts de <a
+        href="https://www.instagram.com/maratona.unb/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+        class="rounded-full p-2 text-foreground transition-colors hover:bg-muted hover:text-primary"
+        >@unballooon</a
+      >.
     </p>
     <InstagramFeed />
   </div>

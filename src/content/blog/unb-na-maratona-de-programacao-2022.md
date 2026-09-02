@@ -4,7 +4,6 @@ description: "UnB classifica 3 times para a Final Brasileira, entre mais de 500 
 pubDate: 2022-10-11
 author: "Maratona UnB de Programação"
 category: "noticias"
-image: "/eventos/2022/ICPC_Nacional.jpeg"
 tags: ["icpc", "resultado"]
 ---
 

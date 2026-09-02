@@ -4,7 +4,6 @@ description: "Evento da SBC em Campinas/SP reuniu equipes femininas de todo o pa
 pubDate: 2024-06-18
 author: "Maratona UnB de Programação"
 category: "noticias"
-image: "/eventos/2024/maratona-feminina.jpeg"
 tags: ["maratona-feminina"]
 ---
 

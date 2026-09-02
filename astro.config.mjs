@@ -1,13 +1,12 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import mdx from "@astrojs/mdx";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import remarkReadingTime from "remark-reading-time";
 
 export default defineConfig({
   site: "https://maratona.unb.br/",
-  integrations: [sitemap(), icon(), mdx()],
+  integrations: [sitemap(), icon()],
   redirects: {
     // A página "Todos os eventos" e o "Calendário de Eventos" foram unidos
     // em /eventos — mantém o link antigo funcionando (gera uma página HTML

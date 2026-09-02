@@ -60,13 +60,20 @@ const metadata = {
         </h1>
       </div>
 
-      {
-        image && (
-          <div class="reveal relative mb-8 h-96 w-full overflow-hidden rounded-xl shadow-lg">
-            <img src={image} alt={title} class="h-full w-full object-cover" />
-          </div>
-        )
-      }
+      <div
+        class:list={[
+          "reveal relative mb-8 h-96 w-full overflow-hidden rounded-xl shadow-lg",
+          { "flex items-center justify-center bg-muted": !image },
+        ]}
+      >
+        <img
+          src={image || "/site/marcas/MaratonaUnB.svg"}
+          alt={title}
+          class:list={[
+            image ? "h-full w-full object-cover" : "h-40 w-40 object-contain",
+          ]}
+        />
+      </div>
 
       <div
         class="reveal prose prose-lg mx-auto prose-headings:text-foreground prose-a:text-primary hover:prose-a:underline prose-p:text-muted-foreground prose-strong:text-foreground prose-li:text-muted-foreground prose-code:text-primary"

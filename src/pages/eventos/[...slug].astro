@@ -2,14 +2,20 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Schema from "@/components/seo/Schema.astro";
 import { getCollection, render } from "astro:content";
-import { getEventosOrdenados, getProximoEvento } from "@/lib/eventos";
+import {
+  getEventosOrdenados,
+  getProximoEvento,
+  slugDoEvento,
+} from "@/lib/eventos";
 
 export async function getStaticPaths() {
   const eventos = await getCollection("eventos");
-  return eventos.map((evento) => ({
-    params: { slug: evento.id },
-    props: { evento },
-  }));
+  return eventos
+    .filter((evento) => evento.data.temPagina)
+    .map((evento) => ({
+      params: { slug: slugDoEvento(evento) },
+      props: { evento },
+    }));
 }
 
 const { evento } = Astro.props;
@@ -56,7 +62,9 @@ const metadata = {
             </span>
           )
         }
-        <h1 class="font-heading mt-2 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl">
+        <h1
+          class="font-heading mt-2 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl"
+        >
           {title}
         </h1>
         <p class="mt-3 text-sm font-medium text-muted-foreground">
@@ -67,17 +75,19 @@ const metadata = {
 
       {
         cover && (
-          <div class="reveal relative mb-8 h-80 w-full overflow-hidden rounded-2xl shadow-lg">
+          <div class="reveal relative mb-8 flex max-h-[24rem] w-full items-center justify-center overflow-hidden rounded-2xl bg-white shadow-lg">
             <img
               src={cover}
               alt={coverAlt || title}
-              class="h-full w-full object-cover"
+              class="max-h-[24rem] w-full object-contain"
             />
           </div>
         )
       }
 
-      <div class="reveal prose prose-lg mx-auto prose-headings:text-foreground prose-a:text-primary hover:prose-a:underline prose-p:text-muted-foreground prose-strong:text-foreground prose-li:text-muted-foreground">
+      <div
+        class="reveal prose prose-lg mx-auto prose-headings:text-foreground prose-a:text-primary hover:prose-a:underline prose-p:text-muted-foreground prose-strong:text-foreground prose-li:text-muted-foreground"
+      >
         <Content />
       </div>
 

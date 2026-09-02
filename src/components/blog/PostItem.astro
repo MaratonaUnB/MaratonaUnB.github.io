@@ -17,16 +17,22 @@ const readingTime = remarkPluginFrontmatter?.minutesRead
 <article
   class="reveal group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
 >
-  <div class="relative h-48 w-full overflow-hidden">
-    {
-      post.data.image && (
-        <img
-          src={post.data.image}
-          alt={post.data.title}
-          class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-        />
-      )
-    }
+  <div
+    class:list={[
+      "relative h-48 w-full overflow-hidden",
+      { "flex items-center justify-center bg-muted": !post.data.image },
+    ]}
+  >
+    <img
+      src={post.data.image || "/site/marcas/MaratonaUnB.svg"}
+      alt={post.data.title}
+      class:list={[
+        "transition-transform duration-300 group-hover:scale-105",
+        post.data.image
+          ? "h-full w-full object-cover"
+          : "h-24 w-24 object-contain",
+      ]}
+    />
   </div>
   <div class="flex flex-1 flex-col p-6">
     <div class="flex-1">

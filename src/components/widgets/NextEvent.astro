@@ -5,21 +5,28 @@
 // conteúdo na hora, caso a data do evento em destaque já tenha passado
 // desde o último build (o GitHub Pages não tem rebuild agendado — sem
 // isso, a home ficaria "presa" no evento errado até o próximo commit).
-import { getEventosOrdenados, getProximoEvento } from "@/lib/eventos";
+import {
+  getEventosOrdenados,
+  getProximoEvento,
+  slugDoEvento,
+} from "@/lib/eventos";
 
 const eventos = await getEventosOrdenados();
 const { evento, isFuturo } = getProximoEvento(eventos);
 
-// Payload leve para o recálculo no cliente — só os campos usados na UI.
-const eventosParaCliente = eventos.map((e) => ({
-  id: e.id,
-  title: e.data.title,
-  date: e.data.date.toISOString(),
-  local: e.data.local ?? null,
-  cover: e.data.cover ?? null,
-  coverAlt: e.data.coverAlt ?? null,
-  inscricoesUrl: e.data.inscricoesUrl ?? null,
-}));
+// Payload leve para o recálculo no cliente — só os eventos "destaque"
+// (mesmo filtro do getProximoEvento no build) e só os campos usados na UI.
+const eventosParaCliente = eventos
+  .filter((e) => e.data.destaque)
+  .map((e) => ({
+    slug: slugDoEvento(e),
+    title: e.data.title,
+    date: e.data.date.toISOString(),
+    local: e.data.local ?? null,
+    cover: e.data.cover ?? null,
+    coverAlt: e.data.coverAlt ?? null,
+    inscricoesUrl: e.data.inscricoesUrl ?? null,
+  }));
 ---
 
 {
@@ -27,20 +34,25 @@ const eventosParaCliente = eventos.map((e) => ({
     <section
       class="reveal border-y border-border bg-card"
       id="next-event"
-      data-rendered-id={evento.id}
+      data-rendered-id={slugDoEvento(evento)}
     >
       <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
         <div class="flex flex-col gap-8 md:flex-row md:items-center">
-          <img
-            id="next-event-cover"
-            src={evento.data.cover || undefined}
-            alt={evento.data.coverAlt || evento.data.title}
-            class:list={[
-              "h-48 w-full rounded-2xl object-cover md:h-40 md:w-64 md:shrink-0",
-              { hidden: !evento.data.cover },
-            ]}
-            loading="eager"
-          />
+          <div
+            id="next-event-cover-wrap"
+            class="flex h-48 w-full items-center justify-center overflow-hidden rounded-2xl bg-white md:h-40 md:w-64 md:shrink-0"
+          >
+            <img
+              id="next-event-cover"
+              src={evento.data.cover || "/site/marcas/MaratonaUnB.svg"}
+              alt={evento.data.coverAlt || evento.data.title}
+              class:list={[
+                "h-full w-full object-contain",
+                { "p-4": !evento.data.cover },
+              ]}
+              loading="eager"
+            />
+          </div>
           <div>
             <p
               id="next-event-badge"
@@ -66,7 +78,7 @@ const eventosParaCliente = eventos.map((e) => ({
             <div class="mt-4 flex flex-wrap gap-4">
               <a
                 id="next-event-link"
-                href={`/eventos/${evento.id}`}
+                href={`/eventos/${slugDoEvento(evento)}`}
                 class="font-semibold text-primary hover:underline"
               >
                 Ver detalhes →
@@ -92,11 +104,15 @@ const eventosParaCliente = eventos.map((e) => ({
   )
 }
 
-<script type="application/json" id="next-event-data" set:html={JSON.stringify(eventosParaCliente)} />
+<script
+  type="application/json"
+  id="next-event-data"
+  set:html={JSON.stringify(eventosParaCliente)}
+/>
 
 <script>
   interface EventoCliente {
-    id: string;
+    slug: string;
     title: string;
     date: string;
     local: string | null;
@@ -133,10 +149,11 @@ const eventosParaCliente = eventos.map((e) => ({
     // de futuro para passado sem trocar de id (ex.: hoje passou da data do
     // único evento cadastrado). Por isso sempre reconcilia tudo, mesmo
     // quando o id é igual ao renderizado no build.
-    section.dataset.renderedId = evento.id;
+    section.dataset.renderedId = evento.slug;
 
     const badge = document.getElementById("next-event-badge");
-    if (badge) badge.textContent = isFuturo ? "🏆 Próximo Evento" : "Último Evento";
+    if (badge)
+      badge.textContent = isFuturo ? "🏆 Próximo Evento" : "Último Evento";
 
     const title = document.getElementById("next-event-title");
     if (title) title.textContent = evento.title;
@@ -149,28 +166,32 @@ const eventosParaCliente = eventos.map((e) => ({
         day: "numeric",
         timeZone: "UTC",
       });
-      meta.textContent = evento.local ? `${dataFormatada} · ${evento.local}` : dataFormatada;
+      meta.textContent = evento.local
+        ? `${dataFormatada} · ${evento.local}`
+        : dataFormatada;
     }
 
-    const link = document.getElementById("next-event-link") as HTMLAnchorElement | null;
-    if (link) link.href = `/eventos/${evento.id}`;
+    const link = document.getElementById(
+      "next-event-link",
+    ) as HTMLAnchorElement | null;
+    if (link) link.href = `/eventos/${evento.slug}`;
 
-    const signup = document.getElementById("next-event-signup") as HTMLAnchorElement | null;
+    const signup = document.getElementById(
+      "next-event-signup",
+    ) as HTMLAnchorElement | null;
     if (signup) {
       const mostrar = isFuturo && !!evento.inscricoesUrl;
       signup.classList.toggle("hidden", !mostrar);
       if (evento.inscricoesUrl) signup.href = evento.inscricoesUrl;
     }
 
-    const cover = document.getElementById("next-event-cover") as HTMLImageElement | null;
+    const cover = document.getElementById(
+      "next-event-cover",
+    ) as HTMLImageElement | null;
     if (cover) {
-      if (evento.cover) {
-        cover.src = evento.cover;
-        cover.alt = evento.coverAlt || evento.title;
-        cover.classList.remove("hidden");
-      } else {
-        cover.classList.add("hidden");
-      }
+      cover.src = evento.cover || "/site/marcas/MaratonaUnB.svg";
+      cover.alt = evento.coverAlt || evento.title;
+      cover.classList.toggle("p-4", !evento.cover);
     }
   }
 
