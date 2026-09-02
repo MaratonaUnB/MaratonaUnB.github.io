@@ -61,16 +61,14 @@ const metadata = {
       </div>
 
       <div
-        class:list={[
-          "reveal relative mb-8 h-96 w-full overflow-hidden rounded-xl shadow-lg",
-          { "flex items-center justify-center bg-muted": !image },
-        ]}
+        class="reveal relative mb-8 flex h-96 w-full items-center justify-center overflow-hidden rounded-xl bg-white shadow-lg"
       >
         <img
           src={image || "/site/marcas/MaratonaUnB.svg"}
           alt={title}
           class:list={[
-            image ? "h-full w-full object-cover" : "h-40 w-40 object-contain",
+            "object-contain",
+            image ? "h-full w-full p-8" : "h-40 w-40",
           ]}
         />
       </div>

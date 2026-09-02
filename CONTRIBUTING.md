@@ -126,6 +126,19 @@ errado:
 | `public/blog/`          | Foto **exclusiva de uma notícia**                                                                                                                                     | `image:` em `src/content/blog/*.md`               |
 | `public/eventos/<ano>/` | Capa/cartaz **de um evento específico** (ou a raiz `public/eventos/`, sem ano, para uma imagem genérica reaproveitada em vários eventos, como o logo da Maratona SBC) | `cover:` em `src/content/eventos/<ano>/*.md`      |
 | `public/galeria/`       | Fotos **soltas** da página `/galeria` (não pertencem a nenhum arquivo de conteúdo específico)                                                                         | array `fotos` direto em `src/pages/galeria.astro` |
+| `public/site/hero/`     | Fotos do **hero da home** (a faixa grande no topo, com o título por cima)                                                                                             | nenhuma — lidas automaticamente, ver abaixo       |
+
+### Fotos do hero da home
+
+Diferente das outras, essa pasta **não precisa editar nenhum arquivo de
+código nem apontar caminho em lugar nenhum**: toda imagem (`.jpg`, `.jpeg`,
+`.png` ou `.webp`) colocada em `public/site/hero/` entra automaticamente no
+sorteio — a cada carregamento da home, o site escolhe uma aleatoriamente
+para mostrar. Para adicionar uma foto nova, é só subir o arquivo nessa pasta
+(Add file → Upload files) e abrir o PR; para remover uma foto do sorteio,
+basta apagar o arquivo. Prefira fotos horizontais e com boa iluminação no
+centro, já que o texto do título fica sobreposto por cima com um degradê
+escuro.
 
 Regra prática: **cada imagem tem um dono só**. Não aponte o `image:` de uma
 notícia para uma foto que já é a `cover:` de um evento (nem vice-versa) —

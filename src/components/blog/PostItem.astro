@@ -18,19 +18,14 @@ const readingTime = remarkPluginFrontmatter?.minutesRead
   class="reveal group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
 >
   <div
-    class:list={[
-      "relative h-48 w-full overflow-hidden",
-      { "flex items-center justify-center bg-muted": !post.data.image },
-    ]}
+    class="relative flex h-48 w-full items-center justify-center overflow-hidden bg-white"
   >
     <img
       src={post.data.image || "/site/marcas/MaratonaUnB.svg"}
       alt={post.data.title}
       class:list={[
-        "transition-transform duration-300 group-hover:scale-105",
-        post.data.image
-          ? "h-full w-full object-cover"
-          : "h-24 w-24 object-contain",
+        "object-contain transition-transform duration-300 group-hover:scale-105",
+        post.data.image ? "h-full w-full p-4" : "h-24 w-24",
       ]}
     />
   </div>
