@@ -9,19 +9,19 @@ const metadata = {
 };
 
 const professoresUnb = [
-  "Daniel Porto",
-  "Guilherme N. Ramos",
-  "Vinicius Borges",
-  "Edson Alves",
-  "Bruno Ribas",
+  { nome: "Daniel Porto", campus: "Darcy", url: "https://www.porto.ooo/" },
+  { nome: "Guilherme N. Ramos", campus: "Darcy", url: "https://gnramos.github.io/" },
+  { nome: "Vinicius Borges", campus: "Darcy", url: "https://viniciusrpb.github.io/" },
+  { nome: "Edson Alves", campus: "FCTE", url: "https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=2379711" },
+  { nome: "Bruno Ribas", campus: "FCTE", url: "https://www.brunoribas.com.br/" },
 ];
 
 const maratonaDf = [
-  { nome: "Daniel Saad", instituicao: "IFB" },
-  { nome: "Patrícia Moscariello", instituicao: "IESB" },
-  { nome: "Jeremias Gomes", instituicao: "IDP" },
-  { nome: "Lucas Matiolli", instituicao: null },
-  { nome: "José Marcos Leite", instituicao: null },
+  { nome: "Daniel Saad", instituicao: "IFB", url: "https://danielsaad.com/" },
+  { nome: "Jeremias Gomes", instituicao: "IDP", url: "http://lattes.cnpq.br/2763236451009811" },
+  { nome: "Patrícia Moscariello", instituicao: "IESB", url: "http://lattes.cnpq.br/8361567725406769" },
+  { nome: "Lucas Matiolli", instituicao: null, url: "#" },
+  { nome: "José Marcos Leite", instituicao: null, url: "#" },
 ];
 ---
 
@@ -48,9 +48,11 @@ const maratonaDf = [
     <h2 class="mt-14 text-2xl font-bold text-foreground">Professores da UnB</h2>
     <ul class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
       {
-        professoresUnb.map((nome) => (
+        professoresUnb.map((p) => (
           <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium text-foreground">
-            {nome}
+            <a href={d.url} target="_blank" rel="noopener noreferrer">
+              {p.nome}
+            </a> — ({p.campus})
           </li>
         ))
       }
@@ -73,7 +75,9 @@ const maratonaDf = [
       {
         maratonaDf.map((pessoa) => (
           <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium text-foreground">
-            {pessoa.nome}
+            <a href={pessoa.url} target="_blank" rel="noopener noreferrer">
+              {pessoa.nome}
+            </a>
             {pessoa.instituicao && (
               <span class="text-muted-foreground"> — {pessoa.instituicao}</span>
             )}
