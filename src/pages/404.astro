@@ -1,6 +1,8 @@
 ---
+import { Icon } from "astro-icon/components";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Hero from "@/components/widgets/Hero.astro";
+import Button from "@/components/ui/Button.astro";
+import { siteConfig } from "@/config/site";
 
 const metadata = {
   title: "404 - Página não encontrada",
@@ -10,22 +12,262 @@ const metadata = {
 ---
 
 <BaseLayout {metadata}>
-  <Hero
-    title={`<h1 class="bg-linear-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent text-[12rem] font-extrabold tracking-tighter mb-4">404</h1>`}
-    description="Não conseguimos encontrar a página que você procura. Ela pode ter sido movida ou removida."
-    actions={[
-      {
-        variant: "primary",
-        text: "Voltar para a Home",
-        href: "/",
-        icon: "lucide:home",
-      },
-      {
-        variant: "secondary",
-        text: "Contato",
-        href: "/contact",
-        icon: "lucide:mail",
-      },
-    ]}
-  />
+  <section class="flex justify-center px-4 py-20 sm:py-28">
+    <div class="flex w-full max-w-3xl flex-col gap-12">
+      <div
+        class="flex items-center justify-between border-b border-border pb-4 font-mono text-xs tracking-wide text-muted-foreground"
+      >
+        <span>juiz online · submissões</span>
+        <span>#404</span>
+      </div>
+
+      <div class="flex flex-col gap-10">
+        <div class="flex flex-wrap items-end gap-6 sm:gap-10">
+          <div
+            class="text-[6.5rem] leading-[0.8] font-extrabold tracking-tighter text-primary sm:text-[9rem]"
+          >
+            404
+          </div>
+          <div class="flex flex-col gap-2 pb-2">
+            <div
+              class="font-mono text-sm font-bold tracking-[0.16em] text-[var(--accent)]"
+            >
+              NOT FOUND
+            </div>
+            <div class="text-xl font-semibold tracking-tight sm:text-2xl">
+              Página não aceita.
+            </div>
+          </div>
+
+          <div
+            class="relative ml-auto flex h-[196px] w-[150px] items-start justify-center self-end"
+          >
+            <div
+              id="shards"
+              class="pointer-events-none absolute top-[44%] left-1/2 z-10 h-0 w-0"
+            >
+              <span
+                class="shard bg-[var(--accent)]"
+                style="width:9px;height:9px;"></span>
+              <span class="shard bg-primary" style="width:6px;height:13px;"
+              ></span>
+              <span
+                class="shard bg-[var(--accent)]"
+                style="width:11px;height:5px;"></span>
+              <span
+                class="shard rounded-full bg-primary"
+                style="width:7px;height:7px;"></span>
+              <span
+                class="shard bg-[var(--accent)]"
+                style="width:5px;height:14px;"></span>
+              <span class="shard bg-primary" style="width:9px;height:9px;"
+              ></span>
+              <span
+                class="shard bg-[var(--accent)]"
+                style="width:13px;height:4px;"></span>
+              <span
+                class="shard rounded-full bg-primary"
+                style="width:6px;height:6px;"></span>
+              <span
+                class="shard bg-[var(--accent)]"
+                style="width:4px;height:12px;"></span>
+              <span class="shard bg-primary" style="width:10px;height:6px;"
+              ></span>
+              <span
+                class="shard bg-[var(--accent)]"
+                style="width:7px;height:7px;"></span>
+              <span
+                class="shard rounded-full bg-primary"
+                style="width:5px;height:5px;"></span>
+            </div>
+            <div id="balloon" class="relative h-[170px] w-[130px] opacity-0">
+              <div class="h-[170px] w-[130px] animate-float">
+                <div
+                  class="h-[170px] w-[130px]"
+                  style="clip-path:path('M65 3 C99 3 127 34 127 76 C127 112 106 140 84 152 C74 157 72 160 72 166 L58 166 C58 160 56 157 46 152 C24 140 3 112 3 76 C3 34 31 3 65 3 Z'); background:radial-gradient(circle at 34% 25%, color-mix(in oklch, var(--primary) 55%, white), var(--primary) 76%);"
+                >
+                </div>
+                <div
+                  class="absolute bottom-[-30px] left-1/2 h-[30px] w-px"
+                  style="background:linear-gradient(var(--primary), var(--border));"
+                >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="grid grid-cols-2 gap-x-6 gap-y-6 border-t border-border pt-6 sm:grid-cols-4"
+        >
+          <div class="flex flex-col gap-1.5">
+            <div
+              class="font-mono text-[11px] tracking-[0.12em] text-muted-foreground"
+            >
+              PROBLEMA
+            </div>
+            <div id="path" class="truncate font-mono text-sm">/</div>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <div
+              class="font-mono text-[11px] tracking-[0.12em] text-muted-foreground"
+            >
+              TESTE
+            </div>
+            <div class="font-mono text-sm">404 / 404</div>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <div
+              class="font-mono text-[11px] tracking-[0.12em] text-muted-foreground"
+            >
+              TEMPO
+            </div>
+            <div class="font-mono text-sm">0.004 s</div>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <div
+              class="font-mono text-[11px] tracking-[0.12em] text-muted-foreground"
+            >
+              BALÕES ESTOURADOS
+            </div>
+            <div class="font-mono text-sm">1</div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2.5">
+          <div class="h-1.5 overflow-hidden rounded-full bg-muted">
+            <div
+              class="h-1.5 w-[96%] animate-runbar rounded-full bg-[var(--accent)]"
+            >
+            </div>
+          </div>
+          <div class="font-mono text-xs text-muted-foreground">
+            avaliação interrompida no último caso de teste
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-3 pt-2">
+          <Button href="/" variant="primary">
+            <Icon name="lucide:home" class="-ml-1 mr-2 h-5 w-5" />
+            Voltar para a Home
+          </Button>
+          <Button href={`mailto:${siteConfig.email}`} variant="secondary">
+            <Icon name="lucide:mail" class="-ml-1 mr-2 h-5 w-5" />
+            Contato
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  @keyframes floaty {
+    0%,
+    100% {
+      transform: translateY(-7px) rotate(-2deg);
+    }
+    50% {
+      transform: translateY(9px) rotate(2deg);
+    }
+  }
+  @keyframes runbar {
+    0% {
+      width: 0%;
+    }
+    70%,
+    100% {
+      width: 96%;
+    }
+  }
+  .animate-float {
+    animation: floaty 4.6s ease-in-out infinite;
+    transform-origin: 50% 92%;
+  }
+  .animate-runbar {
+    animation: runbar 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  #balloon {
+    transform-origin: 50% 92%;
+  }
+  .shard {
+    position: absolute;
+    opacity: 0;
+  }
+</style>
+
+<script>
+  function setupBalloon() {
+    const pathEl = document.getElementById("path");
+    if (pathEl) pathEl.textContent = window.location.pathname || "/";
+
+    const balloon = document.getElementById("balloon");
+    const shardsWrap = document.getElementById("shards");
+    if (!balloon || !shardsWrap) return;
+
+    let timer: ReturnType<typeof setTimeout>;
+
+    async function pop() {
+      if (!balloon) return;
+      clearTimeout(timer);
+      balloon.getAnimations().forEach((a) => a.cancel());
+      balloon.style.opacity = "1";
+
+      const rise = 1500;
+      balloon.animate(
+        [
+          { transform: "translateY(110px) scale(.9)", opacity: 0 },
+          {
+            transform: "translateY(70px) scale(.94)",
+            opacity: 1,
+            offset: 0.25,
+          },
+          { transform: "translateY(0px) scale(1)", opacity: 1 },
+        ],
+        {
+          duration: rise,
+          easing: "cubic-bezier(.25,.8,.3,1)",
+          fill: "forwards",
+        },
+      );
+      await new Promise((r) => setTimeout(r, rise + 380));
+
+      balloon.animate(
+        [{ transform: "scale(1,1)" }, { transform: "scale(1.16,1.08)" }],
+        { duration: 170, easing: "ease-in", fill: "forwards" },
+      );
+      await new Promise((r) => setTimeout(r, 175));
+      balloon.animate([{ opacity: 0 }, { opacity: 0 }], {
+        duration: 30,
+        fill: "forwards",
+      });
+
+      const kids = Array.from(shardsWrap?.children ?? []);
+      const spread = 130;
+      kids.forEach((el, i) => {
+        const a = (i / kids.length) * Math.PI * 2 + 0.35;
+        const d = spread * (0.55 + ((i * 7) % 5) / 6);
+        (el as HTMLElement).animate(
+          [
+            { transform: "translate(0,0) rotate(0deg)", opacity: 1 },
+            {
+              transform: `translate(${Math.cos(a) * d}px, ${Math.sin(a) * d + 40}px) rotate(${140 + i * 47}deg)`,
+              opacity: 0,
+            },
+          ],
+          {
+            duration: 780 + (i % 4) * 160,
+            easing: "cubic-bezier(.15,.7,.3,1)",
+            fill: "forwards",
+          },
+        );
+      });
+
+      timer = setTimeout(pop, 1600);
+    }
+
+    timer = setTimeout(pop, 600);
+  }
+
+  document.addEventListener("astro:page-load", setupBalloon);
+</script>
