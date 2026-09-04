@@ -1,75 +1,75 @@
----
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import PageHeader from "@/components/widgets/PageHeader.astro";
-import { siteConfig } from "@/config/site";
+  ---
+  import BaseLayout from "@/layouts/BaseLayout.astro";
+  import PageHeader from "@/components/widgets/PageHeader.astro";
+  import { siteConfig } from "@/config/site";
 
-const metadata = {
-  title: "Perguntas frequentes",
-  description: "Dúvidas comuns sobre inscrição, elegibilidade e formato das competições da Maratona UnB.",
-};
+  const metadata = {
+    title: "Perguntas frequentes",
+    description: "Dúvidas comuns sobre inscrição, elegibilidade e formato das competições da Maratona UnB.",
+  };
 
-const faqs = [
-  {
-    pergunta: "O que é a Maratona UnB de Programação?",
-    resposta:
-      "Organização de docentes, alunos e interessados na realização de atividades de <a href="https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_competitiva" target="_blank" rel="noopener noreferrer">programação competitiva</a> no contexto da Universidade de Brasília.",
-  },
-  {
-    pergunta: "Quem pode participar das Atividades da Maratona UnB de Programação?",
-    resposta:
-      "Estudantes de qualquer instituição do Ensino Médio ou Superior. Não é necessário ser da área de Computação — qualquer estudante interessado em resolver problemas de programação pode participar. Geralmente, os eventos de Ensino Superior envolvem times de três pessoas.",
-  },
-  {
-    pergunta: "Quem pode participar da Maratona SBC de Programação?",
-    resposta:
-      "Estudantes de instituição do Ensino Superior, em times de três pessoas, conforme o <a href="https://maratona.sbc.org.br/sobre/regras.html" target="_blank" rel="noopener noreferrer">regulamento vigente</a>. Qualquer um pode treinar com a UnB, mas a participação depende de um representante da sua própria instituição",
-  },
-  {
-    pergunta: "E o Ensino Médio, pode participar de alguma competição?",
-    resposta:
-      "Sim, pela Olimpíada Brasileira de Informática, voltada a estudantes do ensino fundamental, médio e início do ensino superior. Veja os detalhes na página da <a href="https://olimpiada.ic.unicamp.br/" target="_blank" rel="noopener noreferrer">OBI</a>.",
-  },
-  {
-    pergunta: "Qual o formato da prova da Maratona SBC de Programação?",
-    resposta:
-      "Times de três pessoas resolvem, em conjunto, uma lista de problemas de programação em até cinco horas, usando um único computador por time. Vence quem resolver mais problemas, com menor tempo em caso de empate.",
-  },
-  {
-    pergunta: "Não sei programar o suficiente, posso participar mesmo assim?",
-    resposta:
-      "Sim! Dentre as muitas atividades realizadas temos grupos de estudo e cursos preparatórios em níveis iniciante, intermediário e avançado, abertos para quem quer aprender e evoluir, não só para quem já compete.",
-  },
-  {
-    pergunta: "Como faço parte desta comunidade entre uma edição e outra?",
-    resposta:
-      "Entrando no UnBalloon, o grupo de programação competitiva da UnB — é lá que saem os convites para grupos de estudo, formação de times e novidades sobre competições. Entre direto pelo <a href="${siteConfig.socialLinks.telegram}" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">grupo do Telegram</a>.`,
-  },
-];
----
+  const faqs = [
+    {
+      pergunta: "O que é a Maratona UnB de Programação?",
+      resposta:
+        `Organização de docentes, alunos e interessados na realização de atividades de <a href="https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_competitiva" target="_blank" rel="noopener noreferrer">programação competitiva</a> no contexto da Universidade de Brasília.`,
+    },
+    {
+      pergunta: "Quem pode participar das Atividades da Maratona UnB de Programação?",
+      resposta:
+        `Estudantes de qualquer instituição do Ensino Médio ou Superior. Não é necessário ser da área de Computação — qualquer estudante interessado em resolver problemas de programação pode participar. Geralmente, os eventos de Ensino Superior envolvem times de três pessoas.`,
+    },
+    {
+      pergunta: "Quem pode participar da Maratona SBC de Programação?",
+      resposta:
+        `Estudantes de instituição do Ensino Superior, em times de três pessoas, conforme o <a href="https://maratona.sbc.org.br/sobre/regras.html" target="_blank" rel="noopener noreferrer">regulamento vigente</a>. Qualquer um pode treinar com a UnB, mas a participação depende de um representante da sua própria instituição`,
+    },
+    {
+      pergunta: "E o Ensino Médio, pode participar de alguma competição?",
+      resposta:
+        `Sim, pela Olimpíada Brasileira de Informática, voltada a estudantes do ensino fundamental, médio e início do ensino superior. Veja os detalhes na página da <a href="https://olimpiada.ic.unicamp.br/" target="_blank" rel="noopener noreferrer">OBI</a>.`,
+    },
+    {
+      pergunta: "Qual o formato da prova da Maratona SBC de Programação?",
+      resposta:
+        `Times de três pessoas resolvem, em conjunto, uma lista de problemas de programação em até cinco horas, usando um único computador por time. Vence quem resolver mais problemas, com menor tempo em caso de empate.`,
+    },
+    {
+      pergunta: "Não sei programar o suficiente, posso participar mesmo assim?",
+      resposta:
+        `Sim! Dentre as muitas atividades realizadas temos grupos de estudo e cursos preparatórios em níveis iniciante, intermediário e avançado, abertos para quem quer aprender e evoluir, não só para quem já compete.`,
+    },
+    {
+      pergunta: "Como faço parte desta comunidade entre uma edição e outra?",
+      resposta:
+        `Entrando no UnBalloon, o grupo de programação competitiva da UnB — é lá que saem os convites para grupos de estudo, formação de times e novidades sobre competições. Entre direto pelo <a href="${siteConfig.socialLinks.telegram}" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">grupo do Telegram</a>.`,
+    },
+  ];
+  ---
 
-<BaseLayout {metadata}>
-  <PageHeader title="Perguntas frequentes" />
-  <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-    <div class="divide-y divide-border rounded-2xl border border-border bg-card">
-      {
-        faqs.map((item) => (
-          <details class="group p-6">
-            <summary class="flex cursor-pointer list-none items-center justify-between font-semibold text-foreground">
-              {item.pergunta}
-              <span class="ml-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-45">
-                +
-              </span>
-            </summary>
-            <p class="mt-3 text-muted-foreground" set:html={item.resposta} />
-          </details>
-        ))
-      }
+  <BaseLayout {metadata}>
+    <PageHeader title="Perguntas frequentes" />
+    <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+      <div class="divide-y divide-border rounded-2xl border border-border bg-card">
+        {
+          faqs.map((item) => (
+            <details class="group p-6">
+              <summary class="flex cursor-pointer list-none items-center justify-between font-semibold text-foreground">
+                {item.pergunta}
+                <span class="ml-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <p class="mt-3 text-muted-foreground" set:html={item.resposta} />
+            </details>
+          ))
+        }
+      </div>
+      <p class="mt-8 text-center text-muted-foreground">
+        Ainda com dúvidas?
+        <a href={`mailto:${siteConfig.email}`} class="text-primary hover:underline">
+          Fale com a gente
+        </a>.
+      </p>
     </div>
-    <p class="mt-8 text-center text-muted-foreground">
-      Ainda com dúvidas?
-      <a href={`mailto:${siteConfig.email}`} class="text-primary hover:underline">
-        Fale com a gente
-      </a>.
-    </p>
-  </div>
-</BaseLayout>
+  </BaseLayout>
