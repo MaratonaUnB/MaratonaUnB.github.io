@@ -28,21 +28,13 @@ const maratonaDf = [
 <BaseLayout {metadata}>
   <PageHeader title="Organização" />
   <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-    <p class="text-lg leading-relaxed text-foreground">
-      O projeto de extensão <strong
-        >Maratona de Programação no Distrito Federal</strong
-      >
-      visa capacitar alunos do Ensino Médio interessados em computação e alunos do
-      Ensino Superior, por meio do ensino de programação de computadores em uma abordagem
-      baseada em programação competitiva.
-    </p>
     <p class="mt-6 text-lg leading-relaxed text-foreground">
       O time de professores e alunos da Universidade de Brasília (UnB) organiza
       grupos de estudo em programação competitiva para o público-alvo, nos
-      níveis intermediário e avançado, com o objetivo de aprimorar suas
+      níveis iniciante, intermediário e avançado, com o objetivo de aprimorar suas
       habilidades em programação, bem como na preparação para competições de
-      programação, como a <strong>Olimpíada Brasileira de Informática</strong> e a
-      <strong>Maratona SBC de Programação</strong>.
+      programação, como a <a href="https://olimpiada.ic.unicamp.br/" target="_blank" rel="noopener noreferrer">Olimpíada Brasileira de Informática</a> e a
+      <a href="https://maratona.sbc.org.br/" target="_blank" rel="noopener noreferrer">Maratona SBC de Programação</a>.
     </p>
 
     <h2 class="mt-14 text-2xl font-bold text-foreground">Professores da UnB</h2>
@@ -52,7 +44,7 @@ const maratonaDf = [
           <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium text-foreground">
             <a href={p.url} target="_blank" rel="noopener noreferrer">
               {p.nome}
-            </a> — ({p.campus})
+            </a> ({p.campus})
           </li>
         ))
       }
@@ -79,7 +71,7 @@ const maratonaDf = [
               {pessoa.nome}
             </a>
             {pessoa.instituicao && (
-              <span class="text-muted-foreground"> — {pessoa.instituicao}</span>
+              <span class="text-muted-foreground"> ({pessoa.instituicao})</span>
             )}
           </li>
         ))
