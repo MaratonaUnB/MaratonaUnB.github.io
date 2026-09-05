@@ -1,0 +1,192 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHeader from "@/components/widgets/PageHeader.astro";
+import { Icon } from "astro-icon/components";
+
+const metadata = {
+  title: "Sobre",
+  description:
+    "O que é programação competitiva e o que é a Maratona UnB de Programação: seus três eixos de atuação e as parcerias que a sustentam.",
+};
+
+const eixos = [
+  {
+    icon: "lucide:book-open",
+    titulo: "Ensino",
+    descricao:
+      "Treinamos estudantes para competições como OBI e ICPC, com grupos de estudo e cursos preparatórios em diferentes níveis.",
+  },
+  {
+    icon: "lucide:microscope",
+    titulo: "Pesquisa",
+    descricao:
+      "Coletamos e analisamos dados sobre o próprio processo de ensino, usando-os para melhorar a formação em computação e reduzir a evasão no ensino superior.",
+  },
+  {
+    icon: "lucide:sprout",
+    titulo: "Extensão",
+    descricao:
+      "Promovemos eventos e treinamentos abertos a toda a comunidade — inclusive ao Ensino Médio — como forma de contribuir com a sociedade do Distrito Federal.",
+  },
+];
+
+const parcerias = [
+  {
+    logo: "/site/marcas/MaratonaDF.png",
+    logoAlt: "Logo do Grupo Maratona DF",
+    titulo: "Grupo Maratona DF",
+    descricao:
+      "Uma rede de professores de outras instituições de ensino superior do Distrito Federal, que colabora na elaboração de problemas e na organização das competições.",
+    href: "/organizacao",
+  },
+  {
+    logo: "/site/marcas/unballoon.png",
+    logoAlt: "Logo do UnBalloon",
+    titulo: "Grupo UnBalloon",
+    descricao:
+      "A comunidade de alunos da UnB dedicada à programação competitiva: treinos, grupos de estudo e formação de times ao longo de todo o ano.",
+    href: "/unballoon",
+  },
+];
+
+const links = [
+  {
+    href: "/organizacao",
+    icon: "lucide:users",
+    title: "Organização",
+    descricao: "Quem são os professores e colaboradores por trás do projeto.",
+  },
+  {
+    href: "/depoimentos",
+    icon: "lucide:message-square-quote",
+    title: "Depoimentos",
+    descricao: "O que quem já competiu tem a dizer sobre a experiência.",
+  },
+  {
+    href: "/faq",
+    icon: "lucide:help-circle",
+    title: "Perguntas frequentes",
+    descricao: "Dúvidas comuns sobre inscrição, elegibilidade e formato.",
+  },
+  {
+    href: "/imprensa",
+    icon: "lucide:newspaper",
+    title: "Imprensa",
+    descricao: "Kit de imprensa e cobertura na mídia.",
+  },
+];
+---
+
+<BaseLayout {metadata}>
+  <PageHeader
+    title="Sobre"
+    subtitle="O que é programação competitiva e o que fazemos na UnB"
+    icon="lucide:info"
+  />
+  <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+    <h2 class="text-2xl font-bold text-foreground">
+      O que é programação competitiva?
+    </h2>
+    <p class="mt-4 text-lg leading-relaxed text-foreground">
+      Programação competitiva é uma modalidade de esporte da mente em que times
+      ou indivíduos resolvem, sob pressão de tempo, problemas de lógica e
+      algoritmos que exigem criatividade, domínio de estruturas de dados e
+      trabalho em equipe. É praticada em competições ao redor do mundo, das
+      quais as mais tradicionais são a Maratona SBC de Programação (etapa
+      brasileira do ICPC — International Collegiate Programming Contest) e a
+      Olimpíada Brasileira de Informática (OBI).
+    </p>
+    <p class="mt-4 text-lg leading-relaxed text-foreground">
+      Além de revelar talentos, essas competições desenvolvem habilidades muito
+      valorizadas no mercado de trabalho — resolução de problemas, implementação
+      sob pressão e colaboração em equipe — e por isso vêm ganhando espaço em
+      universidades e escolas de todo o país.
+    </p>
+
+    <h2 class="mt-14 text-2xl font-bold text-foreground">
+      A Maratona UnB de Programação
+    </h2>
+    <p class="mt-4 text-lg leading-relaxed text-foreground">
+      Na Universidade de Brasília, esse trabalho é conduzido pela
+      <strong>Maratona UnB de Programação</strong> — um grupo de professores e alunos
+      dos cursos de computação que atua em três eixos:
+    </p>
+
+    <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+      {
+        eixos.map((eixo) => (
+          <div class="rounded-2xl border border-border bg-card p-6">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <Icon name={eixo.icon} class="h-5 w-5" />
+            </span>
+            <h3 class="mt-4 font-bold text-foreground">{eixo.titulo}</h3>
+            <p class="mt-2 text-sm text-muted-foreground">{eixo.descricao}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <h2 class="mt-14 text-2xl font-bold text-foreground">Parcerias</h2>
+    <p class="mt-4 text-lg leading-relaxed text-foreground">
+      Além dos três eixos acima, a Maratona UnB de Programação conta com
+      parcerias que ampliam seu alcance:
+    </p>
+
+    <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      {
+        parcerias.map((parceria) => (
+          <a
+            href={parceria.href}
+            class="flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary"
+          >
+            <img
+              src={parceria.logo}
+              alt={parceria.logoAlt}
+              class="h-12 w-auto object-contain"
+            />
+            <div>
+              <h3 class="font-bold text-foreground">{parceria.titulo}</h3>
+              <p class="mt-2 text-sm text-muted-foreground">
+                {parceria.descricao}
+              </p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+
+    <h2 class="mt-14 text-2xl font-bold text-foreground">Saiba mais</h2>
+    <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class="flex items-start gap-3 rounded-2xl border border-border bg-card p-5 transition-colors hover:border-primary"
+          >
+            <Icon
+              name={link.icon}
+              class="mt-0.5 h-5 w-5 shrink-0 text-primary"
+            />
+            <span>
+              <span class="block font-semibold text-foreground">
+                {link.title}
+              </span>
+              <span class="mt-1 block text-sm text-muted-foreground">
+                {link.descricao}
+              </span>
+            </span>
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="mt-14 text-center">
+      <a
+        href="/por-que-competir"
+        class="inline-flex items-center gap-2 rounded-xl bg-foreground px-6 py-3 text-base font-bold text-background transition-all hover:bg-foreground/90"
+      >
+        Quero participar →
+      </a>
+    </div>
+  </div>
+</BaseLayout>

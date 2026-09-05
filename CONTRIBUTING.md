@@ -33,6 +33,20 @@ siga o fluxo que preferir.
    ```
 
    - `category` aceita: `noticias`, `extensao`, `eventos-anteriores`.
+   - `tags` é opcional, mas ajuda bastante na organização — escolha 1 a 3
+     da lista abaixo (podemos sempre sugerir uma nova tag no PR se nenhuma encaixar):
+
+     | Tag                 | Use para                                                                                             |
+     | ------------------- | ---------------------------------------------------------------------------------------------------- |
+     | `maratona-unb`      | Notícias sobre a própria Maratona UnB de Programação (o evento anual)                                |
+     | `icpc`              | ICPC / Maratona SBC de Programação e suas fases                                                      |
+     | `obi`               | Olimpíada Brasileira de Informática                                                                  |
+     | `maratona-feminina` | Maratona/Competição Feminina de Programação                                                          |
+     | `ieeextreme`        | IEEExtreme                                                                                           |
+     | `unballoon`         | Atividades do grupo estudantil UnBalloon                                                             |
+     | `extensao`          | Cursos preparatórios, grupos de estudo, editais do projeto                                           |
+     | `resultado`         | Resultado/classificação de uma competição (combine com a tag do evento, ex. `["icpc", "resultado"]`) |
+
    - `image` é opcional — se tiver uma foto **específica dessa notícia**,
      suba o arquivo em `public/blog/` e referencie o caminho, ex.:
      `image: "/blog/minha-foto.jpg"`. Não reaproveite fotos de
@@ -86,16 +100,26 @@ mais nenhuma lista para editar à parte.
    title: "XV Maratona UnB de Programação"
    date: 2027-09-20
    local: "LINF — Laboratório de Informática, Campus Darcy Ribeiro"
+   horario: "8h" # opcional, horário de início
+   mapaUrl: "https://goo.gl/maps/..." # opcional, vira o link "Ver mapa"
    status: "confirmado"
    temPagina: true
    destaque: true # disputa o "🏆 Próximo Evento" da home
    cover: "/eventos/2027/xv-maratona-unb.jpg" # opcional
    coverAlt: "Descrição da imagem" # opcional
-   inscricoesUrl: "https://..." # opcional, vira botão "Inscreva-se"
+   inscricoesUrl: "https://..." # opcional, vira o botão "Inscreva-se"
    ---
 
-   Detalhes do evento em Markdown.
+   Um parágrafo (ou poucos) descrevendo o evento em Markdown — sem
+   precisar repetir data/horário/local aqui, pois isso já vira um card
+   automático logo abaixo da capa, montado a partir dos campos acima.
    ```
+
+   Não é preciso escrever `## Resumo` nem uma lista de bullets com
+   Evento/Data/Local — esses dados já aparecem no card. O corpo em
+   Markdown é só para o texto livre (descrição, cronograma, links extras
+   etc.). O botão de inscrição e a seção de dúvidas (com o e-mail de
+   contato) também são automáticos — não precisa adicioná-los no Markdown.
 
    Sem `temPagina: true`, o evento aparece só como linha na tabela (é o caso
    da maioria — fases de OBI, ICPC, competições externas). `destaque: true`

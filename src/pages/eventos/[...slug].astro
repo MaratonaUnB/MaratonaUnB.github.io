@@ -1,12 +1,15 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Schema from "@/components/seo/Schema.astro";
+import Button from "@/components/ui/Button.astro";
+import { Icon } from "astro-icon/components";
 import { getCollection, render } from "astro:content";
 import {
   getEventosOrdenados,
   getProximoEvento,
   slugDoEvento,
 } from "@/lib/eventos";
+import { siteConfig } from "@/config/site";
 
 export async function getStaticPaths() {
   const eventos = await getCollection("eventos");
@@ -20,7 +23,8 @@ export async function getStaticPaths() {
 
 const { evento } = Astro.props;
 const { Content } = await render(evento);
-const { title, date, local, cover, coverAlt } = evento.data;
+const { title, date, local, horario, mapaUrl, cover, coverAlt, inscricoesUrl } =
+  evento.data;
 
 const eventosOrdenados = await getEventosOrdenados();
 const { evento: proximo } = getProximoEvento(eventosOrdenados);
@@ -67,10 +71,6 @@ const metadata = {
         >
           {title}
         </h1>
-        <p class="mt-3 text-sm font-medium text-muted-foreground">
-          {formattedDate}
-          {local && ` · ${local}`}
-        </p>
       </div>
 
       {
@@ -86,9 +86,124 @@ const metadata = {
       }
 
       <div
-        class="reveal prose prose-lg mx-auto prose-headings:text-foreground prose-a:text-primary hover:prose-a:underline prose-p:text-muted-foreground prose-strong:text-foreground prose-li:text-muted-foreground"
+        class="reveal divide-y divide-border rounded-2xl border border-border bg-card"
+      >
+        <div class="flex items-center gap-3 p-4">
+          <Icon name="lucide:ticket" class="h-5 w-5 shrink-0 text-primary" />
+          <div>
+            <div
+              class="text-xs font-semibold uppercase tracking-wide text-muted-foreground"
+            >
+              Evento
+            </div>
+            <div class="mt-0.5 text-sm font-medium text-foreground">
+              {title}
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 p-4">
+          <Icon name="lucide:calendar" class="h-5 w-5 shrink-0 text-primary" />
+          <div>
+            <div
+              class="text-xs font-semibold uppercase tracking-wide text-muted-foreground"
+            >
+              Data
+            </div>
+            <div class="mt-0.5 text-sm font-medium text-foreground">
+              {formattedDate}
+            </div>
+          </div>
+        </div>
+
+        {
+          horario && (
+            <div class="flex items-center gap-3 p-4">
+              <Icon name="lucide:clock" class="h-5 w-5 shrink-0 text-primary" />
+              <div>
+                <div class="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  Início
+                </div>
+                <div class="mt-0.5 text-sm font-medium text-foreground">
+                  {horario}
+                </div>
+              </div>
+            </div>
+          )
+        }
+
+        {
+          local && (
+            <div class="flex items-center gap-3 p-4">
+              <Icon
+                name="lucide:map-pin"
+                class="h-5 w-5 shrink-0 text-primary"
+              />
+              <div>
+                <div class="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  Local
+                </div>
+                <div class="mt-0.5 text-sm font-medium text-foreground">
+                  {local}
+                </div>
+              </div>
+            </div>
+          )
+        }
+
+        {
+          mapaUrl && (
+            <a
+              href={mapaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-3 p-4 transition-colors hover:bg-muted"
+            >
+              <Icon name="lucide:map" class="h-5 w-5 shrink-0 text-primary" />
+              <div class="text-sm font-semibold text-primary">
+                Ver no mapa →
+              </div>
+            </a>
+          )
+        }
+      </div>
+
+      <div
+        class="reveal prose prose-lg mx-auto mt-8 prose-headings:text-foreground prose-a:text-primary hover:prose-a:underline prose-p:text-muted-foreground prose-strong:text-foreground prose-li:text-muted-foreground"
       >
         <Content />
+      </div>
+
+      {
+        inscricoesUrl && (
+          <div class="reveal mt-10 rounded-2xl border border-border bg-card p-6 text-center">
+            <h2 class="text-lg font-bold text-foreground">Inscrições</h2>
+            <p class="mt-2 text-sm text-muted-foreground">
+              Garanta a vaga do seu time — inscrições abertas.
+            </p>
+            <div class="mt-4">
+              <Button href={inscricoesUrl} variant="primary">
+                <Icon name="lucide:pencil-line" class="-ml-1 mr-2 h-5 w-5" />
+                Inscreva-se
+              </Button>
+            </div>
+          </div>
+        )
+      }
+
+      <div
+        class="reveal mt-10 rounded-2xl border border-border bg-card p-6 text-center"
+      >
+        <h2 class="text-lg font-bold text-foreground">Dúvidas</h2>
+        <p class="mt-2 text-sm text-muted-foreground">
+          Qualquer pergunta sobre o evento, fale com a gente:
+          <a
+            href={`mailto:${siteConfig.email}`}
+            class="font-semibold text-primary hover:underline"
+          >
+            {siteConfig.email}
+          </a>
+        </p>
       </div>
 
       <div class="reveal mt-10 text-center">

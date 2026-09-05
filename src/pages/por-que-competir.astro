@@ -10,23 +10,47 @@ const metadata = {
 };
 
 const exCompetidores = [
-  "Arthur Komatsu", "Belphy Starling", "Bruna Moreira", "Caio Brandão",
-  "Carolina Estrella", "Clara Caldeira", "Claudio Segala", "Diego Aranha",
-  "Felipe Chaves", "Felipe Duerno", "Gabriel Taumaturgo", "Guilherme de Lima",
-  "Gustavo Marques", "Itallo Lucas", "José Marcos Leite", "Lucas Mattioli",
-  "Marlon Mendes", "Matheus Pimenta", "Parley Martins", "Renata dos Santos",
-  "Rodrigo Siqueira", "Rommel Carvalho", "Sabryna Moura", "Simião Carvalho",
-  "Thiago Machado", "Tiago Fernandes",
+  "Alberto Tavares",
+  // "Arthur Komatsu",
+  // "Belphy Starling",
+  // "Bruna Moreira",
+  // "Caio Brandão",
+  // "Carolina Estrella",
+  // "Clara Caldeira",
+  // "Claudio Segala",
+  "Daniel Saad",
+  "Diego Aranha",
+  // "Felipe Chaves",
+  "Felipe Duerno",
+  // "Gabriel Taumaturgo",
+  // "Guilherme de Lima",
+  // "Gustavo Marques",
+  "Iasmim Freitas",
+  // "Itallo Lucas",
+  "José Marcos Leite",
+  "Lucas Mattioli",
+  "Marlon Mendes",
+  "Matheus Pimenta",
+  "Maria Eduarda Carvalho (Duda)",
+  // "Parley Martins",
+  "Rafael Chehab",
+  // "Renata dos Santos",
+  // "Rodrigo Siqueira",
+  // "Rommel Carvalho",
+  // "Sabryna Moura",
+  "Simião Carvalho",
+  // "Thiago Machado",
+  "Tiago Fernandes",
 ];
 ---
 
 <BaseLayout {metadata}>
-  <PageHeader title="Por que competir?" />
+  <PageHeader title="Por que competir?" icon="lucide:rocket" />
   <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
     <p class="text-lg leading-relaxed text-foreground">
-      Se participar do "maior, mais antigo e mais prestigiado
-      concurso de programação do mundo" ainda não é suficiente, você pode
-      considerar os seguintes pontos:
+      Se participar do "maior, mais antigo e mais prestigiado concurso de
+      programação do mundo" ainda não é suficiente, você pode considerar os
+      seguintes pontos:
     </p>
 
     <div class="mt-8 space-y-6">
@@ -53,20 +77,25 @@ const exCompetidores = [
           3. Valorização do Currículo
         </h2>
         <p class="mt-2 text-muted-foreground">
-          A competição tem alcance mundial, permitindo a comparação direta
-          entre equipes de diferentes países e instituições.
+          A competição tem alcance mundial, permitindo a comparação direta entre
+          equipes de diferentes países e instituições.
         </p>
       </div>
     </div>
 
     <p class="mt-8 text-lg font-medium text-foreground">
       Quer saber mais?
-      <a href={`mailto:${siteConfig.email}`} class="text-primary hover:underline">
+      <a
+        href={`mailto:${siteConfig.email}`}
+        class="text-primary hover:underline"
+      >
         Entre em contato!
       </a>
     </p>
 
-    {/* TODO(Daniel): confirmar se esta lista de nomes está correta e atualizada antes de divulgar a página amplamente. */}
+    {
+      /* TODO(Daniel): confirmar se esta lista de nomes está correta e atualizada antes de divulgar a página amplamente. */
+    }
     <h2 class="mt-16 text-2xl font-bold text-foreground">Ex-competidores</h2>
     <p class="mt-2 text-muted-foreground">
       Os maratonistas são referência de excelência entre os alunos da UnB, e

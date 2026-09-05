@@ -12,14 +12,29 @@ const metadata = {
 const recursos = [
   { text: "Telegram", href: siteConfig.socialLinks.telegram },
   { text: "Discord", href: siteConfig.socialLinks.discord },
-  { text: "CodeForces (Grupo Maratonas DF)", href: siteConfig.socialLinks.codeforcesGroup },
-  { text: "CodeForces (Contests)", href: siteConfig.socialLinks.codeforcesContests },
+  {
+    text: "CodeForces (Grupo Maratonas DF)",
+    href: siteConfig.socialLinks.codeforcesGroup,
+  },
+  {
+    text: "CodeForces (Contests)",
+    href: siteConfig.socialLinks.codeforcesContests,
+  },
   { text: "Repositório de Bruxarias", href: siteConfig.socialLinks.github },
-  { text: "YouTube do Mestre dos Magos", href: "https://www.youtube.com/watch?v=srM35lUn7w4&list=PLbkzuS_3Evj_bgzKIiJ3RyvVkabTNl9-y" },
-  { text: "Playlist de Programação Competitiva do CIC", href: siteConfig.socialLinks.youtube },
+  {
+    text: "YouTube do Mestre dos Magos",
+    href: "https://www.youtube.com/watch?v=srM35lUn7w4&list=PLbkzuS_3Evj_bgzKIiJ3RyvVkabTNl9-y",
+  },
+  {
+    text: "Playlist de Programação Competitiva do CIC",
+    href: siteConfig.socialLinks.youtube,
+  },
   // Instagram próprio do grupo UnBalloon — diferente do Instagram
   // institucional da Maratona (@maratona.unb, usado no header/footer).
-  { text: "Instagram (@unballooon)", href: "https://www.instagram.com/unballooon/" },
+  {
+    text: "Instagram (@unballooon)",
+    href: "https://www.instagram.com/unballooon/",
+  },
 ];
 ---
 
@@ -27,12 +42,15 @@ const recursos = [
   <PageHeader
     title="UnBalloon"
     subtitle="O grupo de programação competitiva da Universidade de Brasília"
+    icon="lucide:balloon"
+    logo="/site/marcas/unballoon.png"
+    logoAlt="Logo do UnBalloon"
   />
   <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
     <p class="text-lg leading-relaxed text-foreground">
       Você quer participar de competições de programação e adora desafios?
-      Junte-se ao <strong>UnBalloon</strong>, o grupo de programação
-      competitiva da Universidade de Brasília! Aqui, você encontrará:
+      Junte-se ao <strong>UnBalloon</strong>, o grupo de programação competitiva
+      da Universidade de Brasília! Aqui, você encontrará:
     </p>
     <ul class="mt-4 list-disc space-y-2 pl-6 text-muted-foreground">
       <li>Outros maratonistas para trocar experiências e formar equipes;</li>

@@ -16,7 +16,8 @@ export const siteConfig = {
     telegram: "https://t.me/unballoon",
     discord: "https://discord.com/invite/9AETUBmJJd",
     instagram: "https://www.instagram.com/maratona.unb/",
-    youtube: "https://www.youtube.com/playlist?list=PLHOnuxlEMZkqKSbMn4UIFEl3O8vyo9lCV",
+    youtube:
+      "https://www.youtube.com/playlist?list=PLHOnuxlEMZkqKSbMn4UIFEl3O8vyo9lCV",
     github: "https://github.com/UnBalloon/",
     codeforcesGroup: "https://codeforces.com/group/btcK4I5D5f/blog",
     codeforcesContests: "https://codeforces.com/group/nituVTsHQX/contests",
@@ -24,7 +25,11 @@ export const siteConfig = {
   },
   // Ícones exibidos no header/footer (subconjunto de socialLinks acima).
   headerSocialLinks: [
-    { text: "Instagram", href: "https://www.instagram.com/maratona.unb/", icon: "lucide:instagram" },
+    {
+      text: "Instagram",
+      href: "https://www.instagram.com/maratona.unb/",
+      icon: "lucide:instagram",
+    },
     { text: "Telegram", href: "https://t.me/unballoon", icon: "lucide:send" },
   ],
   supporters: [
@@ -37,36 +42,60 @@ export const siteConfig = {
   navLinks: [
     {
       text: "Sobre",
-      href: "/organizacao",
+      href: "/sobre",
+      icon: "lucide:info",
       links: [
-        { text: "Organização", href: "/organizacao" },
-        { text: "Por que competir?", href: "/por-que-competir" },
-        { text: "Depoimentos", href: "/depoimentos" },
-        { text: "Perguntas frequentes", href: "/faq" },
+        { text: "Organização", href: "/organizacao", icon: "lucide:users" },
+        {
+          text: "Depoimentos",
+          href: "/depoimentos",
+          icon: "lucide:message-square-quote",
+        },
+        {
+          text: "Perguntas frequentes",
+          href: "/faq",
+          icon: "lucide:help-circle",
+        },
+        {
+          text: "Imprensa",
+          href: "/imprensa",
+          icon: "lucide:newspaper",
+          links: [
+            {
+              text: "Kit de Imprensa",
+              href: "/imprensa#kit-de-imprensa",
+              icon: "lucide:folder-down",
+            },
+            { text: "Notícias", href: "/blog", icon: "lucide:rss" },
+          ],
+        },
       ],
     },
     {
-      text: "Atividades",
-      href: "/obi",
+      text: "Participe!",
+      href: "/por-que-competir",
+      icon: "lucide:rocket",
       links: [
-        { text: "OBI", href: "/obi" },
-        { text: "Quadro de Medalhas (OBI)", href: "/quadro-de-medalhas" },
-        { text: "ICPC", href: "/icpc" },
-        { text: "Hall da Fama (ICPC)", href: "/hall-da-fama" },
-        { text: "Extensão", href: "/extensao" },
-        { text: "Galeria", href: "/galeria" },
+        { text: "OBI", href: "/obi", icon: "lucide:graduation-cap" },
+        { text: "ICPC", href: "/icpc", icon: "lucide:trophy" },
+        {
+          text: "Extensão Universitária",
+          href: "/extensao",
+          icon: "lucide:sprout",
+        },
+        {
+          text: "Patrocínio",
+          href: "/patrocinadores",
+          icon: "lucide:handshake",
+        },
       ],
     },
     {
       text: "Eventos",
       href: "/eventos",
-      links: [
-        { text: "Calendário de Eventos", href: "/eventos" },
-        { text: "Notícias", href: "/blog" },
-        { text: "Imprensa", href: "/imprensa" },
-      ],
+      icon: "lucide:calendar",
+      links: [{ text: "Resultados", href: "/galeria", icon: "lucide:image" }],
     },
-    { text: "UnBalloon", href: "/unballoon" },
-    { text: "Patrocinadores", href: "/patrocinadores" },
+    { text: "UnBalloon", href: "/unballoon", icon: "lucide:balloon" },
   ],
 };

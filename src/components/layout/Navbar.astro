@@ -11,7 +11,10 @@ import Logo from "@/components/ui/Logo.astro";
     class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8"
   >
     <div class="flex items-center gap-2">
-      <a href="/" class="flex items-center gap-2 text-lg font-bold tracking-tight">
+      <a
+        href="/"
+        class="flex items-center gap-2 text-lg font-bold tracking-tight"
+      >
         <Logo class="h-9 w-auto" />
         <span>
           <span style="color: #003366">Maratona</span>{" "}
@@ -31,8 +34,9 @@ import Logo from "@/components/ui/Logo.astro";
                 <div class="relative group">
                   <a
                     href={link.href}
-                    class="flex items-center gap-1 text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:text-primary"
+                    class="flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:text-primary"
                   >
+                    {link.icon && <Icon name={link.icon} class="h-4 w-4" />}
                     {link.text}
                     <svg
                       class="h-4 w-4 transition-transform group-hover:rotate-180"
@@ -48,16 +52,72 @@ import Logo from "@/components/ui/Logo.astro";
                       />
                     </svg>
                   </a>
-                  <div class="absolute left-0 mt-2 w-56 rounded-md border border-border bg-background shadow-lg opacity-0 invisible translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 z-50">
+                  <div class="absolute left-0 mt-2 w-60 rounded-md border border-border bg-background shadow-lg opacity-0 invisible translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 z-50">
                     <div class="py-1">
-                      {link.links.map((sublink) => (
-                        <a
-                          href={sublink.href}
-                          class="block px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
-                        >
-                          {sublink.text}
-                        </a>
-                      ))}
+                      {link.links.map((sublink) =>
+                        "links" in sublink && Array.isArray(sublink.links) ? (
+                          <div class="relative group/sub">
+                            <a
+                              href={sublink.href}
+                              class="flex items-center justify-between gap-2 px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
+                            >
+                              <span class="flex items-center gap-2">
+                                {sublink.icon && (
+                                  <Icon
+                                    name={sublink.icon}
+                                    class="h-4 w-4 text-muted-foreground"
+                                  />
+                                )}
+                                {sublink.text}
+                              </span>
+                              <svg
+                                class="h-4 w-4 -rotate-90 text-muted-foreground"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M19 9l-7 7-7-7"
+                                />
+                              </svg>
+                            </a>
+                            <div class="absolute left-full top-0 ml-1 w-60 rounded-md border border-border bg-background shadow-lg opacity-0 invisible translate-x-1 transition-all duration-200 group-hover/sub:opacity-100 group-hover/sub:visible group-hover/sub:translate-x-0 z-50">
+                              <div class="py-1">
+                                {sublink.links.map((subsublink) => (
+                                  <a
+                                    href={subsublink.href}
+                                    class="flex items-center gap-2 px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
+                                  >
+                                    {subsublink.icon && (
+                                      <Icon
+                                        name={subsublink.icon}
+                                        class="h-4 w-4 text-muted-foreground"
+                                      />
+                                    )}
+                                    {subsublink.text}
+                                  </a>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <a
+                            href={sublink.href}
+                            class="flex items-center gap-2 px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
+                          >
+                            {sublink.icon && (
+                              <Icon
+                                name={sublink.icon}
+                                class="h-4 w-4 text-muted-foreground"
+                              />
+                            )}
+                            {sublink.text}
+                          </a>
+                        ),
+                      )}
                     </div>
                   </div>
                 </div>
@@ -66,8 +126,9 @@ import Logo from "@/components/ui/Logo.astro";
             return (
               <a
                 href={link.href}
-                class="text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:text-primary"
+                class="flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:text-primary"
               >
+                {link.icon && <Icon name={link.icon} class="h-4 w-4" />}
                 {link.text}
               </a>
             );
@@ -159,19 +220,50 @@ import Logo from "@/components/ui/Logo.astro";
               <div class="py-1">
                 <a
                   href={link.href}
-                  class="block rounded-md px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                  class="flex items-center gap-1.5 rounded-md px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground"
                 >
+                  {link.icon && <Icon name={link.icon} class="h-3.5 w-3.5" />}
                   {link.text}
                 </a>
                 <div class="mt-1 pl-4 space-y-1">
-                  {link.links.map((sublink) => (
-                    <a
-                      href={sublink.href}
-                      class="block rounded-md px-3 py-2 text-base font-medium text-foreground transition-colors hover:bg-muted hover:text-primary"
-                    >
-                      {sublink.text}
-                    </a>
-                  ))}
+                  {link.links.map((sublink) =>
+                    "links" in sublink && Array.isArray(sublink.links) ? (
+                      <div class="py-1">
+                        <a
+                          href={sublink.href}
+                          class="flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-foreground transition-colors hover:bg-muted hover:text-primary"
+                        >
+                          {sublink.icon && (
+                            <Icon name={sublink.icon} class="h-4 w-4" />
+                          )}
+                          {sublink.text}
+                        </a>
+                        <div class="mt-1 pl-4 space-y-1">
+                          {sublink.links.map((subsublink) => (
+                            <a
+                              href={subsublink.href}
+                              class="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-primary"
+                            >
+                              {subsublink.icon && (
+                                <Icon name={subsublink.icon} class="h-4 w-4" />
+                              )}
+                              {subsublink.text}
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <a
+                        href={sublink.href}
+                        class="flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-foreground transition-colors hover:bg-muted hover:text-primary"
+                      >
+                        {sublink.icon && (
+                          <Icon name={sublink.icon} class="h-4 w-4" />
+                        )}
+                        {sublink.text}
+                      </a>
+                    ),
+                  )}
                 </div>
               </div>
             );
@@ -179,8 +271,9 @@ import Logo from "@/components/ui/Logo.astro";
           return (
             <a
               href={link.href}
-              class="block rounded-md px-3 py-2 text-base font-medium text-foreground transition-colors hover:bg-muted hover:text-primary"
+              class="flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-foreground transition-colors hover:bg-muted hover:text-primary"
             >
+              {link.icon && <Icon name={link.icon} class="h-4 w-4" />}
               {link.text}
             </a>
           );

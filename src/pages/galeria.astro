@@ -1,104 +1,18 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import PageHeader from "@/components/widgets/PageHeader.astro";
-import InstagramFeed from "@/components/widgets/InstagramFeed.astro";
+import EmConstrucao from "@/components/widgets/EmConstrucao.astro";
 
 const metadata = {
-  title: "Galeria",
-  description: "Melhores momentos das edições da Maratona UnB de Programação.",
+  title: "Resultados",
+  description:
+    "Resultados de cada edição da Maratona UnB de Programação e das competições ligadas à UnB.",
 };
-
-// Fotos reais recuperadas do site anterior. Para adicionar novas, coloque o
-// arquivo em public/galeria/ e um novo item aqui.
-const fotos = [
-  {
-    src: "/eventos/xi-maratona-unb.png",
-    legenda: "Maratona UnB de Programação 2024",
-  },
-  {
-    src: "/galeria/maratona-feminina.jpeg",
-    legenda: "Maratona Feminina de Programação 2024",
-  },
-  {
-    src: "/galeria/iv-competicao-feminina.jpeg",
-    legenda: "IV Competição Feminina de Programação da UnB",
-  },
-  {
-    src: "/galeria/olimpiada-unballoon.jpg",
-    legenda: "Olimpíada UnBalloon de Informática 2024",
-  },
-  {
-    src: "/galeria/ICPC_Nacional.jpeg",
-    legenda: "UnB na Final Brasileira 2022",
-  },
-  { src: "/galeria/ieeextreme.webp", legenda: "IEEExtreme" },
-];
-
-// Álbuns identificados no site anterior cujas fotos ainda não foram
-// recuperadas (adicione o arquivo em public/galeria/ para completar).
-const albunsPendentes = [
-  "[2024-07] Escola e Maratona de Inverno CSBC",
-  "[2023] XI Maratona UnB",
-  "[2023] Fraldinha",
-  "[2022] Maratona IFB",
-  "[2019] Maratona IESB",
-];
 ---
 
 <BaseLayout {metadata}>
-  <PageHeader title="Galeria" subtitle="Melhores Momentos" />
-  <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {
-        fotos.map((foto) => (
-          <figure class="overflow-hidden rounded-2xl border border-border bg-card">
-            <img
-              src={foto.src}
-              alt={foto.legenda}
-              class="h-48 w-full object-cover"
-              loading="lazy"
-            />
-            <figcaption class="p-3 text-sm font-medium text-foreground">
-              {foto.legenda}
-            </figcaption>
-          </figure>
-        ))
-      }
-    </div>
-
-    <h2 class="mt-14 text-xl font-bold text-foreground">Álbuns pendentes</h2>
-    <p class="mt-2 text-sm text-muted-foreground">
-      Estes álbuns existiam no site anterior, mas as fotos ainda não foram
-      recuperadas:
-    </p>
-    <ul class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-      {
-        albunsPendentes.map((album) => (
-          <li class="rounded-xl border border-dashed border-border p-4 text-sm text-muted-foreground">
-            {album}
-          </li>
-        ))
-      }
-    </ul>
-    <p class="mt-4 text-sm text-muted-foreground">
-      Tem fotos de alguma edição? Envie um Pull Request adicionando os arquivos
-      em <code class="rounded bg-muted px-1.5 py-0.5">public/galeria/</code>
-      e atualizando <code class="rounded bg-muted px-1.5 py-0.5"
-        >src/pages/galeria.astro</code
-      >.
-    </p>
-
-    <h2 class="mt-14 text-xl font-bold text-foreground">No Instagram</h2>
-    <p class="mt-2 mb-6 text-sm text-muted-foreground">
-      Últimos posts de <a
-        href="https://www.instagram.com/maratona.unb/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Instagram"
-        class="rounded-full p-2 text-foreground transition-colors hover:bg-muted hover:text-primary"
-        >@unballooon</a
-      >.
-    </p>
-    <InstagramFeed />
-  </div>
+  <PageHeader title="Resultados" icon="lucide:image" />
+  <EmConstrucao
+    mensagem="Em breve, os resultados de cada edição da Maratona e das competições ligadas à UnB aparecerão por aqui."
+  />
 </BaseLayout>

@@ -28,6 +28,12 @@ const eventos = defineCollection({
     date: z.coerce.date(),
     endDate: z.coerce.date().optional(),
     local: z.string().optional(),
+    // Horário de início (ex.: "8h"), exibido no card de informações da
+    // página do evento (só relevante com temPagina: true).
+    horario: z.string().optional(),
+    // Link para o mapa do local (ex.: Google Maps), exibido junto ao
+    // endereço no card de informações.
+    mapaUrl: z.string().optional(),
     status: z
       .enum(["realizado", "confirmado", "a-confirmar", "adiado"])
       .optional()

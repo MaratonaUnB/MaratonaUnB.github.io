@@ -6,63 +6,83 @@ import { siteConfig } from "@/config/site";
 
 const metadata = {
   title: "Imprensa",
-  description: "Kit de imprensa e cobertura sobre a Maratona UnB de Programação.",
+  description:
+    "Kit de imprensa e cobertura sobre a Maratona UnB de Programação.",
 };
 ---
 
 <BaseLayout {metadata}>
-  <PageHeader title="Imprensa" subtitle="Kit de imprensa e cobertura sobre a Maratona e o UnBalloon" />
+  <PageHeader
+    title="Imprensa"
+    subtitle="Kit de imprensa e cobertura sobre a Maratona e o UnBalloon"
+    icon="lucide:newspaper"
+  />
   <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-    <h2 class="text-xl font-bold text-foreground">Sobre o projeto</h2>
+    <h2
+      id="kit-de-imprensa"
+      class="scroll-mt-24 text-xl font-bold text-foreground"
+    >
+      Sobre o projeto
+    </h2>
     <p class="mt-2 text-sm text-muted-foreground">
-      Resumos prontos para citação ou republicação por jornalistas e veículos
-      de imprensa.
+      Resumos prontos para citação ou republicação por jornalistas e veículos de
+      imprensa.
     </p>
 
     <div class="mt-4 rounded-2xl border border-border bg-card p-5">
-      <p class="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+      <p
+        class="text-xs font-semibold uppercase tracking-wide text-muted-foreground"
+      >
         Versão curta
       </p>
       <p class="mt-2 text-foreground">
-        A Maratona UnB de Programação é um projeto de extensão da Universidade de
-        Brasília (<a href="https://unb.br/">UnB</a>) que capacita estudantes de Ensino Médio e Superior em
-        programação competitiva, preparando-os para competições como a
-        <a href="https://olimpiada.ic.unicamp.br/info/apresentacao/">Olimpíada Brasileira de Informática</a> (OBI) e a <a href="https://maratona.sbc.org.br/sobre/index.html">Maratona SBC de
-        Programação</a>. Realizado ininterruptamente desde 2013.
+        A Maratona UnB de Programação é um projeto de extensão da Universidade
+        de Brasília (<a href="https://unb.br/">UnB</a>) que capacita estudantes
+        de Ensino Médio e Superior em programação competitiva, preparando-os
+        para competições como a
+        <a href="https://olimpiada.ic.unicamp.br/info/apresentacao/"
+          >Olimpíada Brasileira de Informática</a
+        > (OBI) e a <a href="https://maratona.sbc.org.br/sobre/index.html"
+          >Maratona SBC de Programação</a
+        >. Realizado ininterruptamente desde 2013.
       </p>
     </div>
 
     <div class="mt-4 rounded-2xl border border-border bg-card p-5">
-      <p class="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+      <p
+        class="text-xs font-semibold uppercase tracking-wide text-muted-foreground"
+      >
         Versão completa
       </p>
       <p class="mt-2 text-foreground">
-        O projeto de extensão Maratona de Programação no Distrito Federal
-        visa capacitar alunos do Ensino Médio interessados em computação e
-        alunos do Ensino Superior, por meio do ensino de programação de
-        computadores em uma abordagem baseada em programação competitiva. O
-        time de professores e alunos da Universidade de Brasília (UnB)
-        organiza grupos de estudo, cursos preparatórios e a Maratona UnB de
-        Programação — evento anual realizado desde 2013 — preparando os
-        participantes para competições como a Olimpíada Brasileira de
-        Informática e a Maratona SBC de Programação (ICPC). Em 2025, a UnB foi
-        a única universidade brasileira a classificar três times para a fase
-        latino-americana da Maratona SBC.
+        O projeto de extensão Maratona de Programação no Distrito Federal visa
+        capacitar alunos do Ensino Médio interessados em computação e alunos do
+        Ensino Superior, por meio do ensino de programação de computadores em
+        uma abordagem baseada em programação competitiva. O time de professores
+        e alunos da Universidade de Brasília (UnB) organiza grupos de estudo,
+        cursos preparatórios e a Maratona UnB de Programação — evento anual
+        realizado desde 2013 — preparando os participantes para competições como
+        a Olimpíada Brasileira de Informática e a Maratona SBC de Programação
+        (ICPC). Em 2025, a UnB foi a única universidade brasileira a classificar
+        três times para a fase latino-americana da Maratona SBC.
       </p>
     </div>
 
     <p class="mt-4 text-sm text-muted-foreground">
       Contato para imprensa:
-      <a href={`mailto:${siteConfig.email}`} class="text-primary hover:underline">
+      <a
+        href={`mailto:${siteConfig.email}`}
+        class="text-primary hover:underline"
+      >
         {siteConfig.email}
       </a>
     </p>
 
     <h2 class="mt-14 text-xl font-bold text-foreground">Cobertura</h2>
     <p class="mt-2 text-muted-foreground">
-      Resultados e conquistas dos times da UnB já foram destaque em veículos
-      de imprensa e nos canais oficiais da universidade. Abaixo, uma seleção
-      de links para saber mais.
+      Resultados e conquistas dos times da UnB já foram destaque em veículos de
+      imprensa e nos canais oficiais da universidade. Abaixo, uma seleção de
+      links para saber mais.
     </p>
     <ul class="mt-8 space-y-4">
       {
@@ -84,10 +104,10 @@ const metadata = {
         ))
       }
     </ul>
-    <p class="mt-8 text-sm text-muted-foreground">
-      Tem um link de uma matéria específica sobre a Maratona ou o UnBalloon?
-      Edite <code class="rounded bg-muted px-1.5 py-0.5">src/data/imprensa.ts</code>
-      e envie um Pull Request.
-    </p>
+    <!--<p class="mt-8 text-sm text-muted-foreground">-->
+    <!--  Tem um link de uma matéria específica sobre a Maratona ou o UnBalloon?-->
+    <!--  Edite <code class="rounded bg-muted px-1.5 py-0.5">src/data/imprensa.ts</code>-->
+    <!--  e envie um Pull Request.-->
+    <!--</p>-->
   </div>
 </BaseLayout>

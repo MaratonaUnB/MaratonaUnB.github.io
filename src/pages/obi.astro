@@ -11,21 +11,31 @@ const metadata = {
 ---
 
 <BaseLayout {metadata}>
-  <PageHeader title="OBI" subtitle="Olimpíada Brasileira de Informática" />
+  <PageHeader
+    title="OBI"
+    subtitle="Olimpíada Brasileira de Informática"
+    icon="lucide:graduation-cap"
+    logo="/site/marcas/OBI.png"
+    logoAlt="Logo da OBI"
+  />
   <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
     <p class="text-lg leading-relaxed text-foreground">
       A OBI (Olimpíada Brasileira de Informática) é uma competição de
       programação e informática destinada a estudantes brasileiros do ensino
-      fundamental, médio e início do ensino superior. Organizada pela
-      Sociedade Brasileira de Computação (SBC), a OBI visa incentivar o
-      interesse pela ciência da computação e pela programação entre jovens
-      estudantes.
+      fundamental, médio e início do ensino superior. Organizada pela Sociedade
+      Brasileira de Computação (SBC), a OBI visa incentivar o interesse pela
+      ciência da computação e pela programação entre jovens estudantes.
     </p>
 
-    <p class="mt-6 rounded-xl border border-border bg-card p-4 text-sm text-muted-foreground">
+    <p
+      class="mt-6 rounded-xl border border-border bg-card p-4 text-sm text-muted-foreground"
+    >
       As inscrições do Campus Darcy Ribeiro são feitas via SIGAA, em período
       divulgado antes de cada fase.
-      <a href={`mailto:${siteConfig.email}`} class="text-primary hover:underline">
+      <a
+        href={`mailto:${siteConfig.email}`}
+        class="text-primary hover:underline"
+      >
         Fale com a gente
       </a> para saber o link e o prazo em aberto.
     </p>
@@ -34,9 +44,9 @@ const metadata = {
       <div>
         <h2 class="text-xl font-bold text-foreground">Quem pode participar?</h2>
         <p class="mt-2 text-muted-foreground">
-          Podem participar da modalidade Programação alunos que estejam
-          cursando pela primeira vez o 1º ano de graduação no momento da Fase
-          1 da competição.
+          Podem participar da modalidade Programação alunos que estejam cursando
+          pela primeira vez o 1º ano de graduação no momento da Fase 1 da
+          competição.
         </p>
       </div>
       <div>
@@ -50,9 +60,7 @@ const metadata = {
         </p>
       </div>
       <div>
-        <h2 class="text-xl font-bold text-foreground">
-          Quando são as provas?
-        </h2>
+        <h2 class="text-xl font-bold text-foreground">Quando são as provas?</h2>
         <p class="mt-2 text-muted-foreground">
           Consulte as datas atualizadas no
           <a href="/eventos" class="text-primary hover:underline">
@@ -64,9 +72,12 @@ const metadata = {
         <h2 class="text-xl font-bold text-foreground">Como se preparar?</h2>
         <p class="mt-2 text-muted-foreground">
           O projeto oferece um curso preparatório <strong>online</strong>,
-          oferecido pela UnB do Gama (FGA), aberto a quem quer se preparar
-          para as provas da OBI.
-          <a href={`mailto:${siteConfig.email}`} class="text-primary hover:underline">
+          oferecido pela UnB do Gama (FGA), aberto a quem quer se preparar para
+          as provas da OBI.
+          <a
+            href={`mailto:${siteConfig.email}`}
+            class="text-primary hover:underline"
+          >
             Fale com a gente
           </a> para saber a próxima turma e como se inscrever.
         </p>
