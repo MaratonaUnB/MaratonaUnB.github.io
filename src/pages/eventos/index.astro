@@ -80,10 +80,7 @@ const statusLabel: Record<string, string> = {
                     </td>
                     <td class="px-4 py-3 text-foreground">
                       {row.data.temPagina ? (
-                        <a
-                          href={`/eventos/${slugDoEvento(row)}`}
-                          class="hover:text-primary hover:underline"
-                        >
+                        <a href={`/eventos/${slugDoEvento(row)}`} class="link">
                           {row.data.title}
                         </a>
                       ) : (

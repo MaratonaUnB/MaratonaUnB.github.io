@@ -79,7 +79,7 @@ const eventosParaCliente = eventos
               <a
                 id="next-event-link"
                 href={`/eventos/${slugDoEvento(evento)}`}
-                class="font-semibold text-primary hover:underline"
+                class="link font-semibold"
               >
                 Ver detalhes →
               </a>
@@ -89,7 +89,7 @@ const eventosParaCliente = eventos
                 target="_blank"
                 rel="noopener noreferrer"
                 class:list={[
-                  "font-semibold text-primary hover:underline",
+                  "link font-semibold",
                   { hidden: !(isFuturo && evento.data.inscricoesUrl) },
                 ]}
                 onclick="if (typeof gtag === 'function') gtag('event', 'cta_click', { cta: 'inscreva-se' });"

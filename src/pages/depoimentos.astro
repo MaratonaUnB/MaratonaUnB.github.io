@@ -32,7 +32,12 @@ const metadata = {
                 )}
                 <div>
                   <p class="text-sm font-semibold text-foreground">
-                    <a href={d.url} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={d.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="link"
+                    >
                       {d.nome}
                     </a>
                   </p>
@@ -46,11 +51,7 @@ const metadata = {
         <div class="rounded-2xl border border-dashed border-border p-10 text-center">
           <p class="text-muted-foreground">
             Se você competiu e quer compartilhar sua experiência, entre em{" "}
-            <a
-              href="mailto:maratona@unb.br"
-              aria-label="Enviar e-mail para maratona@unb.br"
-              class="rounded-full p-2 text-foreground transition-colors hover:bg-muted hover:text-primary"
-            >
+            <a href="mailto:maratona@unb.br" class="link">
               contato conosco
             </a>
             .

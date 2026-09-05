@@ -60,12 +60,14 @@ const maratonaDf = [
       de programação, como a <a
         href="https://olimpiada.ic.unicamp.br/"
         target="_blank"
-        rel="noopener noreferrer">Olimpíada Brasileira de Informática</a
+        rel="noopener noreferrer"
+        class="link">Olimpíada Brasileira de Informática</a
       > e a
       <a
         href="https://maratona.sbc.org.br/"
         target="_blank"
-        rel="noopener noreferrer">Maratona SBC de Programação</a
+        rel="noopener noreferrer"
+        class="link">Maratona SBC de Programação</a
       >.
     </p>
 
@@ -81,7 +83,12 @@ const maratonaDf = [
       {
         professoresUnb.map((p) => (
           <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium text-foreground">
-            <a href={p.url} target="_blank" rel="noopener noreferrer">
+            <a
+              href={p.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="link"
+            >
               {p.nome}
             </a>{" "}
             ({p.campus})
@@ -107,7 +114,12 @@ const maratonaDf = [
       {
         maratonaDf.map((pessoa) => (
           <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium text-foreground">
-            <a href={pessoa.url} target="_blank" rel="noopener noreferrer">
+            <a
+              href={pessoa.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="link"
+            >
               {pessoa.nome}
             </a>
             {pessoa.instituicao && (

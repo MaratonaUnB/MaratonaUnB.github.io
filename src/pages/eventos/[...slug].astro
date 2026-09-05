@@ -86,67 +86,32 @@ const metadata = {
       }
 
       <div
-        class="reveal divide-y divide-border rounded-2xl border border-border bg-card"
+        class="reveal flex flex-col gap-4 rounded-2xl border border-border bg-card p-6"
       >
-        <div class="flex items-center gap-3 p-4">
-          <Icon name="lucide:ticket" class="h-5 w-5 shrink-0 text-primary" />
-          <div>
-            <div
-              class="text-xs font-semibold uppercase tracking-wide text-muted-foreground"
-            >
-              Evento
-            </div>
-            <div class="mt-0.5 text-sm font-medium text-foreground">
-              {title}
-            </div>
-          </div>
-        </div>
-
-        <div class="flex items-center gap-3 p-4">
+        <div class="flex items-center gap-3">
           <Icon name="lucide:calendar" class="h-5 w-5 shrink-0 text-primary" />
-          <div>
-            <div
-              class="text-xs font-semibold uppercase tracking-wide text-muted-foreground"
-            >
-              Data
-            </div>
-            <div class="mt-0.5 text-sm font-medium text-foreground">
-              {formattedDate}
-            </div>
+          <div class="text-sm font-medium text-foreground">
+            {formattedDate}
           </div>
         </div>
 
         {
           horario && (
-            <div class="flex items-center gap-3 p-4">
+            <div class="flex items-center gap-3">
               <Icon name="lucide:clock" class="h-5 w-5 shrink-0 text-primary" />
-              <div>
-                <div class="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                  Início
-                </div>
-                <div class="mt-0.5 text-sm font-medium text-foreground">
-                  {horario}
-                </div>
-              </div>
+              <div class="text-sm font-medium text-foreground">{horario}</div>
             </div>
           )
         }
 
         {
           local && (
-            <div class="flex items-center gap-3 p-4">
+            <div class="flex items-center gap-3">
               <Icon
                 name="lucide:map-pin"
                 class="h-5 w-5 shrink-0 text-primary"
               />
-              <div>
-                <div class="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                  Local
-                </div>
-                <div class="mt-0.5 text-sm font-medium text-foreground">
-                  {local}
-                </div>
-              </div>
+              <div class="text-sm font-medium text-foreground">{local}</div>
             </div>
           )
         }
@@ -157,7 +122,7 @@ const metadata = {
               href={mapaUrl}
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-center gap-3 p-4 transition-colors hover:bg-muted"
+              class="flex items-center gap-3"
             >
               <Icon name="lucide:map" class="h-5 w-5 shrink-0 text-primary" />
               <div class="text-sm font-semibold text-primary">
@@ -169,7 +134,7 @@ const metadata = {
       </div>
 
       <div
-        class="reveal prose prose-lg mx-auto mt-8 prose-headings:text-foreground prose-a:text-primary hover:prose-a:underline prose-p:text-muted-foreground prose-strong:text-foreground prose-li:text-muted-foreground"
+        class="reveal prose prose-lg mx-auto mt-8 prose-headings:text-foreground prose-a:text-primary prose-a:underline prose-a:decoration-primary/35 hover:prose-a:decoration-current prose-p:text-muted-foreground prose-strong:text-foreground prose-li:text-muted-foreground"
       >
         <Content />
       </div>
@@ -197,17 +162,14 @@ const metadata = {
         <h2 class="text-lg font-bold text-foreground">Dúvidas</h2>
         <p class="mt-2 text-sm text-muted-foreground">
           Qualquer pergunta sobre o evento, fale com a gente:
-          <a
-            href={`mailto:${siteConfig.email}`}
-            class="font-semibold text-primary hover:underline"
-          >
+          <a href={`mailto:${siteConfig.email}`} class="link font-semibold">
             {siteConfig.email}
           </a>
         </p>
       </div>
 
       <div class="reveal mt-10 text-center">
-        <a href="/eventos" class="font-semibold text-primary hover:underline">
+        <a href="/eventos" class="link font-semibold">
           ← Ver todos os eventos
         </a>
       </div>
