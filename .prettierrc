@@ -2,7 +2,10 @@
   "semi": true,
   "trailingComma": "all",
   "tabWidth": 2,
-  "plugins": ["prettier-plugin-astro"],
+  "printWidth": 200,
+  "plugins": [
+    "prettier-plugin-astro"
+  ],
   "overrides": [
     {
       "files": "*.astro",

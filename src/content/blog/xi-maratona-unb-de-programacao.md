@@ -7,4 +7,5 @@ category: "extensao"
 tags: ["maratona-unb", "extensao"]
 ---
 
-A **XI Maratona UnB de Programação** seguiu o mesmo formato das edições anteriores: times de três pessoas, cinco horas de prova e um caderno de problemas elaborado por professores e ex-alunos ligados ao projeto.
+A **XI Maratona UnB de
+Programação** seguiu o mesmo formato das edições anteriores: times de três pessoas, cinco horas de prova e um caderno de problemas elaborado por professores e ex-alunos ligados ao projeto.

@@ -11,22 +11,8 @@ import { Icon } from "astro-icon/components";
         <div class="flex items-center gap-4">
           {
             siteConfig.supporters.map((supporter) => (
-              <a
-                href={supporter.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={supporter.name}
-                class="text-sm font-semibold text-foreground transition-colors hover:text-primary"
-              >
-                {supporter.logo ? (
-                  <img
-                    src={supporter.logo}
-                    alt={supporter.name}
-                    class="h-7 w-auto object-contain"
-                  />
-                ) : (
-                  supporter.name
-                )}
+              <a href={supporter.url} target="_blank" rel="noopener noreferrer" aria-label={supporter.name} class="text-sm font-semibold text-foreground transition-colors hover:text-primary">
+                {supporter.logo ? <img src={supporter.logo} alt={supporter.name} class="h-7 w-auto object-contain" /> : supporter.name}
               </a>
             ))
           }
@@ -67,13 +53,9 @@ import { Icon } from "astro-icon/components";
       </div>
     </div>
 
-    <div
-      class="mt-8 border-t border-border pt-6 text-center text-xs text-muted-foreground"
-    >
+    <div class="mt-8 border-t border-border pt-6 text-center text-xs text-muted-foreground">
       Copyright &copy; {new Date().getFullYear()} -
-      <a href="https://unb.br/" target="_blank" rel="noopener noreferrer" class="hover:text-primary">
-        Universidade de Brasília
-      </a>. Todos os direitos reservados.
+      <a href="https://unb.br/" target="_blank" rel="noopener noreferrer" class="hover:text-primary"> Universidade de Brasília </a>. Todos os direitos reservados.
     </div>
   </div>
 </footer>

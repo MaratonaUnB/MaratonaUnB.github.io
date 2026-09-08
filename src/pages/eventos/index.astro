@@ -2,17 +2,11 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import PageHeader from "@/components/widgets/PageHeader.astro";
 import NextEvent from "@/components/widgets/NextEvent.astro";
-import {
-  getEventosOrdenados,
-  agruparEventosPorAno,
-  formatarDataEvento,
-  slugDoEvento,
-} from "@/lib/eventos";
+import { getEventosOrdenados, agruparEventosPorAno, formatarDataEvento, slugDoEvento } from "@/lib/eventos";
 
 const metadata = {
   title: "Eventos",
-  description:
-    "Calendário consolidado dos eventos de programação competitiva ligados à UnB, com o próximo evento sempre em destaque.",
+  description: "Calendário consolidado dos eventos de programação competitiva ligados à UnB, com o próximo evento sempre em destaque.",
 };
 
 const eventosOrdenados = await getEventosOrdenados();
@@ -28,35 +22,22 @@ const statusLabel: Record<string, string> = {
 ---
 
 <BaseLayout {metadata}>
-  <PageHeader
-    title="Eventos"
-    subtitle="Calendário consolidado da Maratona e competições ligadas à UnB"
-    icon="lucide:calendar"
-  />
+  <PageHeader title="Eventos" subtitle="Calendário consolidado da Maratona e competições ligadas à UnB" icon="lucide:calendar" />
   <NextEvent />
 
   <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
     <p class="text-muted-foreground">
-      Calendário consolidado dos principais eventos de programação competitiva
-      ligados à UnB: fases da Maratona SBC/ICPC, OBI, competições internas
-      (Maratona UnB, UnBalloon) e parceiras.
+      Calendário consolidado dos principais eventos de programação competitiva ligados à UnB: fases da Maratona SBC/ICPC, OBI, competições internas (Maratona UnB, UnBalloon) e parceiras.
     </p>
-    <p class="mt-2 text-sm text-muted-foreground">
-      Legenda: ✅ Realizado · 🔵 Confirmado (ainda não realizado) · ⚪ A
-      confirmar · 🟠 Adiado.
-    </p>
+    <p class="mt-2 text-sm text-muted-foreground">Legenda: ✅ Realizado · 🔵 Confirmado (ainda não realizado) · ⚪ A confirmar · 🟠 Adiado.</p>
 
     {
       grupos.map((grupo) => (
         <details class="group mt-6" open={grupo.ano === anoAtual}>
           <summary class="flex cursor-pointer list-none items-center gap-2 py-2 text-2xl font-bold text-foreground">
-            <span class="text-muted-foreground transition-transform group-open:rotate-90">
-              ▶
-            </span>
+            <span class="text-muted-foreground transition-transform group-open:rotate-90">▶</span>
             {grupo.ano}
-            <span class="text-sm font-normal text-muted-foreground">
-              ({grupo.naoRealizados.length + grupo.realizados.length} eventos)
-            </span>
+            <span class="text-sm font-normal text-muted-foreground">({grupo.naoRealizados.length + grupo.realizados.length} eventos)</span>
           </summary>
           <div class="mt-2 overflow-x-auto rounded-2xl border border-border">
             <table class="w-full text-left text-sm">
@@ -69,15 +50,8 @@ const statusLabel: Record<string, string> = {
               </thead>
               <tbody class="divide-y divide-border">
                 {[...grupo.naoRealizados, ...grupo.realizados].map((row) => (
-                  <tr
-                    class:list={[
-                      "hover:bg-muted/50",
-                      { "opacity-60": row.data.status === "realizado" },
-                    ]}
-                  >
-                    <td class="px-4 py-3 whitespace-nowrap font-medium text-foreground">
-                      {formatarDataEvento(row)}
-                    </td>
+                  <tr class:list={["hover:bg-muted/50", { "opacity-60": row.data.status === "realizado" }]}>
+                    <td class="px-4 py-3 whitespace-nowrap font-medium text-foreground">{formatarDataEvento(row)}</td>
                     <td class="px-4 py-3 text-foreground">
                       {row.data.temPagina ? (
                         <a href={`/eventos/${slugDoEvento(row)}`} class="link">
@@ -87,9 +61,7 @@ const statusLabel: Record<string, string> = {
                         row.data.title
                       )}
                     </td>
-                    <td class="px-4 py-3 whitespace-nowrap text-muted-foreground">
-                      {statusLabel[row.data.status]}
-                    </td>
+                    <td class="px-4 py-3 whitespace-nowrap text-muted-foreground">{statusLabel[row.data.status]}</td>
                   </tr>
                 ))}
               </tbody>

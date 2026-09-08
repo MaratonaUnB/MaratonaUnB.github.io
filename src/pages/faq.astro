@@ -5,8 +5,7 @@ import { siteConfig } from "@/config/site";
 
 const metadata = {
   title: "Perguntas frequentes",
-  description:
-    "Dúvidas comuns sobre inscrição, elegibilidade e formato das competições da Maratona UnB.",
+  description: "Dúvidas comuns sobre inscrição, elegibilidade e formato das competições da Maratona UnB.",
 };
 
 const faqs = [
@@ -15,8 +14,7 @@ const faqs = [
     resposta: `Organização de docentes, alunos e interessados na realização de atividades de <a href="https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_competitiva" target="_blank" rel="noopener noreferrer" class="link">programação competitiva</a> no contexto da Universidade de Brasília.`,
   },
   {
-    pergunta:
-      "Quem pode participar das Atividades da Maratona UnB de Programação?",
+    pergunta: "Quem pode participar das Atividades da Maratona UnB de Programação?",
     resposta: `Estudantes de qualquer instituição do Ensino Médio ou Superior. Não é necessário ser da área de Computação — qualquer estudante interessado em resolver problemas de programação pode participar. Geralmente, os eventos de Ensino Superior envolvem times de três pessoas.`,
   },
   {
@@ -45,17 +43,13 @@ const faqs = [
 <BaseLayout {metadata}>
   <PageHeader title="Perguntas frequentes" icon="lucide:help-circle" />
   <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-    <div
-      class="divide-y divide-border rounded-2xl border border-border bg-card"
-    >
+    <div class="divide-y divide-border rounded-2xl border border-border bg-card">
       {
         faqs.map((item) => (
           <details class="group p-6">
             <summary class="flex cursor-pointer list-none items-center justify-between font-semibold text-foreground">
               {item.pergunta}
-              <span class="ml-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-45">
-                +
-              </span>
+              <span class="ml-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-45">+</span>
             </summary>
             <p class="mt-3 text-muted-foreground" set:html={item.resposta} />
           </details>
@@ -64,9 +58,7 @@ const faqs = [
     </div>
     <p class="mt-8 text-center text-muted-foreground">
       Ainda com dúvidas?
-      <a href={`mailto:${siteConfig.email}`} class="link">
-        Fale com a gente
-      </a>.
+      <a href={`mailto:${siteConfig.email}`} class="link"> Fale com a gente </a>.
     </p>
   </div>
 </BaseLayout>

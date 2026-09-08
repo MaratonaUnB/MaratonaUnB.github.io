@@ -9,24 +9,15 @@ export interface Props {
 const { post } = Astro.props;
 const { remarkPluginFrontmatter } = await render(post);
 
-const readingTime = remarkPluginFrontmatter?.minutesRead
-  ? `${Math.ceil(remarkPluginFrontmatter.minutesRead)} min de leitura`
-  : "";
+const readingTime = remarkPluginFrontmatter?.minutesRead ? `${Math.ceil(remarkPluginFrontmatter.minutesRead)} min de leitura` : "";
 ---
 
-<article
-  class="reveal group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
->
-  <div
-    class="relative flex h-48 w-full items-center justify-center overflow-hidden bg-white"
-  >
+<article class="reveal group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
+  <div class="relative flex h-48 w-full items-center justify-center overflow-hidden bg-white">
     <img
       src={post.data.image || "/site/marcas/MaratonaUnB.svg"}
       alt={post.data.title}
-      class:list={[
-        "object-contain transition-transform duration-300 group-hover:scale-105",
-        post.data.image ? "h-full w-full p-4" : "h-24 w-24",
-      ]}
+      class:list={["object-contain transition-transform duration-300 group-hover:scale-105", post.data.image ? "h-full w-full p-4" : "h-24 w-24"]}
     />
   </div>
   <div class="flex flex-1 flex-col p-6">
@@ -34,10 +25,7 @@ const readingTime = remarkPluginFrontmatter?.minutesRead
       <p class="text-sm font-medium text-primary">
         {post.data.author}
       </p>
-      <a
-        href={`/blog/${post.id}`}
-        class="mt-2 block before:absolute before:inset-0 before:z-10"
-      >
+      <a href={`/blog/${post.id}`} class="mt-2 block before:absolute before:inset-0 before:z-10">
         <p class="text-xl font-semibold text-foreground group-hover:underline">
           {post.data.title}
         </p>

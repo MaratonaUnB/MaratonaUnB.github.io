@@ -4,11 +4,7 @@ import Schema from "@/components/seo/Schema.astro";
 import Button from "@/components/ui/Button.astro";
 import { Icon } from "astro-icon/components";
 import { getCollection, render } from "astro:content";
-import {
-  getEventosOrdenados,
-  getProximoEvento,
-  slugDoEvento,
-} from "@/lib/eventos";
+import { getEventosOrdenados, getProximoEvento, slugDoEvento } from "@/lib/eventos";
 import { siteConfig } from "@/config/site";
 
 export async function getStaticPaths() {
@@ -23,8 +19,7 @@ export async function getStaticPaths() {
 
 const { evento } = Astro.props;
 const { Content } = await render(evento);
-const { title, date, local, horario, mapaUrl, cover, coverAlt, inscricoesUrl } =
-  evento.data;
+const { title, date, local, horario, mapaUrl, cover, coverAlt, inscricoesUrl } = evento.data;
 
 const eventosOrdenados = await getEventosOrdenados();
 const { evento: proximo } = getProximoEvento(eventosOrdenados);
@@ -59,16 +54,8 @@ const metadata = {
   <section class="relative px-4 py-8 sm:px-6 lg:px-8 md:py-12">
     <div class="relative mx-auto max-w-3xl">
       <div class="reveal mb-8 text-center">
-        {
-          isProximo && (
-            <span class="mb-3 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
-              🏆 Próximo evento
-            </span>
-          )
-        }
-        <h1
-          class="font-heading mt-2 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl"
-        >
+        {isProximo && <span class="mb-3 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">🏆 Próximo evento</span>}
+        <h1 class="font-heading mt-2 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl">
           {title}
         </h1>
       </div>
@@ -76,18 +63,12 @@ const metadata = {
       {
         cover && (
           <div class="reveal relative mb-8 flex max-h-[24rem] w-full items-center justify-center overflow-hidden rounded-2xl bg-white shadow-lg">
-            <img
-              src={cover}
-              alt={coverAlt || title}
-              class="max-h-[24rem] w-full object-contain"
-            />
+            <img src={cover} alt={coverAlt || title} class="max-h-[24rem] w-full object-contain" />
           </div>
         )
       }
 
-      <div
-        class="reveal flex flex-col gap-4 rounded-2xl border border-border bg-card p-6"
-      >
+      <div class="reveal flex flex-col gap-4 rounded-2xl border border-border bg-card p-6">
         <div class="flex items-center gap-3">
           <Icon name="lucide:calendar" class="h-5 w-5 shrink-0 text-primary" />
           <div class="text-sm font-medium text-foreground">
@@ -107,10 +88,7 @@ const metadata = {
         {
           local && (
             <div class="flex items-center gap-3">
-              <Icon
-                name="lucide:map-pin"
-                class="h-5 w-5 shrink-0 text-primary"
-              />
+              <Icon name="lucide:map-pin" class="h-5 w-5 shrink-0 text-primary" />
               <div class="text-sm font-medium text-foreground">{local}</div>
             </div>
           )
@@ -118,16 +96,9 @@ const metadata = {
 
         {
           mapaUrl && (
-            <a
-              href={mapaUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center gap-3"
-            >
+            <a href={mapaUrl} target="_blank" rel="noopener noreferrer" class="flex items-center gap-3">
               <Icon name="lucide:map" class="h-5 w-5 shrink-0 text-primary" />
-              <div class="text-sm font-semibold text-primary">
-                Ver no mapa →
-              </div>
+              <div class="text-sm font-semibold text-primary">Ver no mapa →</div>
             </a>
           )
         }
@@ -143,9 +114,7 @@ const metadata = {
         inscricoesUrl && (
           <div class="reveal mt-10 rounded-2xl border border-border bg-card p-6 text-center">
             <h2 class="text-lg font-bold text-foreground">Inscrições</h2>
-            <p class="mt-2 text-sm text-muted-foreground">
-              Garanta a vaga do seu time — inscrições abertas.
-            </p>
+            <p class="mt-2 text-sm text-muted-foreground">Garanta a vaga do seu time — inscrições abertas.</p>
             <div class="mt-4">
               <Button href={inscricoesUrl} variant="primary">
                 <Icon name="lucide:pencil-line" class="-ml-1 mr-2 h-5 w-5" />
@@ -156,9 +125,7 @@ const metadata = {
         )
       }
 
-      <div
-        class="reveal mt-10 rounded-2xl border border-border bg-card p-6 text-center"
-      >
+      <div class="reveal mt-10 rounded-2xl border border-border bg-card p-6 text-center">
         <h2 class="text-lg font-bold text-foreground">Dúvidas</h2>
         <p class="mt-2 text-sm text-muted-foreground">
           Qualquer pergunta sobre o evento, fale com a gente:
@@ -169,9 +136,7 @@ const metadata = {
       </div>
 
       <div class="reveal mt-10 text-center">
-        <a href="/eventos" class="link font-semibold">
-          ← Ver todos os eventos
-        </a>
+        <a href="/eventos" class="link font-semibold"> ← Ver todos os eventos </a>
       </div>
     </div>
   </section>

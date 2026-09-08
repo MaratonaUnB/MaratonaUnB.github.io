@@ -7,4 +7,5 @@ category: "extensao"
 tags: ["maratona-unb", "extensao"]
 ---
 
-Estão abertas as inscrições para a **12ª Maratona UnB de Programação**. As inscrições são gratuitas e feitas por times de até três pessoas.
+Estão abertas as inscrições para a **12ª Maratona UnB de
+Programação**. As inscrições são gratuitas e feitas por times de até três pessoas.

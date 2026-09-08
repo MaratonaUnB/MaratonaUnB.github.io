@@ -8,7 +8,10 @@ tags: ["icpc", "resultado"]
 image: "/blog/maratona-sbc-2005-cartaz.jpg"
 ---
 
-O time **"UnB =oD"** conquistou **medalha de prata**, terminando em **6º lugar geral** na Final Brasileira da Maratona SBC de Programação de 2005, disputada em **11 e 12 de novembro de 2005**. A equipe foi formada por **Daniel Arruda Santos Anjos**, **Edans Flávius de Oliveira Sandes** e **Thiago Chaves de Oliveira Horta**, com coach **Jacir Bordim**.
+O time **"UnB =oD"** conquistou **medalha de prata**, terminando em **6º lugar
+geral** na Final Brasileira da Maratona SBC de Programação de 2005, disputada em **11 e 12 de novembro de
+2005**. A equipe foi formada por **Daniel Arruda Santos Anjos**, **Edans Flávius de Oliveira Sandes** e **Thiago Chaves
+de Oliveira Horta**, com coach **Jacir Bordim**.
 
 A UnB não esteve entre os times classificados para a Final Mundial do ICPC de 2006, em San Antonio.
 

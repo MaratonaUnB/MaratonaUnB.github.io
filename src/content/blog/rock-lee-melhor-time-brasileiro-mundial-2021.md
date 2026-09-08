@@ -7,6 +7,9 @@ category: "noticias"
 tags: ["icpc", "resultado"]
 ---
 
-O time **"Rock Lee do Pagode Namora D+"**, da UnB, terminou em **47º lugar** — resolvendo 5 problemas — na Final Mundial do ICPC, realizada de **1 a 6 de outubro de 2021 em Moscou**: o melhor resultado entre os times brasileiros na competição. O feito repercutiu em matérias do **Correio Braziliense** e do **UnB Notícias**.
+O time **"Rock Lee do Pagode Namora D+"**, da UnB, terminou em **47º
+lugar** — resolvendo 5 problemas — na Final Mundial do ICPC, realizada de **1 a 6 de outubro de 2021 em
+Moscou**: o melhor resultado entre os times brasileiros na competição. O feito repercutiu em matérias do **Correio
+Braziliense** e do **UnB Notícias**.
 
 > Fonte: [maratona.sbc.org.br](https://maratona.sbc.org.br/hist/2019/index.html)

@@ -20,13 +20,7 @@ const {
 const { container: containerClassProp = "" } = classes;
 ---
 
-<WidgetWrapper
-  id={id}
-  isDark={isDark}
-  containerClass={`min-h-[calc(100vh-72px)] flex flex-col justify-center ${containerClassProp}`}
-  bg={bg}
-  animate={animate}
->
+<WidgetWrapper id={id} isDark={isDark} containerClass={`min-h-[calc(100vh-72px)] flex flex-col justify-center ${containerClassProp}`} bg={bg} animate={animate}>
   <div class="text-center">
     {
       tagline && (
@@ -47,8 +41,7 @@ const { container: containerClassProp = "" } = classes;
           titleAs="h1"
           classes={{
             container: "mb-0 max-w-none",
-            title:
-              "text-5xl md:text-7xl font-extrabold tracking-tight text-foreground mb-6",
+            title: "text-5xl md:text-7xl font-extrabold tracking-tight text-foreground mb-6",
             subtitle: "max-w-2xl mx-auto text-xl text-muted-foreground mb-10",
           }}
         />
@@ -60,16 +53,8 @@ const { container: containerClassProp = "" } = classes;
         Array.isArray(actions) &&
           actions.length > 0 &&
           actions.map((action) => (
-            <Button
-              href={action.href}
-              variant={action.variant as "primary" | "secondary"}
-              size="lg"
-              aria-label={action.ariaLabel}
-              class="w-full sm:w-auto"
-            >
-              {action.icon && (
-                <Icon name={action.icon} class="w-5 h-5 mr-2 -ml-1" />
-              )}
+            <Button href={action.href} variant={action.variant as "primary" | "secondary"} size="lg" aria-label={action.ariaLabel} class="w-full sm:w-auto">
+              {action.icon && <Icon name={action.icon} class="w-5 h-5 mr-2 -ml-1" />}
               {action.text}
             </Button>
           ))

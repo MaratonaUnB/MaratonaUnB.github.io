@@ -8,9 +8,7 @@ import type { GetStaticPathsOptions } from "astro";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const blogEntries = await getCollection("blog");
-  const sortedPosts = blogEntries
-    .filter((post) => post.data && post.data.pubDate)
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  const sortedPosts = blogEntries.filter((post) => post.data && post.data.pubDate).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
   return paginate(sortedPosts, { pageSize: 6 });
 }
@@ -27,10 +25,7 @@ const metadata = {
 <BaseLayout metadata={metadata}>
   <section class="relative px-4 py-8 sm:px-6 lg:px-8 md:py-12">
     <div class="absolute inset-0 z-0">
-      <div
-        class="absolute inset-0 bg-linear-to-br from-blue-500/5 via-transparent to-pink-500/5"
-      >
-      </div>
+      <div class="absolute inset-0 bg-linear-to-br from-blue-500/5 via-transparent to-pink-500/5"></div>
     </div>
     <div class="relative mx-auto max-w-5xl">
       <Headline
@@ -39,8 +34,7 @@ const metadata = {
         subtitle="Acompanhe os resultados, editais e novidades da Maratona UnB de Programação."
         classes={{
           container: "reveal mb-12 text-center",
-          title:
-            "font-heading mb-4 text-4xl font-bold tracking-tight text-foreground md:text-6xl",
+          title: "font-heading mb-4 text-4xl font-bold tracking-tight text-foreground md:text-6xl",
           subtitle: "mx-auto max-w-3xl text-xl text-muted-foreground",
         }}
       />

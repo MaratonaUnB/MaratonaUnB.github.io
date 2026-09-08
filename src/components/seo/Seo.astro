@@ -10,22 +10,12 @@ interface Props {
 
 import { siteConfig } from "@/config/site";
 
-const {
-  title,
-  description = siteConfig.description,
-  canonical,
-  ogImage = siteConfig.ogImage,
-  ignoreTitleTemplate = false,
-} = Astro.props;
+const { title, description = siteConfig.description, canonical, ogImage = siteConfig.ogImage, ignoreTitleTemplate = false } = Astro.props;
 
 const ogImageSrc = typeof ogImage === "string" ? ogImage : ogImage.src;
 
-const fullTitle =
-  title && !ignoreTitleTemplate
-    ? `${title} | ${siteConfig.name}`
-    : title || siteConfig.name;
-const canonicalURL =
-  canonical ?? new URL(Astro.url.pathname, siteConfig.url).toString();
+const fullTitle = title && !ignoreTitleTemplate ? `${title} | ${siteConfig.name}` : title || siteConfig.name;
+const canonicalURL = canonical ?? new URL(Astro.url.pathname, siteConfig.url).toString();
 ---
 
 <!-- Global Metadata -->

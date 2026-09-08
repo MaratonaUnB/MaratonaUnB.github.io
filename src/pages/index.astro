@@ -24,10 +24,7 @@ const fotosHero = getHeroPhotos();
 ---
 
 <BaseLayout {metadata}>
-  <section
-    id="hero"
-    class="reveal relative flex h-[600px] items-center justify-center overflow-hidden text-center sm:h-[680px]"
-  >
+  <section id="hero" class="reveal relative flex h-[600px] items-center justify-center overflow-hidden text-center sm:h-[680px]">
     <div id="hero-carrossel" class="absolute inset-0">
       {
         fotosHero.map((foto, i) => (
@@ -41,20 +38,10 @@ const fotosHero = getHeroPhotos();
         ))
       }
     </div>
-    <div
-      class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30"
-    >
-    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30"></div>
     <div class="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-      <h1
-        class="font-heading text-4xl font-extrabold tracking-tight text-white sm:text-6xl"
-      >
-        Maratona UnB de Programação
-      </h1>
-      <p class="mx-auto mt-6 max-w-2xl text-lg text-white/90">
-        Juntos, nos preparamos para "simplesmente, o maior, mais antigo e mais
-        prestigiado concurso de programação do mundo".
-      </p>
+      <h1 class="font-heading text-4xl font-extrabold tracking-tight text-white sm:text-6xl">Maratona UnB de Programação</h1>
+      <p class="mx-auto mt-6 max-w-2xl text-lg text-white/90">Juntos, nos preparamos para "simplesmente, o maior, mais antigo e mais prestigiado concurso de programação do mundo".</p>
       <a
         href="/organizacao"
         class="mt-8 inline-flex items-center justify-center rounded-xl border-2 border-white px-8 py-4 text-lg font-bold text-white transition-all hover:bg-white hover:text-foreground"
@@ -71,14 +58,11 @@ const fotosHero = getHeroPhotos();
       clearInterval(heroIntervalId);
 
       const carrossel = document.getElementById("hero-carrossel");
-      const fotos =
-        carrossel?.querySelectorAll<HTMLImageElement>(".hero-photo");
+      const fotos = carrossel?.querySelectorAll<HTMLImageElement>(".hero-photo");
       if (!fotos || fotos.length <= 1) return;
 
       let atual = Math.floor(Math.random() * fotos.length);
-      fotos.forEach(
-        (foto, i) => (foto.style.opacity = i === atual ? "1" : "0"),
-      );
+      fotos.forEach((foto, i) => (foto.style.opacity = i === atual ? "1" : "0"));
 
       heroIntervalId = setInterval(() => {
         const proximo = (atual + 1) % fotos.length;
@@ -89,52 +73,34 @@ const fotosHero = getHeroPhotos();
     }
 
     document.addEventListener("astro:page-load", iniciarCarrosselHero);
-    document.addEventListener("astro:before-swap", () =>
-      clearInterval(heroIntervalId),
-    );
+    document.addEventListener("astro:before-swap", () => clearInterval(heroIntervalId));
   </script>
 
   <NextEvent />
 
-  <section
-    class="reveal mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8"
-  >
-    <h2 class="text-sm font-semibold uppercase tracking-wide text-primary">
-      Maratona UnB de Programação
-    </h2>
+  <section class="reveal mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8">
+    <h2 class="text-sm font-semibold uppercase tracking-wide text-primary">Maratona UnB de Programação</h2>
     <p class="mt-4 text-lg leading-relaxed text-foreground">
       {siteConfig.description}
-      Professores e alunos da UnB organizam disciplinas, palestras, eventos e grupos
-      de estudo para prepararem os participantes para competições como a Olimpíada
-      Brasileira de Informática e a Maratona SBC de Programação.
+      Professores e alunos da UnB organizam disciplinas, palestras, eventos e grupos de estudo para prepararem os participantes para competições como a Olimpíada Brasileira de Informática e a Maratona SBC
+      de Programação.
     </p>
   </section>
 
   <section class="reveal mx-auto max-w-6xl px-4 pb-20 sm:px-6 lg:px-8">
     <div class="mb-10 flex items-center justify-between">
-      <h2 class="text-2xl font-bold text-foreground sm:text-3xl">
-        Últimas Notícias
-      </h2>
-      <a href="/blog/category/noticias" class="link text-sm font-semibold">
-        Ver todas as notícias →
-      </a>
+      <h2 class="text-2xl font-bold text-foreground sm:text-3xl">Últimas Notícias</h2>
+      <a href="/blog/category/noticias" class="link text-sm font-semibold"> Ver todas as notícias → </a>
     </div>
     <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {ultimasNoticias.map((post) => <PostItem post={post} />)}
     </div>
   </section>
 
-  <section
-    class="reveal mx-auto max-w-3xl px-4 pb-20 text-center sm:px-6 lg:px-8"
-  >
+  <section class="reveal mx-auto max-w-3xl px-4 pb-20 text-center sm:px-6 lg:px-8">
     <div class="rounded-3xl border border-border bg-card p-10">
-      <h2 class="text-2xl font-bold text-foreground sm:text-3xl">
-        Quer patrocinar a Maratona UnB de Programação?
-      </h2>
-      <p class="mx-auto mt-3 max-w-xl text-muted-foreground">
-        Conecte sua marca aos melhores talentos em programação competitiva do
-        Distrito Federal.
-      </p>
+      <h2 class="text-2xl font-bold text-foreground sm:text-3xl">Quer patrocinar a Maratona UnB de Programação?</h2>
+      <p class="mx-auto mt-3 max-w-xl text-muted-foreground">Conecte sua marca aos melhores talentos em programação competitiva do Distrito Federal.</p>
       <a
         href="/patrocinadores"
         class="mt-6 inline-flex items-center rounded-xl bg-foreground px-6 py-3 text-base font-bold text-background transition-all hover:bg-foreground/90"

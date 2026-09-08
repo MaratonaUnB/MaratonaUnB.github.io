@@ -17,11 +17,7 @@ const EXTENSOES_VALIDAS = [".jpg", ".jpeg", ".png", ".webp"];
 export function getHeroPhotos(): string[] {
   const dir = join(process.cwd(), "public/site/hero");
   const arquivos = readdirSync(dir)
-    .filter((nome) =>
-      EXTENSOES_VALIDAS.includes(
-        nome.slice(nome.lastIndexOf(".")).toLowerCase(),
-      ),
-    )
+    .filter((nome) => EXTENSOES_VALIDAS.includes(nome.slice(nome.lastIndexOf(".")).toLowerCase()))
     .sort();
   return arquivos.map((nome) => `/site/hero/${nome}`);
 }

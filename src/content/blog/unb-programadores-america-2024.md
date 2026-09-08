@@ -8,7 +8,9 @@ tags: ["icpc", "resultado", "maratona-feminina"]
 image: "/blog/icpc-pda-2024-logo.jpg"
 ---
 
-Entre os dias **14 e 18 de março de 2024**, em **Guadalajara, no México**, aconteceu a primeira final latino-americana **Programadores de América**, etapa entre a Final Brasileira e a Final Mundial do ICPC. A UnB foi representada por duas equipes, classificadas na Final Regional Centro-Oeste de 2023:
+Entre os dias **14 e 18 de março de 2024**, em **Guadalajara, no México**, aconteceu a primeira final latino-americana
+**Programadores de
+América**, etapa entre a Final Brasileira e a Final Mundial do ICPC. A UnB foi representada por duas equipes, classificadas na Final Regional Centro-Oeste de 2023:
 
 - **"Heladito??"** — **26º lugar**
 - **"Lenhadoras de SegTree"** — **31º lugar**

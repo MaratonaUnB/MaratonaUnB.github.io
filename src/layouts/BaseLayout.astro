@@ -34,23 +34,20 @@ const finalIgnoreTitleTemplate = metadata?.ignoreTitleTemplate || false;
 <!doctype html>
 <html lang={siteConfig.lang} class="scroll-smooth">
   <head>
-    <Seo
-      title={finalTitle}
-      description={finalDescription}
-      ogImage={finalOgImage}
-      canonical={finalCanonical}
-      ignoreTitleTemplate={finalIgnoreTitleTemplate}
-    />
+    <Seo title={finalTitle} description={finalDescription} ogImage={finalOgImage} canonical={finalCanonical} ignoreTitleTemplate={finalIgnoreTitleTemplate} />
     <ClientRouter />
     <Schema type="WebSite" data={{}} />
     <Schema type="Organization" data={{}} />
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CMCKYNL0P0"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CMCKYNL0P0"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
+        // Snippet oficial do gtag.js: o `arguments` aqui é intencional. Trocar
+        // por rest params empurraria um Array no lugar do objeto arguments que
+        // o gtag.js espera, quebrando o Analytics sem nenhum erro visível.
+        // eslint-disable-next-line prefer-rest-params
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
@@ -71,24 +68,13 @@ const finalIgnoreTitleTemplate = metadata?.ignoreTitleTemplate || false;
     <slot name="head" />
   </head>
   <body class="bg-background text-foreground antialiased">
-    <a
-      href="#main-content"
-      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 rounded-md bg-primary px-4 py-2 text-white shadow-lg ring-2 ring-white"
-    >
-      Skip to content
-    </a>
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 rounded-md bg-primary px-4 py-2 text-white shadow-lg ring-2 ring-white"> Skip to content </a>
 
     <div class="relative flex min-h-screen flex-col overflow-x-hidden">
       <!-- Background Glow -->
       <div class="pointer-events-none fixed inset-0 z-0 hidden md:block">
-        <div
-          class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.15)_0%,transparent_50%)]"
-        >
-        </div>
-        <div
-          class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.15)_0%,transparent_50%)]"
-        >
-        </div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.15)_0%,transparent_50%)]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.15)_0%,transparent_50%)]"></div>
       </div>
 
       <Navbar />
@@ -112,10 +98,7 @@ const finalIgnoreTitleTemplate = metadata?.ignoreTitleTemplate || false;
         document.querySelectorAll(".reveal:not(.active)").forEach((el) => {
           if (el.getBoundingClientRect().top < window.innerHeight) {
             // Temporarily disable transition during initial show
-            el.setAttribute(
-              "style",
-              "transition: none !important; transform: none !important;",
-            );
+            el.setAttribute("style", "transition: none !important; transform: none !important;");
             el.classList.add("active");
             // Reactivate their explicit styles so CSS takes over next time
             requestAnimationFrame(() => {
@@ -141,9 +124,7 @@ const finalIgnoreTitleTemplate = metadata?.ignoreTitleTemplate || false;
           },
         );
 
-        const remainingElements = document.querySelectorAll(
-          ".reveal:not(.active)",
-        );
+        const remainingElements = document.querySelectorAll(".reveal:not(.active)");
         remainingElements.forEach((el) => scrollObserver?.observe(el));
       };
 

@@ -7,4 +7,5 @@ category: "noticias"
 tags: ["icpc", "resultado"]
 ---
 
-O time **"UnB – Posso mandar um WA?"** foi campeão da regional Centro-Oeste, alcançando a **20ª posição na LatAm** e a **13ª no Brasil**. A equipe foi formada por **Tiago Fernandes**, **Alberto Tavares** e **Leonardo Riether**.
+O time **"UnB – Posso mandar um WA?"** foi campeão da regional Centro-Oeste, alcançando a **20ª posição na LatAm** e a
+**13ª no Brasil**. A equipe foi formada por **Tiago Fernandes**, **Alberto Tavares** e **Leonardo Riether**.

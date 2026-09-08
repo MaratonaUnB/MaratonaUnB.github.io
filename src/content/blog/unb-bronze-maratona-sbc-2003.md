@@ -8,7 +8,8 @@ tags: ["icpc", "resultado"]
 image: "/blog/maratona-sbc-2003-header.jpg"
 ---
 
-O time **"UnB green"** conquistou **medalha de bronze** na Maratona SBC de Programação de 2003, etapa brasileira do ICPC.
+O time **"UnB green"** conquistou **medalha de
+bronze** na Maratona SBC de Programação de 2003, etapa brasileira do ICPC.
 
 Quatro equipes sul-americanas se classificaram para a Final Mundial do ICPC de 2004, em Praga — Unicamp e UFPE entre elas — mas nenhuma da UnB.
 

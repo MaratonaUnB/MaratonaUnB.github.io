@@ -7,7 +7,8 @@ temPagina: true
 destaque: true
 ---
 
-A décima segunda edição da Maratona UnB de Programação teve as inscrições anunciadas em **4 de agosto de 2024**. O site original não publicou um post de encerramento com a data exata da prova nem os resultados desta edição — apenas o anúncio de abertura de inscrições.
+A décima segunda edição da Maratona UnB de Programação teve as inscrições anunciadas em **4 de agosto de
+2024**. O site original não publicou um post de encerramento com a data exata da prova nem os resultados desta edição — apenas o anúncio de abertura de inscrições.
 
 ## Resumo
 

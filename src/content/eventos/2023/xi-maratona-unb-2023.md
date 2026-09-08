@@ -9,7 +9,8 @@ temPagina: true
 destaque: true
 ---
 
-A XI Maratona UnB de Programação — décima primeira edição do evento, realizado ininterruptamente desde 2013 — aconteceu no dia **27 de setembro de 2023**, no Laboratório de Informática (LINF), ICC — Módulo 19, Campus Darcy Ribeiro.
+A XI Maratona UnB de Programação — décima primeira edição do evento, realizado ininterruptamente desde 2013 — aconteceu no dia
+**27 de setembro de 2023**, no Laboratório de Informática (LINF), ICC — Módulo 19, Campus Darcy Ribeiro.
 
 ## Resumo
 

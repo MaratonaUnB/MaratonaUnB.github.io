@@ -30,11 +30,7 @@ if (type === "WebSite") {
       "@type": "Person",
       name: siteConfig.author,
     },
-    sameAs: [
-      siteConfig.socialLinks.instagram,
-      siteConfig.socialLinks.youtube,
-      siteConfig.socialLinks.github,
-    ],
+    sameAs: [siteConfig.socialLinks.instagram, siteConfig.socialLinks.youtube, siteConfig.socialLinks.github],
   };
 } else if (type === "BlogPosting") {
   schema = {
@@ -75,12 +71,7 @@ if (type === "WebSite") {
       name: "Universidade de Brasília",
       url: "https://unb.br/",
     },
-    sameAs: [
-      siteConfig.socialLinks.instagram,
-      siteConfig.socialLinks.youtube,
-      siteConfig.socialLinks.telegram,
-      siteConfig.socialLinks.github,
-    ],
+    sameAs: [siteConfig.socialLinks.instagram, siteConfig.socialLinks.youtube, siteConfig.socialLinks.telegram, siteConfig.socialLinks.github],
   };
 } else if (type === "Event") {
   schema = {
@@ -106,8 +97,4 @@ if (type === "WebSite") {
 }
 ---
 
-<script
-  is:inline
-  type="application/ld+json"
-  set:html={JSON.stringify(schema)}
-/>
+<script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />

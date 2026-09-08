@@ -34,10 +34,7 @@ const eventos = defineCollection({
     // Link para o mapa do local (ex.: Google Maps), exibido junto ao
     // endereço no card de informações.
     mapaUrl: z.string().optional(),
-    status: z
-      .enum(["realizado", "confirmado", "a-confirmar", "adiado"])
-      .optional()
-      .default("confirmado"),
+    status: z.enum(["realizado", "confirmado", "a-confirmar", "adiado"]).optional().default("confirmado"),
     // Se true, o corpo em Markdown do arquivo vira uma página própria em
     // /eventos/<slug>. Se false (padrão), o evento só aparece como linha
     // na tabela do calendário.

@@ -7,4 +7,5 @@ category: "noticias"
 tags: ["icpc", "resultado"]
 ---
 
-O time **"Posso mandar um WA?"** foi campeão da regional Centro-Oeste na **XXVI Maratona de Programação SBC**, etapa brasileira do ICPC.
+O time **"Posso mandar um WA?"** foi campeão da regional Centro-Oeste na **XXVI Maratona de Programação
+SBC**, etapa brasileira do ICPC.

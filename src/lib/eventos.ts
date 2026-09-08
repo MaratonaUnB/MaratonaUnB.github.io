@@ -1,4 +1,4 @@
-import { getCollection, type CollectionEntry } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
 
 export type Evento = CollectionEntry<"eventos">;
 
@@ -20,9 +20,7 @@ export function getProximoEvento(eventosOrdenadosDesc: Evento[]): {
 } {
   const destaques = eventosOrdenadosDesc.filter((e) => e.data.destaque);
   const now = new Date();
-  const futuros = destaques
-    .filter((e) => e.data.date.valueOf() >= now.valueOf())
-    .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+  const futuros = destaques.filter((e) => e.data.date.valueOf() >= now.valueOf()).sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
 
   if (futuros.length > 0) {
     return { evento: futuros[0], isFuturo: true };
@@ -59,12 +57,8 @@ export function agruparEventosPorAno(eventos: Evento[]): GrupoAnoEventos[] {
   return Array.from(porAno.entries())
     .sort((a, b) => b[0] - a[0])
     .map(([ano, eventosDoAno]) => {
-      const naoRealizados = eventosDoAno
-        .filter((e) => e.data.status !== "realizado")
-        .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
-      const realizados = eventosDoAno
-        .filter((e) => e.data.status === "realizado")
-        .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+      const naoRealizados = eventosDoAno.filter((e) => e.data.status !== "realizado").sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+      const realizados = eventosDoAno.filter((e) => e.data.status === "realizado").sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
       return { ano, naoRealizados, realizados };
     });
 }
@@ -83,8 +77,6 @@ export function formatarDataEvento(evento: Evento): string {
   if (!endDate || endDate.valueOf() === date.valueOf()) {
     return formatar(date);
   }
-  const mesmoMes =
-    date.getUTCFullYear() === endDate.getUTCFullYear() &&
-    date.getUTCMonth() === endDate.getUTCMonth();
+  const mesmoMes = date.getUTCFullYear() === endDate.getUTCFullYear() && date.getUTCMonth() === endDate.getUTCMonth();
   return `${formatar(date, !mesmoMes)} a ${formatar(endDate)}`;
 }

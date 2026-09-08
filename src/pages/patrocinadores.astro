@@ -5,8 +5,7 @@ import { siteConfig } from "@/config/site";
 
 const metadata = {
   title: "Patrocinadores",
-  description:
-    "Apoie a Maratona UnB de Programação e conecte sua marca aos melhores talentos em tecnologia do Distrito Federal.",
+  description: "Apoie a Maratona UnB de Programação e conecte sua marca aos melhores talentos em tecnologia do Distrito Federal.",
 };
 
 const numeros = [
@@ -17,8 +16,7 @@ const numeros = [
   },
   {
     valor: "5 vagas",
-    label:
-      "Na Final Brasileira 2024 — recorde de participação de uma instituição",
+    label: "Na Final Brasileira 2024 — recorde de participação de uma instituição",
   },
   {
     valor: "2 campi",
@@ -28,38 +26,17 @@ const numeros = [
 ---
 
 <BaseLayout {metadata}>
-  <PageHeader
-    title="Patrocinadores"
-    subtitle="Conecte sua marca aos melhores talentos em tecnologia do Distrito Federal"
-    icon="lucide:handshake"
-  />
+  <PageHeader title="Patrocinadores" subtitle="Conecte sua marca aos melhores talentos em tecnologia do Distrito Federal" icon="lucide:handshake" />
 
   <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
     {
       siteConfig.supporters.length > 0 && (
         <div class="rounded-2xl border border-border bg-card p-6 text-center">
-          <p class="text-sm font-medium text-muted-foreground">
-            Já apoiam a Maratona UnB de Programação:
-          </p>
+          <p class="text-sm font-medium text-muted-foreground">Já apoiam a Maratona UnB de Programação:</p>
           <div class="mt-4 flex flex-wrap items-center justify-center gap-8">
             {siteConfig.supporters.map((supporter) => (
-              <a
-                href={supporter.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={supporter.name}
-              >
-                {supporter.logo ? (
-                  <img
-                    src={supporter.logo}
-                    alt={supporter.name}
-                    class="h-9 w-auto object-contain"
-                  />
-                ) : (
-                  <span class="text-lg font-semibold text-foreground">
-                    {supporter.name}
-                  </span>
-                )}
+              <a href={supporter.url} target="_blank" rel="noopener noreferrer" aria-label={supporter.name}>
+                {supporter.logo ? <img src={supporter.logo} alt={supporter.name} class="h-9 w-auto object-contain" /> : <span class="text-lg font-semibold text-foreground">{supporter.name}</span>}
               </a>
             ))}
           </div>
@@ -68,12 +45,8 @@ const numeros = [
     }
 
     <p class="mt-10 text-lg leading-relaxed text-foreground">
-      A Maratona UnB de Programação forma, todos os anos, os times que
-      representam o Distrito Federal nas maiores competições de programação
-      competitiva do país — o ICPC (etapa brasileira da Maratona SBC) e a OBI.
-      Patrocinar o projeto é investir diretamente nos estudantes mais preparados
-      em algoritmos, resolução de problemas e trabalho sob pressão do mercado de
-      tecnologia.
+      A Maratona UnB de Programação forma, todos os anos, os times que representam o Distrito Federal nas maiores competições de programação competitiva do país — o ICPC (etapa brasileira da Maratona
+      SBC) e a OBI. Patrocinar o projeto é investir diretamente nos estudantes mais preparados em algoritmos, resolução de problemas e trabalho sob pressão do mercado de tecnologia.
     </p>
 
     <div class="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
@@ -87,45 +60,25 @@ const numeros = [
       }
     </div>
 
-    <h2 class="mt-14 text-2xl font-bold text-foreground">
-      O que o patrocínio viabiliza
-    </h2>
+    <h2 class="mt-14 text-2xl font-bold text-foreground">O que o patrocínio viabiliza</h2>
     <ul class="mt-4 list-disc space-y-2 pl-6 text-muted-foreground">
       <li>Inscrições gratuitas para todos os times participantes;</li>
       <li>Material de estudo e cursos preparatórios (OBI e ICPC);</li>
-      <li>
-        Deslocamento e hospedagem de times classificados para fases regionais,
-        nacionais e a final mundial;
-      </li>
+      <li>Deslocamento e hospedagem de times classificados para fases regionais, nacionais e a final mundial;</li>
       <li>Premiação e materiais no dia do evento.</li>
     </ul>
 
-    <h2 class="mt-14 text-2xl font-bold text-foreground">
-      O que sua marca ganha
-    </h2>
+    <h2 class="mt-14 text-2xl font-bold text-foreground">O que sua marca ganha</h2>
     <ul class="mt-4 list-disc space-y-2 pl-6 text-muted-foreground">
-      <li>
-        Exposição direta ao público de estudantes de Computação e áreas afins
-        dos cursos de várias instituições de ensino superior do Distrito
-        Federal;
-      </li>
+      <li>Exposição direta ao público de estudantes de Computação e áreas afins dos cursos de várias instituições de ensino superior do Distrito Federal;</li>
       <li>Logo em materiais de divulgação, site e redes sociais do evento;</li>
-      <li>
-        Acesso privilegiado para recrutamento entre os melhores competidores da
-        região Centro-Oeste;
-      </li>
-      <li>
-        Associação de marca a um projeto de extensão com mais de 10 anos de
-        história.
-      </li>
+      <li>Acesso privilegiado para recrutamento entre os melhores competidores da região Centro-Oeste;</li>
+      <li>Associação de marca a um projeto de extensão com mais de 10 anos de história.</li>
     </ul>
 
     <div class="mt-14 rounded-3xl border border-border bg-card p-8 text-center">
       <h2 class="text-xl font-bold text-foreground">Vamos conversar?</h2>
-      <p class="mt-2 text-muted-foreground">
-        Envie um e-mail contando um pouco sobre sua empresa e como podemos
-        construir uma parceria.
-      </p>
+      <p class="mt-2 text-muted-foreground">Envie um e-mail contando um pouco sobre sua empresa e como podemos construir uma parceria.</p>
       <a
         href={`mailto:${siteConfig.email}?subject=Quero patrocinar a Maratona UnB de Programação`}
         class="mt-6 inline-flex items-center rounded-xl bg-foreground px-6 py-3 text-base font-bold text-background transition-all hover:bg-foreground/90"

@@ -1,2 +1,10 @@
 .github
 .github/**
+
+# Conteúdo editorial (Markdown com frontmatter YAML).
+# Esses arquivos são editados direto pela interface do GitHub, por quem não roda
+# o lint local. Um reflow de linha no frontmatter (juntar `pubDate` e `author`
+# na mesma linha, por exemplo) gera YAML inválido e derruba o build inteiro.
+# Nenhum ganho de formatação aqui compensa esse risco.
+src/content
+src/content/**

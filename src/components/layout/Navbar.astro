@@ -4,17 +4,10 @@ import { Icon } from "astro-icon/components";
 import Logo from "@/components/ui/Logo.astro";
 ---
 
-<nav
-  class="fixed top-0 z-50 w-full border-b border-border bg-background md:bg-background/80 md:backdrop-blur"
->
-  <div
-    class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8"
-  >
+<nav class="fixed top-0 z-50 w-full border-b border-border bg-background md:bg-background/80 md:backdrop-blur">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
     <div class="flex items-center gap-2">
-      <a
-        href="/"
-        class="flex items-center gap-2 text-lg font-bold tracking-tight"
-      >
+      <a href="/" class="flex items-center gap-2 text-lg font-bold tracking-tight">
         <Logo class="h-9 w-auto" />
         <span>
           <span style="color: #003366">Maratona</span>{" "}
@@ -32,24 +25,11 @@ import Logo from "@/components/ui/Logo.astro";
             if ("links" in link && Array.isArray(link.links)) {
               return (
                 <div class="relative group">
-                  <a
-                    href={link.href}
-                    class="flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:text-primary"
-                  >
+                  <a href={link.href} class="flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:text-primary">
                     {link.icon && <Icon name={link.icon} class="h-4 w-4" />}
                     {link.text}
-                    <svg
-                      class="h-4 w-4 transition-transform group-hover:rotate-180"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M19 9l-7 7-7-7"
-                      />
+                    <svg class="h-4 w-4 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </a>
                   <div class="absolute left-0 mt-2 w-60 rounded-md border border-border bg-background shadow-lg opacity-0 invisible translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 z-50">
@@ -57,46 +37,20 @@ import Logo from "@/components/ui/Logo.astro";
                       {link.links.map((sublink) =>
                         "links" in sublink && Array.isArray(sublink.links) ? (
                           <div class="relative group/sub">
-                            <a
-                              href={sublink.href}
-                              class="flex items-center justify-between gap-2 px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
-                            >
+                            <a href={sublink.href} class="flex items-center justify-between gap-2 px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors">
                               <span class="flex items-center gap-2">
-                                {sublink.icon && (
-                                  <Icon
-                                    name={sublink.icon}
-                                    class="h-4 w-4 text-muted-foreground"
-                                  />
-                                )}
+                                {sublink.icon && <Icon name={sublink.icon} class="h-4 w-4 text-muted-foreground" />}
                                 {sublink.text}
                               </span>
-                              <svg
-                                class="h-4 w-4 -rotate-90 text-muted-foreground"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                              >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  d="M19 9l-7 7-7-7"
-                                />
+                              <svg class="h-4 w-4 -rotate-90 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                               </svg>
                             </a>
                             <div class="absolute left-full top-0 ml-1 w-60 rounded-md border border-border bg-background shadow-lg opacity-0 invisible translate-x-1 transition-all duration-200 group-hover/sub:opacity-100 group-hover/sub:visible group-hover/sub:translate-x-0 z-50">
                               <div class="py-1">
                                 {sublink.links.map((subsublink) => (
-                                  <a
-                                    href={subsublink.href}
-                                    class="flex items-center gap-2 px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
-                                  >
-                                    {subsublink.icon && (
-                                      <Icon
-                                        name={subsublink.icon}
-                                        class="h-4 w-4 text-muted-foreground"
-                                      />
-                                    )}
+                                  <a href={subsublink.href} class="flex items-center gap-2 px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors">
+                                    {subsublink.icon && <Icon name={subsublink.icon} class="h-4 w-4 text-muted-foreground" />}
                                     {subsublink.text}
                                   </a>
                                 ))}
@@ -104,16 +58,8 @@ import Logo from "@/components/ui/Logo.astro";
                             </div>
                           </div>
                         ) : (
-                          <a
-                            href={sublink.href}
-                            class="flex items-center gap-2 px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
-                          >
-                            {sublink.icon && (
-                              <Icon
-                                name={sublink.icon}
-                                class="h-4 w-4 text-muted-foreground"
-                              />
-                            )}
+                          <a href={sublink.href} class="flex items-center gap-2 px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors">
+                            {sublink.icon && <Icon name={sublink.icon} class="h-4 w-4 text-muted-foreground" />}
                             {sublink.text}
                           </a>
                         ),
@@ -124,10 +70,7 @@ import Logo from "@/components/ui/Logo.astro";
               );
             }
             return (
-              <a
-                href={link.href}
-                class="flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:text-primary"
-              >
+              <a href={link.href} class="flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:text-primary">
                 {link.icon && <Icon name={link.icon} class="h-4 w-4" />}
                 {link.text}
               </a>
@@ -140,33 +83,19 @@ import Logo from "@/components/ui/Logo.astro";
     <div class="hidden md:flex items-center gap-1">
       {
         siteConfig.headerSocialLinks.map((social) => (
-          <a
-            href={social.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={social.text}
-            class="rounded-full p-2 text-foreground transition-colors hover:bg-muted hover:text-primary"
-          >
+          <a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.text} class="rounded-full p-2 text-foreground transition-colors hover:bg-muted hover:text-primary">
             <Icon name={social.icon} class="h-5 w-5" />
           </a>
         ))
       }
-      <a
-        href={`mailto:${siteConfig.email}`}
-        aria-label={`Enviar e-mail para ${siteConfig.email}`}
-        class="rounded-full p-2 text-foreground transition-colors hover:bg-muted hover:text-primary"
-      >
+      <a href={`mailto:${siteConfig.email}`} aria-label={`Enviar e-mail para ${siteConfig.email}`} class="rounded-full p-2 text-foreground transition-colors hover:bg-muted hover:text-primary">
         <Icon name="lucide:mail" class="h-5 w-5" />
       </a>
     </div>
 
     <!-- Mobile Menu Button -->
     <div class="md:hidden flex items-center">
-      <a
-        href={`mailto:${siteConfig.email}`}
-        aria-label={`Enviar e-mail para ${siteConfig.email}`}
-        class="rounded-full p-2 text-foreground transition-colors hover:bg-muted hover:text-primary"
-      >
+      <a href={`mailto:${siteConfig.email}`} aria-label={`Enviar e-mail para ${siteConfig.email}`} class="rounded-full p-2 text-foreground transition-colors hover:bg-muted hover:text-primary">
         <Icon name="lucide:mail" class="h-5 w-5" />
       </a>
       <button
@@ -177,51 +106,24 @@ import Logo from "@/components/ui/Logo.astro";
         aria-expanded="false"
       >
         <span class="sr-only">Abrir menu principal</span>
-        <svg
-          id="menu-icon-closed"
-          class="block h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          aria-hidden="true"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16"></path>
+        <svg id="menu-icon-closed" class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
-        <svg
-          id="menu-icon-open"
-          class="hidden h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          aria-hidden="true"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"></path>
+        <svg id="menu-icon-open" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
     </div>
   </div>
 
   <div class="hidden md:hidden" id="mobile-menu">
-    <div
-      class="space-y-1 border-b border-border bg-background/95 px-2 pb-3 pt-2 sm:px-3"
-    >
+    <div class="space-y-1 border-b border-border bg-background/95 px-2 pb-3 pt-2 sm:px-3">
       {
         siteConfig.navLinks.map((link) => {
           if ("links" in link && Array.isArray(link.links)) {
             return (
               <div class="py-1">
-                <a
-                  href={link.href}
-                  class="flex items-center gap-1.5 rounded-md px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground"
-                >
+                <a href={link.href} class="flex items-center gap-1.5 rounded-md px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                   {link.icon && <Icon name={link.icon} class="h-3.5 w-3.5" />}
                   {link.text}
                 </a>
@@ -229,37 +131,22 @@ import Logo from "@/components/ui/Logo.astro";
                   {link.links.map((sublink) =>
                     "links" in sublink && Array.isArray(sublink.links) ? (
                       <div class="py-1">
-                        <a
-                          href={sublink.href}
-                          class="flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-foreground transition-colors hover:bg-muted hover:text-primary"
-                        >
-                          {sublink.icon && (
-                            <Icon name={sublink.icon} class="h-4 w-4" />
-                          )}
+                        <a href={sublink.href} class="flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-foreground transition-colors hover:bg-muted hover:text-primary">
+                          {sublink.icon && <Icon name={sublink.icon} class="h-4 w-4" />}
                           {sublink.text}
                         </a>
                         <div class="mt-1 pl-4 space-y-1">
                           {sublink.links.map((subsublink) => (
-                            <a
-                              href={subsublink.href}
-                              class="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-primary"
-                            >
-                              {subsublink.icon && (
-                                <Icon name={subsublink.icon} class="h-4 w-4" />
-                              )}
+                            <a href={subsublink.href} class="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-primary">
+                              {subsublink.icon && <Icon name={subsublink.icon} class="h-4 w-4" />}
                               {subsublink.text}
                             </a>
                           ))}
                         </div>
                       </div>
                     ) : (
-                      <a
-                        href={sublink.href}
-                        class="flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-foreground transition-colors hover:bg-muted hover:text-primary"
-                      >
-                        {sublink.icon && (
-                          <Icon name={sublink.icon} class="h-4 w-4" />
-                        )}
+                      <a href={sublink.href} class="flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-foreground transition-colors hover:bg-muted hover:text-primary">
+                        {sublink.icon && <Icon name={sublink.icon} class="h-4 w-4" />}
                         {sublink.text}
                       </a>
                     ),
@@ -269,10 +156,7 @@ import Logo from "@/components/ui/Logo.astro";
             );
           }
           return (
-            <a
-              href={link.href}
-              class="flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-foreground transition-colors hover:bg-muted hover:text-primary"
-            >
+            <a href={link.href} class="flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-foreground transition-colors hover:bg-muted hover:text-primary">
               {link.icon && <Icon name={link.icon} class="h-4 w-4" />}
               {link.text}
             </a>

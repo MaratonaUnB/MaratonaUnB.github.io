@@ -7,4 +7,6 @@ category: "extensao"
 tags: ["pibex", "edital", "extensao"]
 ---
 
-Edital de seleção de discentes para o **Programa Institucional de Bolsas de Extensão (PIBEX) 2024**, vinculado ao projeto de extensão **Maratona de Programação** da UnB. Consulte o resultado final, o resultado provisório e o edital completo com a organização do projeto.
+Edital de seleção de discentes para o **Programa Institucional de Bolsas de Extensão (PIBEX)
+2024**, vinculado ao projeto de extensão **Maratona de
+Programação** da UnB. Consulte o resultado final, o resultado provisório e o edital completo com a organização do projeto.

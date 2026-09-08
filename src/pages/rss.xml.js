@@ -17,9 +17,7 @@ export async function GET(context) {
         description: post.data.description,
         link: `/blog/${post.id}/`,
         content: post.body, // Optional: include full content
-        customData: post.data.author
-          ? `<author>${post.data.author}</author>`
-          : undefined,
+        customData: post.data.author ? `<author>${post.data.author}</author>` : undefined,
       })),
     customData: `<language>${siteConfig.locale}</language>`,
   });

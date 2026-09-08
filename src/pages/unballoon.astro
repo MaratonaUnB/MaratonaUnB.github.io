@@ -5,8 +5,7 @@ import { siteConfig } from "@/config/site";
 
 const metadata = {
   title: "UnBalloon",
-  description:
-    "UnBalloon é o grupo de programação competitiva da Universidade de Brasília.",
+  description: "UnBalloon é o grupo de programação competitiva da Universidade de Brasília.",
 };
 
 const recursos = [
@@ -35,18 +34,10 @@ const recursos = [
 ---
 
 <BaseLayout {metadata}>
-  <PageHeader
-    title="UnBalloon"
-    subtitle="O grupo de programação competitiva da Universidade de Brasília"
-    icon="lucide:balloon"
-    logo="/site/marcas/unballoon.png"
-    logoAlt="Logo do UnBalloon"
-  />
+  <PageHeader title="UnBalloon" subtitle="O grupo de programação competitiva da Universidade de Brasília" icon="lucide:balloon" logo="/site/marcas/unballoon.png" logoAlt="Logo do UnBalloon" />
   <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
     <p class="text-lg leading-relaxed text-foreground">
-      Você quer participar de competições de programação e adora desafios?
-      Junte-se ao <strong>UnBalloon</strong>, o grupo de programação competitiva
-      da Universidade de Brasília! Aqui você encontrará:
+      Você quer participar de competições de programação e adora desafios? Junte-se ao <strong>UnBalloon</strong>, o grupo de programação competitiva da Universidade de Brasília! Aqui você encontrará:
     </p>
     <ul class="mt-4 list-disc space-y-2 pl-6 text-muted-foreground">
       <li>outros maratonistas para trocar experiências e formar equipes;</li>
@@ -56,18 +47,11 @@ const recursos = [
     </ul>
     <p class="mt-6 text-lg leading-relaxed text-foreground">
       Acesse
-      <a
-        href={siteConfig.socialLinks.unballoonSite}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="link"
-      >o site</a>
+      <a href={siteConfig.socialLinks.unballoonSite} target="_blank" rel="noopener noreferrer" class="link">o site</a>
       para mais detalhes e comece sua jornada na programação competitiva!
     </p>
 
-    <h2 class="mt-12 text-2xl font-bold text-foreground">
-      Recursos
-    </h2>
+    <h2 class="mt-12 text-2xl font-bold text-foreground">Recursos</h2>
     <ul class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
       {
         recursos.map((r) => (

@@ -7,7 +7,9 @@ category: "eventos-anteriores"
 tags: ["icpc", "resultado"]
 ---
 
-O time **"UnB 1"** conquistou **medalha de bronze** na Maratona SBC de Programação de 2002, etapa brasileira do ICPC. A equipe foi formada por **Edans Sandes**, **Michael Onishi** e **Rommel Carvalho**, com técnico **Wagner da Silva**.
+O time **"UnB 1"** conquistou **medalha de
+bronze** na Maratona SBC de Programação de 2002, etapa brasileira do ICPC. A equipe foi formada por **Edans Sandes**,
+**Michael Onishi** e **Rommel Carvalho**, com técnico **Wagner da Silva**.
 
 Quatro times sul-americanos se classificaram para a Final Mundial do ICPC de 2003, em Los Angeles — nenhum deles da UnB.
 

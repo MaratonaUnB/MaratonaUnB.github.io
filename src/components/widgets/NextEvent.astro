@@ -5,11 +5,7 @@
 // conteúdo na hora, caso a data do evento em destaque já tenha passado
 // desde o último build (o GitHub Pages não tem rebuild agendado — sem
 // isso, a home ficaria "presa" no evento errado até o próximo commit).
-import {
-  getEventosOrdenados,
-  getProximoEvento,
-  slugDoEvento,
-} from "@/lib/eventos";
+import { getEventosOrdenados, getProximoEvento, slugDoEvento } from "@/lib/eventos";
 
 const eventos = await getEventosOrdenados();
 const { evento, isFuturo } = getProximoEvento(eventos);
@@ -31,39 +27,23 @@ const eventosParaCliente = eventos
 
 {
   evento && (
-    <section
-      class="reveal border-y border-border bg-card"
-      id="next-event"
-      data-rendered-id={slugDoEvento(evento)}
-    >
+    <section class="reveal border-y border-border bg-card" id="next-event" data-rendered-id={slugDoEvento(evento)}>
       <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
         <div class="flex flex-col gap-8 md:flex-row md:items-center">
-          <div
-            id="next-event-cover-wrap"
-            class="flex h-48 w-full items-center justify-center overflow-hidden rounded-2xl bg-white md:h-40 md:w-64 md:shrink-0"
-          >
+          <div id="next-event-cover-wrap" class="flex h-48 w-full items-center justify-center overflow-hidden rounded-2xl bg-white md:h-40 md:w-64 md:shrink-0">
             <img
               id="next-event-cover"
               src={evento.data.cover || "/site/marcas/MaratonaUnB.svg"}
               alt={evento.data.coverAlt || evento.data.title}
-              class:list={[
-                "h-full w-full object-contain",
-                { "p-4": !evento.data.cover },
-              ]}
+              class:list={["h-full w-full object-contain", { "p-4": !evento.data.cover }]}
               loading="eager"
             />
           </div>
           <div>
-            <p
-              id="next-event-badge"
-              class="text-sm font-semibold uppercase tracking-wide text-primary"
-            >
+            <p id="next-event-badge" class="text-sm font-semibold uppercase tracking-wide text-primary">
               {isFuturo ? "🏆 Próximo Evento" : "Último Evento"}
             </p>
-            <h2
-              id="next-event-title"
-              class="mt-2 text-2xl font-bold text-foreground sm:text-3xl"
-            >
+            <h2 id="next-event-title" class="mt-2 text-2xl font-bold text-foreground sm:text-3xl">
               {evento.data.title}
             </h2>
             <p id="next-event-meta" class="mt-2 text-sm text-muted-foreground">
@@ -76,11 +56,7 @@ const eventosParaCliente = eventos
               {evento.data.local && ` · ${evento.data.local}`}
             </p>
             <div class="mt-4 flex flex-wrap gap-4">
-              <a
-                id="next-event-link"
-                href={`/eventos/${slugDoEvento(evento)}`}
-                class="link font-semibold"
-              >
+              <a id="next-event-link" href={`/eventos/${slugDoEvento(evento)}`} class="link font-semibold">
                 Ver detalhes →
               </a>
               <a
@@ -88,10 +64,7 @@ const eventosParaCliente = eventos
                 href={evento.data.inscricoesUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class:list={[
-                  "link font-semibold",
-                  { hidden: !(isFuturo && evento.data.inscricoesUrl) },
-                ]}
+                class:list={["link font-semibold", { hidden: !(isFuturo && evento.data.inscricoesUrl) }]}
                 onclick="if (typeof gtag === 'function') gtag('event', 'cta_click', { cta: 'inscreva-se' });"
               >
                 Inscreva-se →
@@ -104,11 +77,7 @@ const eventosParaCliente = eventos
   )
 }
 
-<script
-  type="application/json"
-  id="next-event-data"
-  set:html={JSON.stringify(eventosParaCliente)}
-/>
+<script type="application/json" id="next-event-data" set:html={JSON.stringify(eventosParaCliente)} />
 
 <script>
   interface EventoCliente {
@@ -123,15 +92,11 @@ const eventosParaCliente = eventos
 
   function getProximoEventoCliente(eventos: EventoCliente[]) {
     const agora = Date.now();
-    const futuros = eventos
-      .filter((e) => new Date(e.date).valueOf() >= agora)
-      .sort((a, b) => new Date(a.date).valueOf() - new Date(b.date).valueOf());
+    const futuros = eventos.filter((e) => new Date(e.date).valueOf() >= agora).sort((a, b) => new Date(a.date).valueOf() - new Date(b.date).valueOf());
 
     if (futuros.length > 0) return { evento: futuros[0], isFuturo: true };
 
-    const passados = [...eventos].sort(
-      (a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf(),
-    );
+    const passados = [...eventos].sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
     return { evento: passados[0], isFuturo: false };
   }
 
@@ -152,8 +117,7 @@ const eventosParaCliente = eventos
     section.dataset.renderedId = evento.slug;
 
     const badge = document.getElementById("next-event-badge");
-    if (badge)
-      badge.textContent = isFuturo ? "🏆 Próximo Evento" : "Último Evento";
+    if (badge) badge.textContent = isFuturo ? "🏆 Próximo Evento" : "Último Evento";
 
     const title = document.getElementById("next-event-title");
     if (title) title.textContent = evento.title;
@@ -166,28 +130,20 @@ const eventosParaCliente = eventos
         day: "numeric",
         timeZone: "UTC",
       });
-      meta.textContent = evento.local
-        ? `${dataFormatada} · ${evento.local}`
-        : dataFormatada;
+      meta.textContent = evento.local ? `${dataFormatada} · ${evento.local}` : dataFormatada;
     }
 
-    const link = document.getElementById(
-      "next-event-link",
-    ) as HTMLAnchorElement | null;
+    const link = document.getElementById("next-event-link") as HTMLAnchorElement | null;
     if (link) link.href = `/eventos/${evento.slug}`;
 
-    const signup = document.getElementById(
-      "next-event-signup",
-    ) as HTMLAnchorElement | null;
+    const signup = document.getElementById("next-event-signup") as HTMLAnchorElement | null;
     if (signup) {
       const mostrar = isFuturo && !!evento.inscricoesUrl;
       signup.classList.toggle("hidden", !mostrar);
       if (evento.inscricoesUrl) signup.href = evento.inscricoesUrl;
     }
 
-    const cover = document.getElementById(
-      "next-event-cover",
-    ) as HTMLImageElement | null;
+    const cover = document.getElementById("next-event-cover") as HTMLImageElement | null;
     if (cover) {
       cover.src = evento.cover || "/site/marcas/MaratonaUnB.svg";
       cover.alt = evento.coverAlt || evento.title;

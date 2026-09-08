@@ -7,4 +7,5 @@ category: "eventos-anteriores"
 tags: ["maratona-unb"]
 ---
 
-Estão abertas as inscrições para a **XI Maratona UnB de Programação**, que aconteceu no dia **27 de setembro de 2023**, no LINF (ICC — Módulo 19), a partir das **13h**.
+Estão abertas as inscrições para a **XI Maratona UnB de Programação**, que aconteceu no dia **27 de setembro de
+2023**, no LINF (ICC — Módulo 19), a partir das **13h**.

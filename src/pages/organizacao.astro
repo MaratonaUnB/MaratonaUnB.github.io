@@ -4,8 +4,7 @@ import PageHeader from "@/components/widgets/PageHeader.astro";
 
 const metadata = {
   title: "Organização",
-  description:
-    "O projeto de extensão Maratona de Programação no Distrito Federal visa capacitar alunos do Ensino Médio e Superior em programação competitiva.",
+  description: "O projeto de extensão Maratona de Programação no Distrito Federal visa capacitar alunos do Ensino Médio e Superior em programação competitiva.",
 };
 
 const professoresUnb = [
@@ -53,42 +52,25 @@ const maratonaDf = [
   <PageHeader title="Organização" icon="lucide:users" />
   <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
     <p class="mt-6 text-lg leading-relaxed text-foreground">
-      O time de professores e alunos da Universidade de Brasília (UnB) organiza
-      grupos de estudo em programação competitiva para o público-alvo, nos
-      níveis iniciante, intermediário e avançado, com o objetivo de aprimorar
-      suas habilidades em programação, bem como na preparação para competições
-      de programação, como a <a
+      O time de professores e alunos da Universidade de Brasília (UnB) organiza grupos de estudo em programação competitiva para o público-alvo, nos níveis iniciante, intermediário e avançado, com o
+      objetivo de aprimorar suas habilidades em programação, bem como na preparação para competições de programação, como a <a
         href="https://olimpiada.ic.unicamp.br/"
         target="_blank"
         rel="noopener noreferrer"
         class="link">Olimpíada Brasileira de Informática</a
       > e a
-      <a
-        href="https://maratona.sbc.org.br/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="link">Maratona SBC de Programação</a
-      >.
+      <a href="https://maratona.sbc.org.br/" target="_blank" rel="noopener noreferrer" class="link">Maratona SBC de Programação</a>.
     </p>
 
     <div class="mt-14 flex items-center gap-4">
-      <img
-        src="/site/marcas/UnB.png"
-        alt="Logo da UnB"
-        class="h-16 w-16 shrink-0 rounded-xl object-contain"
-      />
+      <img src="/site/marcas/UnB.png" alt="Logo da UnB" class="h-16 w-16 shrink-0 rounded-xl object-contain" />
       <h2 class="text-2xl font-bold text-foreground">Professores da UnB</h2>
     </div>
     <ul class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
       {
         professoresUnb.map((p) => (
           <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium text-foreground">
-            <a
-              href={p.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="link"
-            >
+            <a href={p.url} target="_blank" rel="noopener noreferrer" class="link">
               {p.nome}
             </a>{" "}
             ({p.campus})
@@ -98,33 +80,20 @@ const maratonaDf = [
     </ul>
 
     <div class="mt-14 flex items-center gap-4">
-      <img
-        src="/site/marcas/MaratonaDF.png"
-        alt="Logo do Grupo Maratona DF"
-        class="h-16 w-16 shrink-0 rounded-xl object-contain"
-      />
+      <img src="/site/marcas/MaratonaDF.png" alt="Logo do Grupo Maratona DF" class="h-16 w-16 shrink-0 rounded-xl object-contain" />
       <h2 class="text-2xl font-bold text-foreground">Grupo Maratona DF</h2>
     </div>
     <p class="mt-2 text-muted-foreground">
-      Além do time da UnB, contamos com o apoio de professores e ex-competidores
-      — o <strong>Grupo Maratona DF</strong> — que colaboram na organização e na preparação
-      dos estudantes para as competições.
+      Além do time da UnB, contamos com o apoio de professores e ex-competidores — o <strong>Grupo Maratona DF</strong> — que colaboram na organização e na preparação dos estudantes para as competições.
     </p>
     <ul class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
       {
         maratonaDf.map((pessoa) => (
           <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium text-foreground">
-            <a
-              href={pessoa.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="link"
-            >
+            <a href={pessoa.url} target="_blank" rel="noopener noreferrer" class="link">
               {pessoa.nome}
             </a>
-            {pessoa.instituicao && (
-              <span class="text-muted-foreground"> ({pessoa.instituicao})</span>
-            )}
+            {pessoa.instituicao && <span class="text-muted-foreground"> ({pessoa.instituicao})</span>}
           </li>
         ))
       }

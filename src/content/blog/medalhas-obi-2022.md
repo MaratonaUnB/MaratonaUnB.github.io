@@ -7,4 +7,5 @@ category: "noticias"
 tags: ["obi", "resultado"]
 ---
 
-Os alunos **Victor Manuel Santos** (medalha de **prata**) e **Wallace Wu** (medalha de **bronze**) conquistaram medalhas na categoria **Programação Sênior** da OBI 2021.
+Os alunos **Victor Manuel Santos** (medalha de **prata**) e **Wallace Wu** (medalha de
+**bronze**) conquistaram medalhas na categoria **Programação Sênior** da OBI 2021.

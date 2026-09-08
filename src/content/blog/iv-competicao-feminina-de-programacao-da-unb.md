@@ -7,7 +7,9 @@ category: "noticias"
 tags: ["maratona-feminina"]
 ---
 
-A **IV Competição Feminina de Programação da UnB** foi realizada em **8 de junho de 2024**, no Campus Darcy Ribeiro, das 13h às 18h. O evento foi organizado em parceria entre o **Meninas.comp** e o **UnBalloon**: 71 meninas manifestaram interesse, com 40 confirmações efetivas, entre treinamento para alunas do ensino médio (escola CEM 111, Recanto das Emas) e a competição de programação.
+A **IV Competição Feminina de Programação da UnB** foi realizada em **8 de junho de
+2024**, no Campus Darcy Ribeiro, das 13h às 18h. O evento foi organizado em parceria entre o **Meninas.comp** e o
+**UnBalloon**: 71 meninas manifestaram interesse, com 40 confirmações efetivas, entre treinamento para alunas do ensino médio (escola CEM 111, Recanto das Emas) e a competição de programação.
 
 **Resultado — Ensino Superior:**
 

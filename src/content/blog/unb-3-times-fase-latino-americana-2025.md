@@ -7,6 +7,8 @@ category: "noticias"
 tags: ["icpc", "resultado"]
 ---
 
-A Universidade de Brasília foi a **única universidade brasileira** a classificar **três times** para a fase latino-americana (LatAm) da Maratona SBC de Programação 2025, etapa regional do ICPC. A fase acontece no **Chile, em março de 2026**.
+A Universidade de Brasília foi a **única universidade brasileira** a classificar **três
+times** para a fase latino-americana (LatAm) da Maratona SBC de Programação 2025, etapa regional do ICPC. A fase acontece no
+**Chile, em março de 2026**.
 
 > Matéria completa disponível em [noticias.unb.br](https://noticias.unb.br/).

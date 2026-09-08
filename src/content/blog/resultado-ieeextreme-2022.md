@@ -7,6 +7,8 @@ category: "noticias"
 tags: ["ieeextreme", "resultado"]
 ---
 
-A UnB teve um resultado excepcional na **IEEExtreme**, competição internacional de programação. Cinco equipes da universidade terminaram nas posições **18, 46, 577, 588 e 718** de um total de **3522 equipes** no ranking global.
+A UnB teve um resultado excepcional na
+**IEEExtreme**, competição internacional de programação. Cinco equipes da universidade terminaram nas posições **18, 46,
+577, 588 e 718** de um total de **3522 equipes** no ranking global.
 
 No ranking nacional, as equipes da UnB ficaram em **1º, 2º, 4º, 5º e 6º lugares** no Brasil.

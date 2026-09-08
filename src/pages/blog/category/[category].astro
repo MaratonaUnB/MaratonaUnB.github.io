@@ -43,8 +43,7 @@ const metadata = {
         subtitle={`${posts.length} publicaç${posts.length === 1 ? "ão" : "ões"} encontrada${posts.length === 1 ? "" : "s"}.`}
         classes={{
           container: "mb-12 text-center",
-          title:
-            "font-heading mb-4 text-4xl font-bold tracking-tight text-foreground md:text-6xl capitalized",
+          title: "font-heading mb-4 text-4xl font-bold tracking-tight text-foreground md:text-6xl capitalized",
           subtitle: "mx-auto max-w-3xl text-xl text-muted-foreground",
         }}
       />
@@ -54,11 +53,7 @@ const metadata = {
       </div>
 
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {
-          posts
-            .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-            .map((post) => <PostItem post={post} />)
-        }
+        {posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).map((post) => <PostItem post={post} />)}
       </div>
     </div>
   </section>

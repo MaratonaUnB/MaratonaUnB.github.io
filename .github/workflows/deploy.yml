@@ -2,7 +2,7 @@ name: Deploy site para o GitHub Pages
 
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
   # Permite rodar manualmente pela aba "Actions" do GitHub, sem precisar de commit
   workflow_dispatch:
 

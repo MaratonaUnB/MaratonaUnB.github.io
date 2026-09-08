@@ -3,8 +3,7 @@ import ogImage from "@/assets/og-image.png";
 export const siteConfig = {
   name: "Maratona UnB de Programação",
   shortName: "Maratona UnB de Programação",
-  description:
-    "As atividades da Maratona UnB de Programação capacitam estudantes de Ensino Médio e Superior em programação, utilizando uma abordagem competitiva.",
+  description: "As atividades da Maratona UnB de Programação capacitam estudantes de Ensino Médio e Superior em programação, utilizando uma abordagem competitiva.",
   url: "https://maratona.unb.br",
   lang: "pt-BR",
   locale: "pt_BR",
@@ -16,8 +15,7 @@ export const siteConfig = {
     telegram: "https://t.me/unballoon",
     discord: "https://discord.com/invite/9AETUBmJJd",
     instagram: "https://www.instagram.com/maratona.unb/",
-    youtube:
-      "https://www.youtube.com/playlist?list=PLHOnuxlEMZkqKSbMn4UIFEl3O8vyo9lCV",
+    youtube: "https://www.youtube.com/playlist?list=PLHOnuxlEMZkqKSbMn4UIFEl3O8vyo9lCV",
     github: "https://github.com/UnBalloon/",
     codeforcesGroup: "https://codeforces.com/group/btcK4I5D5f/blog",
     codeforcesContests: "https://codeforces.com/group/nituVTsHQX/contests",

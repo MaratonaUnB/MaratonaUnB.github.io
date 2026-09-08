@@ -10,11 +10,7 @@ const metadata = {
 ---
 
 <BaseLayout {metadata}>
-  <PageHeader
-    title="Depoimentos"
-    subtitle="A voz de quem já competiu."
-    icon="lucide:message-square-quote"
-  />
+  <PageHeader title="Depoimentos" subtitle="A voz de quem já competiu." icon="lucide:message-square-quote" />
   <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
     {
       depoimentos.length > 0 ? (
@@ -23,21 +19,10 @@ const metadata = {
             <blockquote class="w-full rounded-2xl border border-border bg-card p-6">
               <p class="text-foreground">“{d.texto}”</p>
               <footer class="mt-4 flex items-center gap-3">
-                {d.foto && (
-                  <img
-                    src={d.foto}
-                    alt={d.nome}
-                    class="h-10 w-10 rounded-full object-cover"
-                  />
-                )}
+                {d.foto && <img src={d.foto} alt={d.nome} class="h-10 w-10 rounded-full object-cover" />}
                 <div>
                   <p class="text-sm font-semibold text-foreground">
-                    <a
-                      href={d.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="link"
-                    >
+                    <a href={d.url} target="_blank" rel="noopener noreferrer" class="link">
                       {d.nome}
                     </a>
                   </p>
@@ -59,8 +44,6 @@ const metadata = {
         </div>
       )
     }
-    <p class="pt-10 pl-5 mt-2 text-xs text-muted-foreground">
-      Publicamos apenas depoimentos reais, com autorização de quem os deu.
-    </p>
+    <p class="pt-10 pl-5 mt-2 text-xs text-muted-foreground">Publicamos apenas depoimentos reais, com autorização de quem os deu.</p>
   </div>
 </BaseLayout>

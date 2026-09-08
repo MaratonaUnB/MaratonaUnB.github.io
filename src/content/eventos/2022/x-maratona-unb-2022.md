@@ -15,5 +15,7 @@ O evento segue o regulamento e o formato da Maratona de Programação da SBC e s
 ## Programação
 
 - **Abertura (1 hora)** — recepção e acomodação das equipes no laboratório; explicação das regras e dinâmica do evento.
-- **Maratona (5 horas)** — os estudantes tentam resolver os problemas em trios. Os problemas são baseados em: Matemática, Grafos, Geometria, Strings, Estruturas de Dados e Paradigmas de Solução de Problemas.
-- **Cerimônia de encerramento (2 horas)** — deslocamento das equipes para o auditório, apresentação do placar final, divulgação dos campeões e dicas de treinamento.
+- **Maratona (5
+  horas)** — os estudantes tentam resolver os problemas em trios. Os problemas são baseados em: Matemática, Grafos, Geometria, Strings, Estruturas de Dados e Paradigmas de Solução de Problemas.
+- **Cerimônia de encerramento (2
+  horas)** — deslocamento das equipes para o auditório, apresentação do placar final, divulgação dos campeões e dicas de treinamento.

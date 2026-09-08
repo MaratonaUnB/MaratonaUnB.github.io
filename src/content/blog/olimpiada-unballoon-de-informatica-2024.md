@@ -7,7 +7,8 @@ category: "noticias"
 tags: ["unballoon", "olimpiada"]
 ---
 
-A **Olimpíada UnBalloon de Informática** foi realizada em **1º de junho de 2024**, organizada pelo grupo de programação competitiva UnBalloon.
+A **Olimpíada UnBalloon de Informática** foi realizada em **1º de junho de
+2024**, organizada pelo grupo de programação competitiva UnBalloon.
 
 A competição contou com três categorias:
 
