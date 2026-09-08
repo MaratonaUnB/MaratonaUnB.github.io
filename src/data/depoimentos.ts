@@ -10,6 +10,13 @@ export interface Depoimento {
 
 export const depoimentos: Depoimento[] = [
   {
+    nome: "Daniel Saad",
+    papel: "Ex-competidor, professor, voluntário no grupo Maratonas-DF",
+    texto:
+      "Durante a graduação, por volta do 6° semestre, a programação competitiva abriu meus olhos sobre a importância e beleza dos algoritmos e estruturas de dados. Nesse momento eu me interessei bastante por esses assuntos e comecei a me aprofundar nos estudos. Fiz o Mestrado e Doutorado na linha de estruturas de dados e índices compactos. Essas estruturas permitem representar textos em um espaço extremamente reduzido e ainda possibilitam que operações sejam feitas sobre elas, o que é imprescindível no cenário atual de grande volume de dados. Hoje, além de continuar pesquisando sobre essas estruturas compactas, leciono no Instituto Federal de Brasília,  onde procuro incentivar os meus alunos  sobre a importância de saber projetar e analisar soluções eficientes. Atuo, junto ao grupo Maratonas DF, na organização de competições de programação no Distrito Federal e também colaborei com a Maratona SBC de programação junto à comissão de sistemas. Sou um incentivador dessa linha de conhecimento. Percebo a programação competitiva como uma porta de entrada muito atrativa para os estudantes que são apaixonados em resolver problemas, habilidade essa que é fundamental na atuação profissional e pessoal.",
+    url: "https://danielsaad.com/",
+  },
+  {
     nome: "Matheus Pimenta",
     papel: "Final Nacional 2015",
     texto:
