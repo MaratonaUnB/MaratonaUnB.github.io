@@ -1,0 +1,123 @@
+---
+// Carrossel de depoimentos da home.
+//
+// O depoimento inicial é sorteado no navegador, não no build: como o site é
+// estático (GitHub Pages, sem rebuild agendado), sortear no servidor deixaria
+// todo mundo vendo o mesmo "aleatório" até o próximo deploy.
+//
+// Os textos são longos demais para 10 segundos de leitura — aqui eles saem
+// truncados e servem de convite para /depoimentos, onde estão na íntegra.
+import { Icon } from "astro-icon/components";
+import { depoimentos } from "@/data/depoimentos";
+
+const INTERVALO_MS = 10000;
+---
+
+{
+  depoimentos.length > 0 && (
+    <section class="reveal border-y border-border bg-card" id="depoimentos" aria-roledescription="carrossel" aria-label="Depoimentos de quem já competiu">
+      <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+        <div class="mb-8 flex items-center justify-between gap-4">
+          <h2 class="flex items-center gap-3 text-2xl font-bold text-foreground sm:text-3xl">
+            <Icon name="lucide:message-square-quote" class="h-7 w-7 shrink-0 text-primary sm:h-8 sm:w-8" />
+            Quem já competiu
+          </h2>
+          <a href="/depoimentos" class="link shrink-0 text-sm font-semibold">
+            Ver todos →
+          </a>
+        </div>
+
+        {/* Todos os depoimentos ocupam a mesma célula do grid: a altura passa a
+            ser a do maior deles e a troca não empurra o resto da página. */}
+        <div id="depoimentos-palco" class="grid" data-intervalo={INTERVALO_MS}>
+          {depoimentos.map((d, i) => (
+            <figure class="depoimento col-start-1 row-start-1 transition-opacity duration-700" style={`opacity: ${i === 0 ? 1 : 0}`} aria-hidden={i === 0 ? undefined : "true"} inert={i !== 0}>
+              <blockquote class="line-clamp-6 text-lg leading-relaxed text-foreground">“{d.texto}”</blockquote>
+              <figcaption class="mt-6 flex items-center gap-3">
+                {d.foto && <img src={d.foto} alt="" class="h-11 w-11 shrink-0 rounded-full object-cover" />}
+                <div>
+                  <p class="text-sm font-semibold text-foreground">
+                    <a href={d.url} target="_blank" rel="noopener noreferrer" class="link">
+                      {d.nome}
+                    </a>
+                  </p>
+                  <p class="text-xs text-muted-foreground">{d.papel}</p>
+                </div>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<script>
+  let depoimentosIntervalId: ReturnType<typeof setInterval> | undefined;
+
+  function iniciarCarrosselDepoimentos() {
+    clearInterval(depoimentosIntervalId);
+
+    const palco = document.getElementById("depoimentos-palco");
+    if (!palco) return;
+
+    const itens = Array.from(palco.querySelectorAll<HTMLElement>(".depoimento"));
+    if (itens.length === 0) return;
+
+    const intervalo = Number(palco.dataset.intervalo) || 10000;
+
+    // O visitante pediu para o sistema não animar: mostramos um depoimento
+    // sorteado e paramos por aí, sem troca automática.
+    const semAnimacao = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    let atual = Math.floor(Math.random() * itens.length);
+
+    function mostrar(indice: number, comTransicao = true) {
+      // Na primeira pintura a transição é desligada: sem isso, o sorteio
+      // inicial apareceria como um crossfade a partir do depoimento que o
+      // build deixou visível.
+      if (!comTransicao) itens.forEach((item) => (item.style.transition = "none"));
+
+      itens.forEach((item, i) => {
+        const ativo = i === indice;
+        item.style.opacity = ativo ? "1" : "0";
+        // inert + aria-hidden tiram o depoimento invisível do teclado e dos
+        // leitores de tela — só opacity deixaria o link do autor focável.
+        item.inert = !ativo;
+        if (ativo) item.removeAttribute("aria-hidden");
+        else item.setAttribute("aria-hidden", "true");
+      });
+
+      atual = indice;
+
+      if (!comTransicao) {
+        void palco!.offsetHeight; // força o reflow antes de devolver a transição
+        itens.forEach((item) => (item.style.transition = ""));
+      }
+    }
+
+    function pausar() {
+      clearInterval(depoimentosIntervalId);
+    }
+
+    function retomar() {
+      clearInterval(depoimentosIntervalId);
+      if (itens.length <= 1 || semAnimacao) return;
+      depoimentosIntervalId = setInterval(() => mostrar((atual + 1) % itens.length), intervalo);
+    }
+
+    mostrar(atual, false);
+
+    // Ninguém termina de ler um depoimento em 10s: o ciclo pausa enquanto o
+    // ponteiro está em cima ou o foco do teclado está dentro do bloco.
+    palco.addEventListener("mouseenter", pausar);
+    palco.addEventListener("mouseleave", retomar);
+    palco.addEventListener("focusin", pausar);
+    palco.addEventListener("focusout", retomar);
+
+    retomar();
+  }
+
+  document.addEventListener("astro:page-load", iniciarCarrosselDepoimentos);
+  document.addEventListener("astro:before-swap", () => clearInterval(depoimentosIntervalId));
+</script>
