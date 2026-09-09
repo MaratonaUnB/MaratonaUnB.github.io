@@ -70,10 +70,7 @@ const maratonaDf = [
       {
         professoresUnb.map((p) => (
           <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium text-foreground">
-            <a href={p.url} target="_blank" rel="noopener noreferrer" class="link">
-              {p.nome}
-            </a>{" "}
-            ({p.campus})
+            <a href={p.url} target="_blank" rel="noopener noreferrer" class="link">{p.nome}</a> ({p.campus})
           </li>
         ))
       }
@@ -90,9 +87,7 @@ const maratonaDf = [
       {
         maratonaDf.map((pessoa) => (
           <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium text-foreground">
-            <a href={pessoa.url} target="_blank" rel="noopener noreferrer" class="link">
-              {pessoa.nome}
-            </a>
+            <a href={pessoa.url} target="_blank" rel="noopener noreferrer" class="link">{pessoa.nome}</a>
             {pessoa.instituicao && <span class="text-muted-foreground"> ({pessoa.instituicao})</span>}
           </li>
         ))
