@@ -1,4 +1,4 @@
-import ogImage from "@/assets/og-image.png";
+import ogImage from "@/assets/og-image.jpg";
 
 export const siteConfig = {
   name: "Maratona UnB de Programação",
