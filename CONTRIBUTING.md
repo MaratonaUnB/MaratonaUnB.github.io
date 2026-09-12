@@ -44,7 +44,7 @@ fluxo que preferir.
   | `extensao`          | Cursos preparatórios, grupos de estudo, editais do projeto                                           |
   | `resultado`         | Resultado/classificação de uma competição (combine com a tag do evento, ex. `["icpc", "resultado"]`) |
 
-- `image` é opcional — se tiver uma foto **específica dessa notícia**, suba o arquivo em `public/blog/` e referencie o
+- `image` é opcional — se tiver uma foto **específica dessa notícia**, suba o arquivo em `public/blog/<ano>/` e referencie o
   caminho, ex.:
   `image: "/blog/minha-foto.jpg"`. Não reaproveite fotos de
   `public/eventos/` ou `public/galeria/` aqui — veja "Onde colocar cada imagem" abaixo.
@@ -130,7 +130,7 @@ O site tem três pastas de imagens em `public/` com propósitos diferentes — u
 
 | Pasta                   | Serve para                                                                                                                                                            | Referenciada por                                  |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
-| `public/blog/`          | Foto **exclusiva de uma notícia**                                                                                                                                     | `image:` em `src/content/blog/*.md`               |
+| `public/blog/<ano>/`    | Foto **exclusiva de uma notícia**                                                                                                                                     | `image:` em `src/content/blog/*.md`               |
 | `public/eventos/<ano>/` | Capa/cartaz **de um evento específico** (ou a raiz `public/eventos/`, sem ano, para uma imagem genérica reaproveitada em vários eventos, como o logo da Maratona SBC) | `cover:` em `src/content/eventos/<ano>/*.md`      |
 | `public/galeria/`       | Fotos **soltas** da página `/galeria` (não pertencem a nenhum arquivo de conteúdo específico)                                                                         | array `fotos` direto em `src/pages/galeria.astro` |
 | `public/site/hero/`     | Fotos do **hero da home** (a faixa grande no topo, com o título por cima)                                                                                             | nenhuma — lidas automaticamente, ver abaixo       |
