@@ -1,13 +1,13 @@
 ---
 title: "Mesa redonda de programação competitiva"
-slug: "mesa-redonda-de-programao-competitiva"
+slug: "mesa-redonda-de-programacao-competitiva"
 pubDate: "2026-09-11"
 description: "Mesa Redonda: Maratona de Programação!\nQuer saber mais sobre a Maratona de Programação, tirar dúvidas, pegar dicas ou simplesmente trocar uma ideia com quem já vive essa experiência? Puxe uma cadeira e vem com a gente!"
 author: "Maratona UnB de Programação"
 category: "noticias"
 tags: ["UnB", "Convocação"]
 featured: false
-image: "/blog/mesa-redonda-de-programao-competitiva.png"
+image: "/blog/2026/mesa-redonda-de-programacao-competitiva.png"
 imageAlt: "Mesa redonda de programação competitiva"
 source: "notion"
 notionId: "3d91558c-c999-8037-b833-e5a047616840"

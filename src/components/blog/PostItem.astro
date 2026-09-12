@@ -16,7 +16,7 @@ const readingTime = remarkPluginFrontmatter?.minutesRead ? `${Math.ceil(remarkPl
   <div class="relative flex h-48 w-full items-center justify-center overflow-hidden bg-white">
     <img
       src={post.data.image || "/site/marcas/MaratonaUnB.svg"}
-      alt={post.data.title}
+      alt={post.data.image ? post.data.imageAlt || post.data.title : ""}
       class:list={["object-contain transition-transform duration-300 group-hover:scale-105", post.data.image ? "h-full w-full p-4" : "h-24 w-24"]}
     />
   </div>

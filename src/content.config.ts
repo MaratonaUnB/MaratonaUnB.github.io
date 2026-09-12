@@ -10,8 +10,27 @@ const blog = defineCollection({
     pubDate: z.coerce.date(),
     author: z.string(),
     image: z.string().optional(),
+    // Texto alternativo da capa. Sem isso o <img> cai no título do post,
+    // que descreve a notícia mas não a imagem.
+    imageAlt: z.string().optional(),
     tags: z.array(z.string()).optional(),
     category: z.string().optional(),
+    // Destaque editorial. Ainda não é lido por nenhuma página; existe aqui
+    // porque a automação do Notion já o preenche.
+    featured: z.boolean().optional().default(false),
+
+    // --- Campos gravados pela automação Notion -> site (workflow do n8n).
+    // Um post escrito à mão não precisa de nenhum deles.
+    //
+    // `slug` é informativo: a URL da notícia vem do NOME DO ARQUIVO (via
+    // post.id em src/pages/blog/[...slug].astro), não deste campo. Ele fica
+    // registrado para quem lê o arquivo entender de onde saiu o nome.
+    slug: z.string().optional(),
+    source: z.literal("notion").optional(),
+    // Identidade forte da notícia: é por ele que o fluxo reconhece uma
+    // republicação e reescreve ESTE arquivo em vez de criar um post novo.
+    // Não editar à mão.
+    notionId: z.string().optional(),
   }),
 });
 

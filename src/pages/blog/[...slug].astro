@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content, remarkPluginFrontmatter } = await render(post);
-const { title, description, pubDate, author, image } = post.data;
+const { title, description, pubDate, author, image, imageAlt } = post.data;
 
 const formattedDate = pubDate.toLocaleDateString("pt-BR", {
   year: "numeric",
@@ -57,7 +57,7 @@ const metadata = {
       </div>
 
       <div class="reveal relative mb-8 flex h-96 w-full items-center justify-center overflow-hidden rounded-xl bg-white shadow-lg">
-        <img src={image || "/site/marcas/MaratonaUnB.svg"} alt={title} class:list={["object-contain", image ? "h-full w-full p-8" : "h-40 w-40"]} />
+        <img src={image || "/site/marcas/MaratonaUnB.svg"} alt={image ? imageAlt || title : ""} class:list={["object-contain", image ? "h-full w-full p-8" : "h-40 w-40"]} />
       </div>
 
       <div
