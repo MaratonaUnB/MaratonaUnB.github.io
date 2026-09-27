@@ -8,12 +8,21 @@ import { Icon } from "astro-icon/components";
     <div class="flex flex-col items-center justify-between gap-6 md:flex-row md:items-start">
       <div class="flex flex-col items-center gap-3 md:items-start">
         <span class="text-sm font-medium text-muted-foreground">Apoio:</span>
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-6">
           {
-            siteConfig.supporters.map((supporter) => (
-              <a href={supporter.url} target="_blank" rel="noopener noreferrer" aria-label={supporter.name} class="text-sm font-semibold text-foreground transition-colors hover:text-primary">
-                {supporter.logo ? <img src={supporter.logo} alt={supporter.name} class="h-7 w-auto object-contain" /> : supporter.name}
-              </a>
+            siteConfig.supporters.map((supporter, i) => (
+              <Fragment>
+                {/* Separador puramente visual entre os apoiadores — aria-hidden
+                    para o leitor de tela não anunciar "barra vertical". */}
+                {i > 0 && (
+                  <span class="text-border select-none" aria-hidden="true">
+                    |
+                  </span>
+                )}
+                <a href={supporter.url} target="_blank" rel="noopener noreferrer" aria-label={supporter.name} class="text-sm font-semibold text-foreground transition-colors hover:text-primary">
+                  {supporter.logo ? <img src={supporter.logo} alt={supporter.name} class="h-7 w-auto object-contain" /> : supporter.name}
+                </a>
+              </Fragment>
             ))
           }
         </div>

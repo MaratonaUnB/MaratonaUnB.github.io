@@ -36,6 +36,11 @@ export const siteConfig = {
       url: "https://gigacandanga.net.br/",
       logo: "/site/marcas/GigaCandanga.png",
     },
+    {
+      name: "NeoSpace",
+      url: "https://www.neospace.ai",
+      logo: "/site/marcas/NeoSpace.png",
+    },
   ],
   navLinks: [
     {

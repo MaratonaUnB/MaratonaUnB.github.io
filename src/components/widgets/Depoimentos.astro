@@ -5,8 +5,9 @@
 // estático (GitHub Pages, sem rebuild agendado), sortear no servidor deixaria
 // todo mundo vendo o mesmo "aleatório" até o próximo deploy.
 //
-// Os textos são longos demais para 10 segundos de leitura — aqui eles saem
-// truncados e servem de convite para /depoimentos, onde estão na íntegra.
+// O texto sai inteiro: quem quiser um depoimento mais curto na home deve
+// encurtá-lo no próprio src/data/depoimentos.ts (com o aval de quem o deu),
+// não por corte visual aqui.
 import { Icon } from "astro-icon/components";
 import { depoimentos } from "@/data/depoimentos";
 
@@ -32,7 +33,7 @@ const INTERVALO_MS = 10000;
         <div id="depoimentos-palco" class="grid" data-intervalo={INTERVALO_MS}>
           {depoimentos.map((d, i) => (
             <figure class="depoimento col-start-1 row-start-1 transition-opacity duration-700" style={`opacity: ${i === 0 ? 1 : 0}`} aria-hidden={i === 0 ? undefined : "true"} inert={i !== 0}>
-              <blockquote class="line-clamp-6 text-lg leading-relaxed text-foreground">“{d.texto}”</blockquote>
+              <blockquote class="text-lg leading-relaxed text-foreground">“{d.texto}”</blockquote>
               <figcaption class="mt-6 flex items-center gap-3">
                 {d.foto && <img src={d.foto} alt="" class="h-11 w-11 shrink-0 rounded-full object-cover" />}
                 <div>
