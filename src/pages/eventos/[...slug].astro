@@ -2,6 +2,7 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Schema from "@/components/seo/Schema.astro";
 import Button from "@/components/ui/Button.astro";
+import TagsEvento from "@/components/ui/TagsEvento.astro";
 import { Icon } from "astro-icon/components";
 import { getCollection, render } from "astro:content";
 import { getEventosOrdenados, getProximoEvento, slugDoEvento } from "@/lib/eventos";
@@ -19,7 +20,7 @@ export async function getStaticPaths() {
 
 const { evento } = Astro.props;
 const { Content } = await render(evento);
-const { title, date, local, horario, mapaUrl, cover, coverAlt, inscricoesUrl, resultadosUrl, status } = evento.data;
+const { title, date, local, horario, mapaUrl, cover, coverAlt, inscricoesUrl, resultadosUrl, status, tag } = evento.data;
 
 // Depois do evento, inscrições e dúvidas perdem o sentido — a página passa
 // a apontar para os resultados. O gatilho é o status, não a data, para que
@@ -27,8 +28,10 @@ const { title, date, local, horario, mapaUrl, cover, coverAlt, inscricoesUrl, re
 const realizado = status === "realizado";
 
 const eventosOrdenados = await getEventosOrdenados();
-const { evento: proximo } = getProximoEvento(eventosOrdenados);
-const isProximo = proximo?.id === evento.id;
+// getProximoEvento cai de volta no último evento realizado quando não há
+// nenhum futuro — por isso o selo exige isFuturo, não só o id batendo.
+const { evento: proximo, isFuturo } = getProximoEvento(eventosOrdenados);
+const isProximo = isFuturo && !realizado && proximo?.id === evento.id;
 
 const formattedDate = date.toLocaleDateString("pt-BR", {
   year: "numeric",
@@ -59,10 +62,17 @@ const metadata = {
   <section class="relative px-4 py-8 sm:px-6 lg:px-8 md:py-12">
     <div class="relative mx-auto max-w-3xl">
       <div class="reveal mb-8 text-center">
-        {isProximo && <span class="mb-3 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">🏆 Próximo evento</span>}
+        {
+          isProximo && (
+            <span id="selo-proximo-evento" data-date={date.toISOString()} class="mb-3 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
+              🏆 Próximo evento
+            </span>
+          )
+        }
         <h1 class="font-heading mt-2 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl">
           {title}
         </h1>
+        <TagsEvento tags={tag} class="mt-4 justify-center" />
       </div>
 
       {
@@ -168,3 +178,14 @@ const metadata = {
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  // O selo é calculado no build, e o GitHub Pages não tem rebuild agendado:
+  // se ninguém der push depois do evento, a página continuaria anunciando
+  // "Próximo evento". Mesmo critério do getProximoEvento (data >= agora),
+  // mas com o relógio de quem está vendo a página.
+  document.addEventListener("astro:page-load", () => {
+    const selo = document.getElementById("selo-proximo-evento");
+    if (selo?.dataset.date && new Date(selo.dataset.date).valueOf() < Date.now()) selo.hidden = true;
+  });
+</script>

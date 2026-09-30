@@ -1,6 +1,7 @@
 import { defineCollection } from "astro:content";
 import { z } from "astro:schema";
 import { glob } from "astro/loaders";
+import { TAG_IDS } from "./data/tagsEvento";
 
 const blog = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/blog" }),
@@ -67,6 +68,13 @@ const eventos = defineCollection({
     // Link para o placar/relatório final. Só aparece na página do evento
     // quando status é "realizado" (que também esconde inscrições e dúvidas).
     resultadosUrl: z.string().optional(),
+    // Pílulas coloridas (UnB, ICPC, IEEE, SBC, Meninas...) na tabela e na página do evento.
+    // Aceita uma só (`tag: "icpc"`) ou várias (`tag: ["unb", "icpc"]`); os
+    // valores válidos e as cores ficam em src/data/tagsEvento.ts.
+    tag: z
+      .union([z.enum(TAG_IDS), z.array(z.enum(TAG_IDS))])
+      .optional()
+      .transform((v) => (v === undefined ? [] : Array.isArray(v) ? v : [v])),
   }),
 });
 

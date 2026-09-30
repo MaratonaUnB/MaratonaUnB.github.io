@@ -1,0 +1,25 @@
+---
+import { tagsEvento, type TagEvento } from "@/data/tagsEvento";
+
+interface Props {
+  tags: TagEvento[];
+  class?: string;
+}
+
+const { tags, class: className = "" } = Astro.props;
+---
+
+{
+  tags.length > 0 && (
+    <span class:list={["inline-flex flex-wrap gap-1.5", className]}>
+      {tags.map((id) => {
+        const tag = tagsEvento[id];
+        return (
+          <span class="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-bold leading-4 tracking-wide" style={`background-color: ${tag.fundo}; color: ${tag.texto}`}>
+            {tag.rotulo}
+          </span>
+        );
+      })}
+    </span>
+  )
+}

@@ -99,6 +99,7 @@ lista para editar à parte.
    coverAlt: "Descrição da imagem" # opcional
    inscricoesUrl: "https://..." # opcional, vira o botão "Inscreva-se"
    resultadosUrl: "https://..." # opcional, vira o botão "Ver resultados" (só com status "realizado")
+   tag: "unb" # opcional: "unb", "icpc", "ieee", "sbc" ou "meninas" (ou várias: ["unb", "meninas"]); vira pílula colorida
    ---
 
    Um parágrafo (ou poucos) descrevendo o evento em Markdown — sem

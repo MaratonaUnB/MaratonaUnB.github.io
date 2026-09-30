@@ -9,6 +9,7 @@ coverAlt: "Logo da XIV Maratona UnB de Programação"
 status: "realizado"
 temPagina: true
 destaque: true
+tag: "unb"
 resultadosUrl: "https://moj.naquadah.com.br/relatorio/xiv-maratona-unb/"
 ---
 

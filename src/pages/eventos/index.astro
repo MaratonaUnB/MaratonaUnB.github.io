@@ -2,6 +2,7 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import PageHeader from "@/components/widgets/PageHeader.astro";
 import NextEvent from "@/components/widgets/NextEvent.astro";
+import TagsEvento from "@/components/ui/TagsEvento.astro";
 import { getEventosOrdenados, agruparEventosPorAno, formatarDataEvento, slugDoEvento } from "@/lib/eventos";
 
 const metadata = {
@@ -60,6 +61,7 @@ const statusLabel: Record<string, string> = {
                       ) : (
                         row.data.title
                       )}
+                      <TagsEvento tags={row.data.tag} class="ml-2 align-middle" />
                     </td>
                     <td class="px-4 py-3 whitespace-nowrap text-muted-foreground">{statusLabel[row.data.status]}</td>
                   </tr>
