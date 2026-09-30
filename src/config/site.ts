@@ -97,7 +97,6 @@ export const siteConfig = {
       text: "Eventos",
       href: "/eventos",
       icon: "lucide:calendar",
-      links: [{ text: "Resultados", href: "/galeria", icon: "lucide:image" }],
     },
     { text: "UnBalloon", href: "/unballoon", icon: "lucide:balloon" },
   ],

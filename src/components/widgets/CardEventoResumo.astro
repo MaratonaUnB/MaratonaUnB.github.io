@@ -1,0 +1,58 @@
+---
+// Card compacto de um evento, usado no bloco "Último evento / Próximo
+// evento" (NextEvent.astro). Eventos sem página própria mostram só os dados;
+// com página, ganham o link "Ver detalhes".
+import { Icon } from "astro-icon/components";
+import { formatarDataEvento, slugDoEvento, type Evento } from "@/lib/eventos";
+
+interface Props {
+  evento: Evento;
+  rotulo: string;
+  // Só faz sentido no próximo evento: o último já aconteceu.
+  mostrarInscricao?: boolean;
+  [atributo: string]: unknown;
+}
+
+const { evento, rotulo, mostrarInscricao = false, ...resto } = Astro.props;
+const { title, local, horario, cover, coverAlt, temPagina, inscricoesUrl } = evento.data;
+---
+
+<article class="flex h-full flex-col gap-5 rounded-2xl border border-border bg-background p-5 sm:flex-row sm:items-start" {...resto}>
+  <div class="flex h-32 w-full shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white sm:h-28 sm:w-28">
+    <img src={cover || "/site/marcas/MaratonaUnB.svg"} alt={coverAlt || title} class:list={["h-full w-full object-contain", { "p-3": !cover }]} loading="lazy" />
+  </div>
+  <div class="min-w-0">
+    <p class="text-xs font-semibold uppercase tracking-wide text-primary">{rotulo}</p>
+    <h2 class="mt-1 text-xl font-bold leading-snug text-foreground">{title}</h2>
+    <ul class="mt-2 space-y-1 text-sm text-muted-foreground">
+      <li class="flex items-center gap-2">
+        <Icon name="lucide:calendar" class="h-4 w-4 shrink-0 text-primary" />
+        {formatarDataEvento(evento)}{horario && ` · ${horario}`}
+      </li>
+      {
+        local && (
+          <li class="flex items-start gap-2">
+            <Icon name="lucide:map-pin" class="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+            {local}
+          </li>
+        )
+      }
+    </ul>
+    {
+      (temPagina || (mostrarInscricao && inscricoesUrl)) && (
+        <div class="mt-3 flex flex-wrap gap-4 text-sm">
+          {temPagina && (
+            <a href={`/eventos/${slugDoEvento(evento)}`} class="link font-semibold">
+              Ver detalhes →
+            </a>
+          )}
+          {mostrarInscricao && inscricoesUrl && (
+            <a href={inscricoesUrl} target="_blank" rel="noopener noreferrer" class="link font-semibold" onclick="if (typeof gtag === 'function') gtag('event', 'cta_click', { cta: 'inscreva-se' });">
+              Inscreva-se →
+            </a>
+          )}
+        </div>
+      )
+    }
+  </div>
+</article>

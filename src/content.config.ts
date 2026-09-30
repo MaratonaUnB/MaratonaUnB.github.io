@@ -1,6 +1,8 @@
 import { defineCollection } from "astro:content";
 import { z } from "astro:schema";
 import { glob } from "astro/loaders";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { TAG_IDS } from "./data/tagsEvento";
 
 const blog = defineCollection({
@@ -68,6 +70,20 @@ const eventos = defineCollection({
     // Link para o placar/relatório final. Só aparece na página do evento
     // quando status é "realizado" (que também esconde inscrições e dúvidas).
     resultadosUrl: z.string().optional(),
+    // Álbum de fotos do evento, hospedado fora do site (Google Fotos). Vira
+    // a caixa "Fotos do evento" na página do evento.
+    albumUrl: z.string().url().optional(),
+    // Foto de capa do álbum, guardada no repositório em public/galeria/
+    // (ex.: "/galeria/xiv-maratona-unb-2026.jpg"). Sem ela, a caixa usa o
+    // `cover` do evento. O build falha se o arquivo não existir, para uma
+    // capa esquecida não ir ao ar como imagem quebrada. process.cwd() é a
+    // pasta Codigo/, de onde o build roda (mesmo critério de heroPhotos.ts).
+    albumCapa: z
+      .string()
+      .refine((caminho) => caminho.startsWith("/") && existsSync(join(process.cwd(), "public", caminho)), {
+        message: 'arquivo da capa do álbum não encontrado — ele precisa estar em Codigo/public/ (ex.: albumCapa: "/galeria/nome.jpg" → Codigo/public/galeria/nome.jpg)',
+      })
+      .optional(),
     // Pílulas coloridas (UnB, ICPC, IEEE, SBC, Meninas...) na tabela e na página do evento.
     // Aceita uma só (`tag: "icpc"`) ou várias (`tag: ["unb", "icpc"]`); os
     // valores válidos e as cores ficam em src/data/tagsEvento.ts.

@@ -7,25 +7,32 @@ export async function getEventosOrdenados(): Promise<Evento[]> {
   return eventos.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 }
 
-/**
- * O "próximo evento" (destaque da home) considera só eventos marcados com
- * `destaque: true` (normalmente as edições da própria Maratona UnB) — os
- * demais eventos do calendário (fases de OBI/ICPC etc.) não disputam esse
- * bloco. É o mais próximo cuja data ainda não passou; se todos já
- * passaram, cai de volta para o mais recente já realizado.
- */
-export function getProximoEvento(eventosOrdenadosDesc: Evento[]): {
-  evento: Evento | undefined;
-  isFuturo: boolean;
-} {
-  const destaques = eventosOrdenadosDesc.filter((e) => e.data.destaque);
-  const now = new Date();
-  const futuros = destaques.filter((e) => e.data.date.valueOf() >= now.valueOf()).sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+// As datas do frontmatter chegam como meia-noite UTC do dia. Somar 24h + 3h
+// leva à meia-noite seguinte no horário de Brasília (UTC-3): o evento vale
+// até o fim do seu último dia aqui. Só com +24h ele "terminaria" às 21h.
+const ATE_O_FIM_DO_DIA_EM_BRASILIA_MS = 27 * 60 * 60 * 1000;
 
-  if (futuros.length > 0) {
-    return { evento: futuros[0], isFuturo: true };
-  }
-  return { evento: destaques[0], isFuturo: false };
+/** Instante (ms) em que o evento termina: fim do último dia, em Brasília. */
+export function fimDoEvento(evento: Evento): number {
+  return (evento.data.endDate ?? evento.data.date).valueOf() + ATE_O_FIM_DO_DIA_EM_BRASILIA_MS;
+}
+
+/**
+ * Candidatos a "próximo evento": status "confirmado" e ainda não terminados,
+ * do mais cedo para o mais tarde. Considera todos os eventos do calendário.
+ */
+export function getProximosConfirmados(eventos: Evento[], agora = Date.now()): Evento[] {
+  return eventos.filter((e) => e.data.status === "confirmado" && fimDoEvento(e) > agora).sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+}
+
+/**
+ * Último evento com status "realizado" (o status é editorial: um evento só
+ * vira "último" quando alguém o marca como realizado) e o próximo evento
+ * confirmado ainda não terminado. Qualquer um dos dois pode não existir.
+ */
+export function getUltimoEProximo(eventos: Evento[], agora = Date.now()): { ultimo: Evento | undefined; proximo: Evento | undefined } {
+  const ultimo = eventos.filter((e) => e.data.status === "realizado").sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())[0];
+  return { ultimo, proximo: getProximosConfirmados(eventos, agora)[0] };
 }
 
 /** Slug "de URL" de um evento: só o nome do arquivo, sem a subpasta de ano. */

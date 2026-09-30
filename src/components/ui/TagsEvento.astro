@@ -15,7 +15,10 @@ const { tags, class: className = "" } = Astro.props;
       {tags.map((id) => {
         const tag = tagsEvento[id];
         return (
-          <span class="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-bold leading-4 tracking-wide" style={`background-color: ${tag.fundo}; color: ${tag.texto}`}>
+          <span
+            class="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-bold leading-4 tracking-wide"
+            style={`background-color: ${tag.fundo}; color: ${tag.texto};${tag.borda ? ` border: 1px solid ${tag.borda};` : ""}`}
+          >
             {tag.rotulo}
           </span>
         );

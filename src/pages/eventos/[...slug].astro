@@ -5,7 +5,7 @@ import Button from "@/components/ui/Button.astro";
 import TagsEvento from "@/components/ui/TagsEvento.astro";
 import { Icon } from "astro-icon/components";
 import { getCollection, render } from "astro:content";
-import { getEventosOrdenados, getProximoEvento, slugDoEvento } from "@/lib/eventos";
+import { fimDoEvento, getEventosOrdenados, getUltimoEProximo, slugDoEvento } from "@/lib/eventos";
 import { siteConfig } from "@/config/site";
 
 export async function getStaticPaths() {
@@ -20,7 +20,7 @@ export async function getStaticPaths() {
 
 const { evento } = Astro.props;
 const { Content } = await render(evento);
-const { title, date, local, horario, mapaUrl, cover, coverAlt, inscricoesUrl, resultadosUrl, status, tag } = evento.data;
+const { title, date, local, horario, mapaUrl, cover, coverAlt, inscricoesUrl, resultadosUrl, status, tag, albumUrl, albumCapa } = evento.data;
 
 // Depois do evento, inscrições e dúvidas perdem o sentido — a página passa
 // a apontar para os resultados. O gatilho é o status, não a data, para que
@@ -28,10 +28,10 @@ const { title, date, local, horario, mapaUrl, cover, coverAlt, inscricoesUrl, re
 const realizado = status === "realizado";
 
 const eventosOrdenados = await getEventosOrdenados();
-// getProximoEvento cai de volta no último evento realizado quando não há
-// nenhum futuro — por isso o selo exige isFuturo, não só o id batendo.
-const { evento: proximo, isFuturo } = getProximoEvento(eventosOrdenados);
-const isProximo = isFuturo && !realizado && proximo?.id === evento.id;
+// Mesmo critério do bloco "Próximo evento" da home: o primeiro confirmado
+// que ainda não terminou.
+const { proximo } = getUltimoEProximo(eventosOrdenados);
+const isProximo = proximo?.id === evento.id;
 
 const formattedDate = date.toLocaleDateString("pt-BR", {
   year: "numeric",
@@ -64,7 +64,7 @@ const metadata = {
       <div class="reveal mb-8 text-center">
         {
           isProximo && (
-            <span id="selo-proximo-evento" data-date={date.toISOString()} class="mb-3 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
+            <span id="selo-proximo-evento" data-fim={fimDoEvento(evento)} class="mb-3 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
               🏆 Próximo evento
             </span>
           )
@@ -144,6 +144,28 @@ const metadata = {
       }
 
       {
+        albumUrl && (
+          <div class="reveal mt-10 overflow-hidden rounded-2xl border border-border bg-card text-center">
+            {(albumCapa || cover) && (
+              <a href={albumUrl} target="_blank" rel="noopener noreferrer" class="block bg-muted">
+                <img src={albumCapa || cover} alt={`Foto da ${title}`} class:list={["h-64 w-full sm:h-80", albumCapa ? "object-cover" : "object-contain p-6"]} loading="lazy" />
+              </a>
+            )}
+            <div class="p-6">
+              <h2 class="text-lg font-bold text-foreground">Fotos do evento</h2>
+              <p class="mt-2 text-sm text-muted-foreground">O álbum completo está no Google Fotos.</p>
+              <div class="mt-4">
+                <Button href={albumUrl} variant="primary" target="_blank" rel="noopener noreferrer">
+                  <Icon name="lucide:images" class="-ml-1 mr-2 h-5 w-5" />
+                  Ver álbum completo
+                </Button>
+              </div>
+            </div>
+          </div>
+        )
+      }
+
+      {
         !realizado && inscricoesUrl && (
           <div class="reveal mt-10 rounded-2xl border border-border bg-card p-6 text-center">
             <h2 class="text-lg font-bold text-foreground">Inscrições</h2>
@@ -182,10 +204,10 @@ const metadata = {
 <script>
   // O selo é calculado no build, e o GitHub Pages não tem rebuild agendado:
   // se ninguém der push depois do evento, a página continuaria anunciando
-  // "Próximo evento". Mesmo critério do getProximoEvento (data >= agora),
+  // "Próximo evento". Mesmo critério do fimDoEvento (fim do último dia em Brasília),
   // mas com o relógio de quem está vendo a página.
   document.addEventListener("astro:page-load", () => {
     const selo = document.getElementById("selo-proximo-evento");
-    if (selo?.dataset.date && new Date(selo.dataset.date).valueOf() < Date.now()) selo.hidden = true;
+    if (selo?.dataset.fim && Number(selo.dataset.fim) <= Date.now()) selo.hidden = true;
   });
 </script>

@@ -11,6 +11,8 @@ temPagina: true
 destaque: true
 tag: "unb"
 resultadosUrl: "https://moj.naquadah.com.br/relatorio/xiv-maratona-unb/"
+albumUrl: "https://photos.app.goo.gl/y6A394WqwXgLC3LT9"     # link do álbum no Google Fotos
+albumCapa: "/galeria/xiv-maratona-unb-2026.jpg"  # uma foto escolhida, dentro do repositório
 ---
 
 A Maratona UnB de Programação é um evento anual realizado desde 2013. Ela segue o regulamento e o formato da Maratona SBC de Programação, com um caderno de problemas elaborado por professores da FGA, do CIC, do IFB e do IESB, além de ex-alunos da instituição. O evento tem caráter interinstitucional, com inscrições gratuitas para times de três pessoas e cinco horas de prova.

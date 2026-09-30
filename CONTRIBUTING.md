@@ -94,11 +94,12 @@ lista para editar à parte.
    mapaUrl: "https://goo.gl/maps/..." # opcional, vira o link "Ver mapa"
    status: "confirmado"
    temPagina: true
-   destaque: true # disputa o "🏆 Próximo Evento" da home
    cover: "/eventos/2027/xv-maratona-unb.jpg" # opcional
    coverAlt: "Descrição da imagem" # opcional
    inscricoesUrl: "https://..." # opcional, vira o botão "Inscreva-se"
    resultadosUrl: "https://..." # opcional, vira o botão "Ver resultados" (só com status "realizado")
+   albumUrl: "https://photos.app.goo.gl/..." # opcional, link do álbum no Google Fotos; vira a caixa "Fotos do evento"
+   albumCapa: "/galeria/nome-do-evento.jpg" # opcional, capa do álbum; o arquivo vai em public/galeria/
    tag: "unb" # opcional: "unb", "icpc", "ieee", "sbc" ou "meninas" (ou várias: ["unb", "meninas"]); vira pílula colorida
    ---
 
@@ -116,30 +117,34 @@ lista para editar à parte.
    inscrição e de dúvidas e passa a mostrar a caixa "Resultados" (veja `xiv-maratona-unb-2026.md` como exemplo).
 
    Sem `temPagina: true`, o evento aparece só como linha na tabela (é o caso da maioria — fases de OBI, ICPC,
-   competições externas). `destaque: true`
-   é reservado para as edições da própria Maratona UnB: é o que decide o que aparece no bloco da home, então normalmente
-   **não marque** eventos de calendário comuns com `destaque: true`.
+   competições externas).
 
 5. Se tiver uma imagem de capa, suba o arquivo em `public/eventos/<ano>/`
    (Add file → Upload files) **antes** de referenciá-lo no `cover:`. Uma imagem que se repete em vários eventos (ex.: o
    logo genérico da Maratona SBC, usado em várias fases nacionais) pode ficar direto em
    `public/eventos/` (sem subpasta de ano), já que não é exclusiva de uma edição.
 
-O bloco "🏆 Próximo Evento" da home se atualiza sozinho: ele sempre mostra o evento com `destaque: true` cuja data mais
-próxima ainda não passou. Não existe mais um link fixo para trocar todo ano — só é preciso manter as edições futuras
-cadastradas com a data certa.
+O bloco "Último evento / Próximo evento" (home e `/eventos`) se atualiza sozinho, a partir de **todos** os eventos:
+
+- **Último evento**: o mais recente com `status: "realizado"`. Um evento só aparece aqui depois que alguém muda o status
+  dele para `"realizado"`.
+- **Próximo evento**: o primeiro com `status: "confirmado"` que ainda não terminou (vale até o fim do último dia, no
+  horário de Brasília). Eventos "a confirmar" ou "adiados" não entram.
+
+Eventos com página própria ganham o link "Ver detalhes"; os demais aparecem só com data e local. Não existe link fixo
+para trocar todo ano — basta manter status e datas certos.
 
 ## Onde colocar cada imagem
 
 O site tem três pastas de imagens em `public/` com propósitos diferentes — usar a errada é o motivo mais comum de imagem
 "estranha" aparecendo no lugar errado:
 
-| Pasta                   | Serve para                                                                                                                                                            | Referenciada por                                  |
-| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
-| `public/blog/<ano>/`    | Foto **exclusiva de uma notícia**                                                                                                                                     | `image:` em `src/content/blog/*.md`               |
-| `public/eventos/<ano>/` | Capa/cartaz **de um evento específico** (ou a raiz `public/eventos/`, sem ano, para uma imagem genérica reaproveitada em vários eventos, como o logo da Maratona SBC) | `cover:` em `src/content/eventos/<ano>/*.md`      |
-| `public/galeria/`       | Fotos **soltas** da página `/galeria` (não pertencem a nenhum arquivo de conteúdo específico)                                                                         | array `fotos` direto em `src/pages/galeria.astro` |
-| `public/site/hero/`     | Fotos do **hero da home** (a faixa grande no topo, com o título por cima)                                                                                             | nenhuma — lidas automaticamente, ver abaixo       |
+| Pasta                   | Serve para                                                                                                                                                            | Referenciada por                                 |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| `public/blog/<ano>/`    | Foto **exclusiva de uma notícia**                                                                                                                                     | `image:` em `src/content/blog/*.md`              |
+| `public/eventos/<ano>/` | Capa/cartaz **de um evento específico** (ou a raiz `public/eventos/`, sem ano, para uma imagem genérica reaproveitada em vários eventos, como o logo da Maratona SBC) | `cover:` em `src/content/eventos/<ano>/*.md`     |
+| `public/galeria/`       | **Capa do álbum de fotos** de um evento (o álbum completo fica no Google Fotos)                                                                                       | `albumCapa:` em `src/content/eventos/<ano>/*.md` |
+| `public/site/hero/`     | Fotos do **hero da home** (a faixa grande no topo, com o título por cima)                                                                                             | nenhuma — lidas automaticamente, ver abaixo      |
 
 ### Fotos do hero da home
 

@@ -4,11 +4,14 @@
 //
 // `texto` é a cor da letra, escolhida pelo contraste com o fundo (mínimo
 // 4,5:1): branco nos fundos escuros, azul-escuro do site no amarelo.
+//
+// `borda` é opcional: cor de um contorno fino (1px). Serve para pílulas de
+// fundo claro, que sem ela somem na página branca.
 
-export const TAG_IDS = ["unb", "icpc", "ieee", "sbc", "meninas"] as const;
+export const TAG_IDS = ["unb", "icpc", "ieee", "sbc", "meninas", "maratonasdf"] as const;
 export type TagEvento = (typeof TAG_IDS)[number];
 
-export const tagsEvento: Record<TagEvento, { rotulo: string; fundo: string; texto: string }> = {
+export const tagsEvento: Record<TagEvento, { rotulo: string; fundo: string; texto: string; borda?: string }> = {
   // Verde institucional da UnB. Branco: 7,1:1.
   unb: { rotulo: "UnB", fundo: "#006633", texto: "#ffffff" },
   // Amarelo da lâmpada do logo, medido em public/site/marcas/icpc.png. Branco
@@ -21,4 +24,7 @@ export const tagsEvento: Record<TagEvento, { rotulo: string; fundo: string; text
   sbc: { rotulo: "SBC", fundo: "#2f4a75", texto: "#ffffff" },
   // Competições femininas. Rosa escuro o bastante para o branco: 4,6:1.
   meninas: { rotulo: "Meninas", fundo: "#db2777", texto: "#ffffff" },
+  // Maratonas do Distrito Federal. Texto verde sobre branco: 7,1:1. O fundo
+  // branco some na página, por isso a borda na mesma cor do texto.
+  maratonasdf: { rotulo: "Maratonas DF", fundo: "#ffffff", texto: "#006633", borda: "#006633" },
 };
