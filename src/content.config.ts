@@ -64,6 +64,9 @@ const eventos = defineCollection({
     cover: z.string().optional(),
     coverAlt: z.string().optional(),
     inscricoesUrl: z.string().optional(),
+    // Link para o placar/relatório final. Só aparece na página do evento
+    // quando status é "realizado" (que também esconde inscrições e dúvidas).
+    resultadosUrl: z.string().optional(),
   }),
 });
 

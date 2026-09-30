@@ -19,7 +19,12 @@ export async function getStaticPaths() {
 
 const { evento } = Astro.props;
 const { Content } = await render(evento);
-const { title, date, local, horario, mapaUrl, cover, coverAlt, inscricoesUrl } = evento.data;
+const { title, date, local, horario, mapaUrl, cover, coverAlt, inscricoesUrl, resultadosUrl, status } = evento.data;
+
+// Depois do evento, inscrições e dúvidas perdem o sentido — a página passa
+// a apontar para os resultados. O gatilho é o status, não a data, para que
+// a troca seja uma decisão editorial explícita.
+const realizado = status === "realizado";
 
 const eventosOrdenados = await getEventosOrdenados();
 const { evento: proximo } = getProximoEvento(eventosOrdenados);
@@ -111,7 +116,25 @@ const metadata = {
       </div>
 
       {
-        inscricoesUrl && (
+        realizado && resultadosUrl && (
+          <div class="reveal mt-10 rounded-2xl border-2 border-accent bg-card p-6 text-center">
+            <span class="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 text-accent">
+              <Icon name="lucide:trophy" class="h-6 w-6" />
+            </span>
+            <h2 class="text-lg font-bold text-foreground">Resultados</h2>
+            <p class="mt-2 text-sm text-muted-foreground">Confira o placar final e o relatório da competição.</p>
+            <div class="mt-4">
+              <Button href={resultadosUrl} variant="primary" target="_blank" rel="noopener noreferrer">
+                <Icon name="lucide:trophy" class="-ml-1 mr-2 h-5 w-5" />
+                Ver resultados
+              </Button>
+            </div>
+          </div>
+        )
+      }
+
+      {
+        !realizado && inscricoesUrl && (
           <div class="reveal mt-10 rounded-2xl border border-border bg-card p-6 text-center">
             <h2 class="text-lg font-bold text-foreground">Inscrições</h2>
             <p class="mt-2 text-sm text-muted-foreground">Garanta a vaga do seu time — inscrições abertas.</p>
@@ -125,15 +148,19 @@ const metadata = {
         )
       }
 
-      <div class="reveal mt-10 rounded-2xl border border-border bg-card p-6 text-center">
-        <h2 class="text-lg font-bold text-foreground">Dúvidas</h2>
-        <p class="mt-2 text-sm text-muted-foreground">
-          Qualquer pergunta sobre o evento, fale com a gente:
-          <a href={`mailto:${siteConfig.email}`} class="link font-semibold">
-            {siteConfig.email}
-          </a>
-        </p>
-      </div>
+      {
+        !realizado && (
+          <div class="reveal mt-10 rounded-2xl border border-border bg-card p-6 text-center">
+            <h2 class="text-lg font-bold text-foreground">Dúvidas</h2>
+            <p class="mt-2 text-sm text-muted-foreground">
+              Qualquer pergunta sobre o evento, fale com a gente:
+              <a href={`mailto:${siteConfig.email}`} class="link font-semibold">
+                {siteConfig.email}
+              </a>
+            </p>
+          </div>
+        )
+      }
 
       <div class="reveal mt-10 text-center">
         <a href="/eventos" class="link font-semibold"> ← Ver todos os eventos </a>

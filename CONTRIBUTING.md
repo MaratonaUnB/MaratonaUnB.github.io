@@ -98,6 +98,7 @@ lista para editar à parte.
    cover: "/eventos/2027/xv-maratona-unb.jpg" # opcional
    coverAlt: "Descrição da imagem" # opcional
    inscricoesUrl: "https://..." # opcional, vira o botão "Inscreva-se"
+   resultadosUrl: "https://..." # opcional, vira o botão "Ver resultados" (só com status "realizado")
    ---
 
    Um parágrafo (ou poucos) descrevendo o evento em Markdown — sem
@@ -108,6 +109,10 @@ lista para editar à parte.
    Não é preciso escrever `## Resumo` nem uma lista de bullets com Evento/Data/Local — esses dados já aparecem no card.
    O corpo em Markdown é só para o texto livre (descrição, cronograma, links extras etc.). O botão de inscrição e a
    seção de dúvidas (com o e-mail de contato) também são automáticos — não precisa adicioná-los no Markdown.
+
+   **Depois que o evento acontecer**, mude `status` para `"realizado"`, apague a linha `inscricoesUrl` e acrescente
+   `resultadosUrl` com o link do placar. Com `status: "realizado"`, a página esconde automaticamente as caixas de
+   inscrição e de dúvidas e passa a mostrar a caixa "Resultados" (veja `xiv-maratona-unb-2026.md` como exemplo).
 
    Sem `temPagina: true`, o evento aparece só como linha na tabela (é o caso da maioria — fases de OBI, ICPC,
    competições externas). `destaque: true`
