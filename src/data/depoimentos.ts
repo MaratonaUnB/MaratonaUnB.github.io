@@ -10,6 +10,13 @@ export interface Depoimento {
 
 export const depoimentos: Depoimento[] = [
   {
+    nome: "Ruan Petrus",
+    papel: "Final Mundial 2026",
+    texto:
+      "Participar da Maratona de Programação teve um impacto muito importante na minha formação. Além de desenvolver bastante minha capacidade de resolver problemas e pensar de forma lógica sob pressão, a competição me colocou em contato com pessoas extremamente talentosas, com quem pude aprender e trocar experiências. A Maratona também abriu portas para conhecer grandes empresas e profissionais da área de tecnologia, além de proporcionar oportunidades de viajar, conhecer novos lugares e participar de experiências que dificilmente teria fora desse ambiente.",
+    url: "https://www.linkedin.com/in/ruanpetrus",
+  },
+  {
     nome: "Daniel Saad",
     papel: "Ex-competidor, professor, voluntário no grupo Maratonas-DF",
     texto:
