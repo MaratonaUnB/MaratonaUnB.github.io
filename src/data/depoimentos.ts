@@ -10,6 +10,13 @@ export interface Depoimento {
 
 export const depoimentos: Depoimento[] = [
   {
+    nome: "Lucas Mattiolli",
+    papel: "Final Nacional 2016",
+    texto:
+      "A maratona de programação foi uma divisora de águas na minha formação profissional e pessoal. Foi o que me manteve motivado para passar pelo curso, foi o que me trouxe a minha primeira experiência profissional e também foi algo que me ensinou o valor da dedicação a uma prática específica. Além disso, fiz muitos amigos durante o percurso, que levo até hoje, incluindo o professor Edson, que foi o maior motivador nessa jornada. Também acredito que a habilidade analítica adquirida enquanto treinamos para os problemas é muito útil para decisões de vida. Percebi que meu pensamento ficou mais claro, mais estruturado, e isso ajuda muito tanto profissionalmente quanto pessoalmente. Se eu pudesse, faria tudo de novo. Mesmo nessa era de IA. Acredito que ter um cérebro “afiado” pode ser um diferencial nesse momento em que todos conseguem dar prompts para um agente de IA.",
+    url: "https://www.linkedin.com/in/lucas-mattioli-07848012a/",
+  },
+  {
     nome: "Ruan Petrus",
     papel: "Final Mundial 2026",
     texto:
