@@ -2,7 +2,7 @@
 title: "Final Brasileira da Maratona SBC de Programação 2026"
 description: "Histórico: UnB conquista título inédito na 31ª Final Brasileira da Maratona SBC de Programação"
 pubDate: 2026-11-9
-author: "Maratona UnB de Programação"
+author: "Maratona SBC de Programação"
 category: "noticias"
 tags: ["icpc", "resultado"]
 image: "/galeria/campeaoBrasileiro.jpeg"
