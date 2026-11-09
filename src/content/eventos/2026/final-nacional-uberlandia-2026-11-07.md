@@ -1,12 +1,16 @@
 ---
 title: "31ª Maratona SBC de Programação"
 date: 2026-11-07
-temPagina: true
-status: "confirmado"
+status: "realizado"
 cover: "/eventos/2026/msp.png"
 coverAlt: "Logo da Maratona SBC de Programação"
 local: "Uberlândia"
 tag: "sbc"
+temPagina: true
+destaque: true
+resultadosUrl: "https://moj.naquadah.com.br/relatorio/icpc-latam-finals-2026/"
+#albumUrl: "https://photos.app.goo.gl/y6A394WqwXgLC3LT9"     # link do álbum no Google Fotos
+# (albumCapa: "/galeria/xiv-maratona-unb-2026.jpg"  # uma foto escolhida, dentro do repositório)
 ---
 
 O maior evento de programação competitiva da América Latina!
