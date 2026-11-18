@@ -10,6 +10,13 @@ export interface Depoimento {
 
 export const depoimentos: Depoimento[] = [
   {
+    nome: "Arthur Botelho",
+    papel: "Final Mundial 2025",
+    texto:
+      "Quando eu entrei pela primeira vez no Laboratório de Informática da UnB, eu estava convencido de que programação competitiva não era algo pra mim. Eu estava indo participar da Maratona APC, uma competição para calouros, que havia sido compartilhada em um grupo com pessoas que entrariam no semestre seguinte na UnB, como eu. Esse dia transformou totalmente a minha trajetória: adquiri o gosto por competir, conheci a UnBalloon e formei o time com quem posteriormente iria até o mundial. Desde o início da graduação, já estive focado na maratona de programação, o que foi um diferencial na minha formação, aprimorando minhas habilidades de aprendizagem, raciocínio, trabalho em equipe e persistência. Esse foco me trouxe facilidade nas matérias ao longo da graduação, me colocou em contato com pessoas também focadas em se desenvolver, e também abriu oportunidades profissionais valiosas, uma delas que se tornou o meu trabalho atual. Além disso, ao longo do tempo, comecei a também me envolver mais com a organização das maratonas e treinamentos, o que me fez adquirir habilidades de liderança e comunicação essenciais para outras áreas da minha vida. Posso dizer que a programação competitiva transformou a minha vida, foi o lugar onde me encontrei e onde pretendo continuar presente mesmo depois que meu dias de competição oficial terminarem.",
+    url: "https://github.com/arthur9548",
+  },
+  {
     nome: "Lucas Mattiolli",
     papel: "Final Nacional 2016",
     texto:
@@ -18,7 +25,7 @@ export const depoimentos: Depoimento[] = [
   },
   {
     nome: "Ruan Petrus",
-    papel: "Final Mundial 2026",
+    papel: "Final Mundial 2025",
     texto:
       "Participar da Maratona de Programação teve um impacto muito importante na minha formação. Além de desenvolver bastante minha capacidade de resolver problemas e pensar de forma lógica sob pressão, a competição me colocou em contato com pessoas extremamente talentosas, com quem pude aprender e trocar experiências. A Maratona também abriu portas para conhecer grandes empresas e profissionais da área de tecnologia, além de proporcionar oportunidades de viajar, conhecer novos lugares e participar de experiências que dificilmente teria fora desse ambiente.",
     url: "https://www.linkedin.com/in/ruanpetrus",
