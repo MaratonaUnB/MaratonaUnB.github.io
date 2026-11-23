@@ -1,0 +1,82 @@
+---
+// Bloco "A UnB no ICPC": uma linha por nível (Mundial, LatAm, Nacional),
+// cada uma com as conquistas da UnB contadas por time. Ver
+// src/data/resumoUnbIcpc.ts.
+import { resumoUnbIcpc, type Conquista } from "@/data/resumoUnbIcpc";
+
+const niveis = [
+  { id: "mundial", nome: "Mundial", subtitulo: "World Finals", sufixo: "Mundial" },
+  { id: "latam", nome: "LatAm", subtitulo: "Fase continental", sufixo: "Latam" },
+  { id: "brasil", nome: "Nacional", subtitulo: "Final Brasileira", sufixo: "Brasil" },
+] as const;
+
+// Ordem de exibição dentro de cada linha. Melhor time da região e troféu
+// têm uma imagem por nível; participação (ticket) e medalhas são as mesmas
+// nos três. O logo de cada competição fica na primeira coluna, com o nome.
+const conquistas = (sufixo: string): { campo: Conquista; rotulo: string; imagem: string }[] => [
+  { campo: "participacoes", rotulo: "participações", imagem: "/fama/ticket.png" },
+  { campo: "melhorDaRegiao", rotulo: "melhor time da região", imagem: `/fama/certificacao-${sufixo}.png` },
+  { campo: "campeao", rotulo: "títulos", imagem: `/fama/trofeu-${sufixo}.png` },
+  { campo: "ouro", rotulo: "ouro", imagem: "/fama/medalha-de-ouro.png" },
+  { campo: "prata", rotulo: "prata", imagem: "/fama/medalha-de-prata.png" },
+  { campo: "bronze", rotulo: "bronze", imagem: "/fama/medalha-de-bronze.png" },
+];
+
+// Notas numeradas na ordem em que aparecem: *, **, ***...
+const notas: string[] = [];
+const linhas = niveis.map((nivel) => {
+  const dados = resumoUnbIcpc[nivel.id];
+  const itens = conquistas(nivel.sufixo)
+    .filter((c) => dados[c.campo] > 0)
+    .map((c) => {
+      const nota = dados.notas?.[c.campo];
+      if (nota) notas.push(nota);
+      return { ...c, valor: dados[c.campo], asteriscos: nota ? "*".repeat(notas.length) : "" };
+    });
+  return { ...nivel, itens };
+});
+---
+
+<section class="reveal mt-8 overflow-hidden rounded-2xl border border-border bg-card">
+  <h2 class="border-b border-border px-6 py-4 text-lg font-bold text-foreground">A UnB no ICPC</h2>
+  <div class="divide-y divide-border">
+    {
+      linhas.map((nivel) => (
+        <div class="flex flex-col gap-4 px-6 py-5 sm:flex-row sm:items-center">
+          <div class="flex items-center gap-3 sm:w-52 sm:shrink-0">
+            <img src={`/fama/logo-${nivel.sufixo}.png`} alt="" class="h-14 w-14 shrink-0 object-contain" loading="lazy" />
+            <div>
+              <p class="text-base font-bold text-foreground">{nivel.nome}</p>
+              <p class="text-xs text-muted-foreground">{nivel.subtitulo}</p>
+            </div>
+          </div>
+          <ul class="flex flex-wrap gap-x-8 gap-y-4">
+            {nivel.itens.map((c) => (
+              <li class="flex items-center gap-3">
+                <img src={c.imagem} alt="" class="h-12 w-12 object-contain" loading="lazy" />
+                <div class="leading-none">
+                  <p class="text-3xl font-extrabold tabular-nums text-primary">
+                    {c.valor}
+                    {c.asteriscos && <sup class="ml-0.5 text-base font-bold text-muted-foreground">{c.asteriscos}</sup>}
+                  </p>
+                  <p class="mt-1 text-xs text-muted-foreground">{c.rotulo}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+  {
+    notas.length > 0 && (
+      <ul class="space-y-1 border-t border-border px-6 py-3 text-xs text-muted-foreground">
+        {notas.map((nota, i) => (
+          <li>
+            <span class="font-bold">{"*".repeat(i + 1)}</span> {nota}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</section>

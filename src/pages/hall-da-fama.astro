@@ -2,6 +2,7 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import PageHeader from "@/components/widgets/PageHeader.astro";
 import { hallDaFamaIcpc } from "@/data/hallDaFamaIcpc";
+import ResumoHallDaFama from "@/components/widgets/ResumoHallDaFama.astro";
 
 const metadata = {
   title: "Hall da Fama — ICPC",
@@ -15,6 +16,7 @@ const metadata = {
     <p class="text-muted-foreground">
       Reconhecimento aos alunos com participações nas fases <strong>Mundial (World Finals)</strong>, <strong>LatAm</strong> e <strong>Final Brasileira</strong> do ICPC.
     </p>
+    <ResumoHallDaFama />
     <div class="mt-6 overflow-x-auto rounded-2xl border border-border">
       <table class="w-full text-left text-sm">
         <thead class="bg-muted text-xs uppercase tracking-wider text-muted-foreground">
