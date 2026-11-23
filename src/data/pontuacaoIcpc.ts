@@ -17,9 +17,9 @@ export interface AlunoHallDaFama {
 }
 
 export const pontos: Record<Nivel, Partial<Record<Conquista, number>>> = {
-  mundial: { campeao: 736, campeaoRegional: 120, melhorBrasileiro: 40, ouro: 184, prata: 88, bronze: 40, participacoes: 8 },
-  latam: { campeao: 184, campeaoRegional: 30, melhorBrasileiro: 10, ouro: 46, prata: 22, bronze: 10, participacoes: 2 },
-  brasil: { campeao: 92, campeaoRegional: 5, ouro: 23, prata: 11, bronze: 5, participacoes: 1 },
+  mundial: { campeao: 160, campeaoRegional: 80, melhorBrasileiro: 40, ouro: 80, prata: 40, bronze: 20, participacoes: 4 },
+  latam: { campeao: 80, campeaoRegional: 40, melhorBrasileiro: 20, ouro: 40, prata: 20, bronze: 10, participacoes: 2 },
+  brasil: { campeao: 40, campeaoRegional: 10, ouro: 20, prata: 10, bronze: 5, participacoes: 1 },
 };
 
 export const NIVEIS: { id: Nivel; nome: string; sufixo: string }[] = [
