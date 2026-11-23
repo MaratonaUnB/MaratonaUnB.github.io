@@ -14,8 +14,8 @@ import type { AlunoHallDaFama } from "./pontuacaoIcpc";
 export const hallDaFamaIcpc: AlunoHallDaFama[] = [
   { nome: "José Marcos Leite", mundial: { campeaoRegional: 1, melhorBrasileiro: 1, participacoes: 2 }, brasil: { campeaoRegional: 2, prata: 2, participacoes: 5 } },
   { nome: "Luis Felipe Gebrim", mundial: { campeaoRegional: 1, melhorBrasileiro: 1, participacoes: 2 }, brasil: { campeaoRegional: 2, prata: 2, participacoes: 2 } },
-  { nome: "Eduardo Quirino de Oliveira", mundial: { participacoes: 2 }, latam: { prata: 1, participacoes: 2 }, brasil: { campeao: 1, campeaoRegional: 3, ouro: 1, prata: 2, participacoes: 3 } },
-  { nome: "Wilson Guimarães", mundial: { participacoes: 2 }, latam: { prata: 1, participacoes: 2 }, brasil: { campeao: 1, campeaoRegional: 3, ouro: 1, prata: 2, participacoes: 3 } },
+  { nome: "Eduardo Quirino de Oliveira", mundial: { participacoes: 1 }, latam: { prata: 1, participacoes: 2 }, brasil: { campeao: 1, campeaoRegional: 3, ouro: 1, prata: 2, participacoes: 3 } },
+  { nome: "Wilson Guimarães", mundial: { participacoes: 1 }, latam: { prata: 1, participacoes: 2 }, brasil: { campeao: 1, campeaoRegional: 3, ouro: 1, prata: 2, participacoes: 3 } },
   { nome: "Rafael Chehab", mundial: { campeaoRegional: 1, participacoes: 1 }, brasil: { campeaoRegional: 1, prata: 1, participacoes: 1 } },
   { nome: "Lucas Cruz", latam: { prata: 1, participacoes: 3 }, brasil: { campeao: 1, campeaoRegional: 3, ouro: 1, prata: 1, bronze: 2, participacoes: 4 } },
   { nome: "Thiago Veras Machado", mundial: { melhorBrasileiro: 1, participacoes: 1 }, brasil: { campeaoRegional: 1, prata: 1, participacoes: 2 } },
