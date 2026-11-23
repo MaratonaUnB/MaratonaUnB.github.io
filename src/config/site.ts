@@ -49,6 +49,8 @@ export const siteConfig = {
       icon: "lucide:info",
       links: [
         { text: "Organização", href: "/organizacao", icon: "lucide:users" },
+        { text: "Hall da Fama (ICPC)", href: "/hall-da-fama", icon: "lucide:trophy" },
+        { text: "Quadro de Medalhas (OBI)", href: "/quadro-de-medalhas", icon: "lucide:medal" },
         {
           text: "Depoimentos",
           href: "/depoimentos",

@@ -4,7 +4,7 @@ import { Icon } from "astro-icon/components";
 import Logo from "@/components/ui/Logo.astro";
 ---
 
-<nav class="fixed top-0 z-50 w-full border-b border-border bg-background md:bg-background/80 md:backdrop-blur">
+<nav class="fixed top-0 z-50 w-full border-b border-border bg-background lg:bg-background/80 lg:backdrop-blur">
   <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
     <div class="flex items-center gap-2">
       <a href="/" class="flex items-center gap-2 text-lg font-bold tracking-tight">
@@ -17,16 +17,18 @@ import Logo from "@/components/ui/Logo.astro";
       </a>
     </div>
 
-    <!-- Desktop Menu -->
-    <div class="hidden md:block">
-      <div class="ml-10 flex items-baseline space-x-8">
+    <!-- Desktop Menu (a partir de 1024 px; abaixo disso, botão de menu).
+         Entre 1024 e 1279 px os ícones somem e o espaçamento diminui para
+         tudo caber numa linha. -->
+    <div class="hidden lg:block">
+      <div class="ml-6 flex items-baseline space-x-5 xl:ml-10 xl:space-x-8">
         {
           siteConfig.navLinks.map((link) => {
             if ("links" in link && Array.isArray(link.links)) {
               return (
                 <div class="relative group">
                   <a href={link.href} class="flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:text-primary">
-                    {link.icon && <Icon name={link.icon} class="h-4 w-4" />}
+                    {link.icon && <Icon name={link.icon} class="hidden h-4 w-4 xl:inline-block" />}
                     {link.text}
                     <svg class="h-4 w-4 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -71,7 +73,7 @@ import Logo from "@/components/ui/Logo.astro";
             }
             return (
               <a href={link.href} class="flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:text-primary">
-                {link.icon && <Icon name={link.icon} class="h-4 w-4" />}
+                {link.icon && <Icon name={link.icon} class="hidden h-4 w-4 xl:inline-block" />}
                 {link.text}
               </a>
             );
@@ -80,7 +82,7 @@ import Logo from "@/components/ui/Logo.astro";
       </div>
     </div>
 
-    <div class="hidden md:flex items-center gap-1">
+    <div class="hidden lg:flex items-center gap-1">
       {
         siteConfig.headerSocialLinks.map((social) => (
           <a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.text} class="rounded-full p-2 text-foreground transition-colors hover:bg-muted hover:text-primary">
@@ -94,7 +96,7 @@ import Logo from "@/components/ui/Logo.astro";
     </div>
 
     <!-- Mobile Menu Button -->
-    <div class="md:hidden flex items-center">
+    <div class="lg:hidden flex items-center">
       <a href={`mailto:${siteConfig.email}`} aria-label={`Enviar e-mail para ${siteConfig.email}`} class="rounded-full p-2 text-foreground transition-colors hover:bg-muted hover:text-primary">
         <Icon name="lucide:mail" class="h-5 w-5" />
       </a>
@@ -116,7 +118,7 @@ import Logo from "@/components/ui/Logo.astro";
     </div>
   </div>
 
-  <div class="hidden md:hidden" id="mobile-menu">
+  <div class="hidden lg:hidden" id="mobile-menu">
     <div class="space-y-1 border-b border-border bg-background/95 px-2 pb-3 pt-2 sm:px-3">
       {
         siteConfig.navLinks.map((link) => {

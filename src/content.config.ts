@@ -72,7 +72,7 @@ const eventos = defineCollection({
     resultadosUrl: z.string().optional(),
     // Álbum de fotos do evento, hospedado fora do site (Google Fotos). Vira
     // a caixa "Fotos do evento" na página do evento.
-    albumUrl: z.string().url().optional(),
+    albumUrl: z.url().optional(),
     // Foto de capa do álbum, guardada no repositório em public/galeria/
     // (ex.: "/galeria/xiv-maratona-unb-2026.jpg"). Sem ela, a caixa usa o
     // `cover` do evento. O build falha se o arquivo não existir, para uma

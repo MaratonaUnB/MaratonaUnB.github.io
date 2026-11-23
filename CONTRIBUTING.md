@@ -162,14 +162,14 @@ duplique o arquivo.
 
 ## Outros conteúdos editáveis sem tocar em código
 
-| O que editar                            | Onde                                                                              |
-| --------------------------------------- | --------------------------------------------------------------------------------- |
-| Quadro de Medalhas (OBI)                | `src/data/quadroMedalhasObi.ts`                                                   |
-| Hall da Fama (ICPC)                     | `src/data/hallDaFamaIcpc.ts`                                                      |
-| Posts do Instagram na Galeria           | `src/data/instagramPosts.ts` (cole a URL do post)                                 |
-| Depoimentos                             | `src/data/depoimentos.ts` — só publicar falas reais e autorizadas por quem as deu |
-| Links de imprensa                       | `src/data/imprensa.ts`                                                            |
-| Menu, e-mail, redes sociais, apoiadores | `src/config/site.ts`                                                              |
+| O que editar                            | Onde                                                                                                                     |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Quadro de Medalhas (OBI)                | `src/data/quadroMedalhasObi.ts`                                                                                          |
+| Hall da Fama (ICPC)                     | `src/data/hallDaFamaIcpc.ts` (alunos), `src/data/pontuacaoIcpc.ts` (pontos), `src/data/resumoUnbIcpc.ts` (resumo da UnB) |
+| Posts do Instagram na Galeria           | `src/data/instagramPosts.ts` (cole a URL do post)                                                                        |
+| Depoimentos                             | `src/data/depoimentos.ts` — só publicar falas reais e autorizadas por quem as deu                                        |
+| Links de imprensa                       | `src/data/imprensa.ts`                                                                                                   |
+| Menu, e-mail, redes sociais, apoiadores | `src/config/site.ts`                                                                                                     |
 
 Esses arquivos são arrays/objetos TypeScript simples — dá para editar seguindo o padrão dos itens já existentes, mesmo
 sem saber programar. Preste atenção especial à vírgula entre um item e outro do array e às aspas ao redor de cada
