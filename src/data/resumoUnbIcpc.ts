@@ -6,11 +6,12 @@
 // Zeros não aparecem na página: um nível sem medalhas mostra só as
 // participações. As imagens de cada conquista ficam em public/fama/.
 
-export type Conquista = "participacoes" | "melhorDaRegiao" | "campeao" | "ouro" | "prata" | "bronze";
+export type Conquista = "participacoes" | "melhorDaRegiao" | "melhorBrasileiro" | "campeao" | "ouro" | "prata" | "bronze";
 
 export interface ResumoNivel {
   participacoes: number;
   melhorDaRegiao: number;
+  melhorBrasileiro: number;
   campeao: number;
   ouro: number;
   prata: number;
@@ -22,10 +23,11 @@ export interface ResumoNivel {
 
 // PROPOSTA — valores copiados da imagem de referência; conferir antes de publicar.
 export const resumoUnbIcpc: Record<"mundial" | "latam" | "brasil", ResumoNivel> = {
-  mundial: { participacoes: 4, melhorDaRegiao: 1, campeao: 0, ouro: 0, prata: 0, bronze: 0 },
+  mundial: { participacoes: 4, melhorDaRegiao: 0, melhorBrasileiro: 1, campeao: 0, ouro: 0, prata: 0, bronze: 0 },
   latam: {
     participacoes: 2,
     melhorDaRegiao: 0,
+    melhorBrasileiro: 0,
     campeao: 0,
     ouro: 0,
     prata: 2,
@@ -35,8 +37,9 @@ export const resumoUnbIcpc: Record<"mundial" | "latam" | "brasil", ResumoNivel> 
   brasil: {
     participacoes: 20,
     melhorDaRegiao: 4,
+    melhorBrasileiro: 0,
     campeao: 1,
-    ouro: 2,
+    ouro: 3,
     prata: 7,
     bronze: 4,
     notas: { melhorDaRegiao: "A premiação de melhor time da região passou a acontecer a partir de 2022." },
